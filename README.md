@@ -1,7 +1,4 @@
-
-react-material projects 
-react-material project team lead
-
+update changes from home
 
 # Getting Started with Create React App
 
