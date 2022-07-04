@@ -1,4 +1,4 @@
-react-material project
+react-material project team lead
 
 # Getting Started with Create React App
 
