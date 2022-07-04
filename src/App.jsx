@@ -1,90 +1,108 @@
-import { StyledEngineProvider,createTheme,ThemeProvider } from '@mui/material/styles';
-import Button from '@mui/material/Button'
-import ButtonGroup from '@mui/material/ButtonGroup'
-import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
-import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft'
-import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
-import Paper from '@mui/material/Paper'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import { useState } from 'react';
-import CheckBox from '@mui/material/Checkbox';
-import Typography from '@mui/material/Typography'
+import {
+  StyledEngineProvider,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material/styles";
+import Box from '@mui/material/Box'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import Container from '@mui/material/Container'
-
-
-
-
-
+import Typography from '@mui/material/Typography'
+import Paper from '@mui/material/Paper'
 function App() {
-  
-
   const theme = createTheme({
     // palette:{primary:{},secondary:{}},
-    typography:{
-      fontFamily:['Outfit','Supreme','Excon'],
+    typography: {
+      fontFamily: ["Outfit", "Supreme", "Excon"],
       fontSize: 12,
-      fontColor:'#AAB8C2'
-    }
-  })
+      fontColor: "#AAB8C2",
+    },
+  });
 
-  const [checked,setChecked] = useState(false)
-  
   return (
-    <ThemeProvider theme={theme}> 
+    <ThemeProvider theme={theme}>
       <StyledEngineProvider injectFirst>
-       
-            <div className=" min-h-screen h-auto w-full flex justify-end ">
-              
-              {/* nav */}
-              
-              <AppBar elevation={0} position="fixed" variant='outlined' className='bg-transparent' >
-                <Toolbar>
-                  <Typography variant="overline" className='text-gray'>
-                    navigation
-                  </Typography>
-                </Toolbar>
-              </AppBar>
+        <div className="relative h-screen w-full flex justify-start font-outfit  items-center ">
+          {/* navbar */}
+          <AppBar position="fixed" elevation={0} variant="outlined" className="z-30  bg-transparent">
+            <Toolbar>
+              <Typography variant="overline" className="text-gray">
+                nav
+              </Typography>
+            </Toolbar>
+          </AppBar>
 
-              <Container maxWidth="xl" className="flex  min-h-screen h-auto w-full" disableGutters>
-                
-
-                {/* sidebar here */}
-                <Paper variant='outlined'  className="h-full w-80    flex items-center justify-center left-0" square>
-                  <Typography variant="overline" className="text-gray">sidebar</Typography>
-                </Paper>
+          {/*left sidebar */}
+          <Box className="w-72 h-screen fixed  z-50" >
+             <Paper variant="outlined" className="min-h-screen w-full">
 
 
-                {/* content */}
-                <div className='h-full w-full flex items-center justify-center '>
-                
-                  <Container maxWidth="lg" variant="outlined" className='h-full   flex items-start justify-center space-x-4' >
-                    <Paper variant='outlined' className='h-full mt-20 w-full flex items-center justify-start flex-col'>
-
-                      {/* content here */}
-                      <Typography variant="overline" className="text-gray">content here</Typography>
-                      {/* sample content */}
-                      <div className='h-[150vh]'></div>
-                    </Paper>
+             </Paper>
+          </Box>
 
 
-                   {/*right sidebar */}
-                    <Paper variant='outlined' className='h-screen w-72 mt-20 flex items-center justify-center'>
-                      <Typography variant="overline" className='text-gray'>
-                         right sidebar
-                        (make fixed)
-                      </Typography>
-                    </Paper>  
-                  </Container>
+          {/* right sidebar */}
+        
+          {/* content */}
+          <div className="w-full px-4 h-[200vh]">
+            
 
 
-                </div>
-              </Container>
-            </div>
-    </StyledEngineProvider>
-  </ThemeProvider>
+
+          </div>
+         
+          </div>
+      </StyledEngineProvider>
+    </ThemeProvider>
   );
 }
 
 export default App;
+
+// <ThemeProvider theme={theme}>
+// <StyledEngineProvider injectFirst>
+
+//       <div className=" min-h-screen h-auto w-full flex justify-end ">
+
+//         {/* nav */}
+
+//         <AppBar elevation={0} position="fixed" variant='outlined' className='bg-transparent' >
+//           <Toolbar>
+//             <Typography variant="overline" className='text-gray'>
+//               navigation
+//             </Typography>
+//           </Toolbar>
+//         </AppBar>
+
+//         <Container maxWidth="xl" className="flex  min-h-screen h-auto w-full" disableGutters>
+
+//           {/* sidebar here */}
+//           <Paper variant='outlined'  className="h-full w-80    flex items-center justify-center left-0" square>
+//             <Typography variant="overline" className="text-gray">sidebar</Typography>
+//           </Paper>
+
+//           {/* content */}
+//           <div className='h-full w-full flex items-center justify-center '>
+
+//             <Container maxWidth="lg" variant="outlined" className='h-full   flex items-start justify-center space-x-4' >
+//               <Paper variant='outlined' className='h-full mt-20 w-full flex items-center justify-start flex-col'>
+
+//                 {/* content here */}
+//                 <Typography variant="overline" className="text-gray">content here</Typography>
+//                 {/* sample content */}
+//                 <div className='h-[150vh]'></div>
+//               </Paper>
+
+//              {/*right sidebar */}
+//               <Paper variant='outlined' className='h-screen w-72 mt-20 flex items-center justify-center'>
+//                 <Typography variant="overline" className='text-gray'>
+//                    right sidebar
+//                   (make fixed)
+//                 </Typography>
+//               </Paper>
+//             </Container>
+
+//           </div>
+//         </Container>
+//       </div>
+// </StyledEngineProvider>
+// </ThemeProvider>
