@@ -8,6 +8,7 @@ import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
+import Container from '@mui/material/Container'
 function App() {
   const theme = createTheme({
     // palette:{primary:{},secondary:{}},
@@ -25,31 +26,53 @@ function App() {
           {/* navbar */}
           <AppBar position="fixed" elevation={0} variant="outlined" className="z-30  bg-transparent">
             <Toolbar>
-              <Typography variant="overline" className="text-gray">
-                nav
-              </Typography>
+              {/* items here */}
+              
             </Toolbar>
           </AppBar>
 
           {/*left sidebar */}
-          <Box className="w-72 h-screen fixed  z-50" >
-             <Paper variant="outlined" className="min-h-screen w-full">
-
+          <Box className="w-64 h-screen fixed  z-50" >
+             <Paper variant="outlined" className="min-h-screen w-full ">
+              
+              <Typography variant="overline" className="text-gray">
+                sidebar
+              </Typography> 
 
              </Paper>
           </Box>
 
 
           {/* right sidebar */}
-        
+          <Box className="w-48 h-screen fixed right-6 top-24 z-50" >
+             <Paper variant="outlined" className="min-h-[20rem] w-full ">
+              {/* items here */}
+              <Typography variant="overline" className="text-gray">
+                right sidebar
+              </Typography> 
+
+             </Paper>
+          </Box>
+
+
+
           {/* content */}
-          <div className="w-full px-4 h-[200vh]">
-            
+          <div className="w-full  h-[200vh] flex justify-center  items-center   pl-12  ">
+            <Container maxWidth="md" className="pt-48">
+               
+              <Paper variant="outlined" className="h-auto min-h-screen " square>
+              <Typography variant="overline" className="text-gray">
+                content
+              </Typography>
 
-
-
+              </Paper>
+              
+            </Container>
           </div>
+
+      
          
+
           </div>
       </StyledEngineProvider>
     </ThemeProvider>
