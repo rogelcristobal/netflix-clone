@@ -16,7 +16,7 @@
         @apply bg-neutral-300
     }
     .border-sample{
-        @apply border border-neutral-200
+        @apply border border-neutral-300
     }
     
 }
