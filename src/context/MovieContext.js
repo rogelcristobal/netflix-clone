@@ -1,11 +1,12 @@
 import { createContext } from "react";
-import { useState } from "react";
+import useFetchUpcomingMovie from '../fetch/useFetchUpcomingMovie'
 const MovieContext = createContext()
 
+
 export const MovieProvider = ({children})=>{
-    const [state,setState]=useState(0)
+    const {upcomingMovies} = useFetchUpcomingMovie()    
     return (
-        <MovieContext.Provider value={{state}}>{children}</MovieContext.Provider>
+        <MovieContext.Provider value={{upcomingMovies}}>{children}</MovieContext.Provider>
     )
 }
 
