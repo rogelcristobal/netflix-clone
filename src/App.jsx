@@ -1,51 +1,43 @@
-import  Sidebar  from './components/Sidebar';
-import {useSelector, useDispatch} from 'react-redux'
-import { increment, decrement,incrementByAmount, resetCounter } from './features/counterSlice';
-import { useState } from 'react';
+import Typography from "./components/Typography";
 function App() {
-  // bg-[#06090f]
-  const count = useSelector((state)=> state.counter.count)
-  const dispatch = useDispatch()
-
-  const [value,setValue] = useState(1)
-  const handleReset=()=>{
-    setValue(1)
-    dispatch(resetCounter())
-  }
+  
   return (
-        <div className=" min-h-screen bg-neutral-100 text-black flex justify-center items-start font-outfit">
-          <Sidebar></Sidebar>
-          <div className="w-full px-10 pt-32 h-auto  flex flex-col items-center justify-start">
-              <div className='h-full  border-sample flex pt-8 pb-4 rounded  flex-col  items-center justify-start w-52'>
-                  <p className='text-6xl text-neutral-500 my-8'>{count}</p>
-                  <div className='flex items-center justify-between  w-full px-6'>
-                    {/* increment */}
-                    <button className='hover:bg-neutral-200 py-1 px-4 border-sample rounded' onClick={()=>dispatch(increment())}>+</button>
-                    {/* reset */}
-                    <button className='hover:bg-neutral-200 py-1 px-4 text-sm border-sample rounded' onClick={handleReset}>reset</button>
-                    {/* decrement */}
-                    <button className='hover:bg-neutral-200 py-1 px-4 border-sample rounded' onClick={()=>dispatch(decrement())}>-</button>
-                  </div>
-                  <div className='flex items-center space-x-2 my-4 w-fit mx-4'>
-                    {/* input */}
-                  <input
-                     value={value}
-                     onChange={(e)=>setValue(Number(e.target.value))}
-                     type="text" className='w-9 bg-neutral-200 h-8 rounded shadow-inner text-center' />
-                     {/* increment by input */}
-                     <button className='hover:bg-neutral-200 py-1 text-sm px-4 border-sample rounded' onClick={()=>dispatch(incrementByAmount(value))}>add amount</button>
-                  </div>
-              </div>
-          </div>
-        </div>
+   <div className="font-outfit relative flex w-full  h-screen bg-[#e1dfdd]">
+    {/* nav */}
+    <div className="fixed top-0 left-0 w-full h-16 ">
+      <div className="container h-full flex  px-4 justify-end mx-auto border-sample">
+        {/* nav contents here */}
+        <Typography>navbar</Typography>
+      </div>
+    </div>
+    {/* sidebar */}
+    <div className="border-sample w-96 h-full">
+    {/* sidebar contents here */}
+      <Typography>
+          sidebar
+      </Typography>
+    </div>
+    {/* body */}
+    
+    <div className=" px-14 py-12 h-screen overflow-y-auto no-scrollbar w-full">
+      <div className="h-[200vh] mt-16 mb-16 w-full border-sample">
+        {/* contents here */}
+        <Typography>page content</Typography>
+      </div>
+    </div>
+    
+
+    {/*page nav*/}
+    <div className="w-72 mt-28 mx-6 border-sample h-96">
+      {/* page nav contents here */}
+      <Typography>page navigation</Typography>
+    </div>
+   </div>
+
+
+
+
   );
 }
 
-
-
 export default App;
-
-
-
-
-

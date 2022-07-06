@@ -8,7 +8,10 @@ module.exports = {
       fontFamily:{
         'supreme':['Supreme',"sans-serif"],
         'outfit':["Outfit",'sans-serif'],
-        'excon':["Excon",'sans-serif']
+        'excon':["Excon",'sans-serif'],
+        'melo':["MeloDrama",'sans-serif' ],
+        'clash':["Clash Display",'sans-serif']
+
       }
     },
   },
