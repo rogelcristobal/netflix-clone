@@ -5,12 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./app/store";
 import { Provider } from "react-redux";
+import { MovieProvider } from "./context/MovieContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
+    <MovieProvider>
     <React.StrictMode>
       <App />
     </React.StrictMode>
+    </MovieProvider>
   </Provider>  
 );
 
