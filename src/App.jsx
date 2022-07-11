@@ -1,7 +1,5 @@
 import { useContext } from "react";
 import MovieContext from "./context/MovieContext";
-import CardComponent from "./components/CardComponent";
-import Grid from "@mui/material/Grid";
 import { Paper, Typography, Box, Link } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
