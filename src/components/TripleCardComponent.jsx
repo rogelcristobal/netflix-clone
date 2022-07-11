@@ -21,7 +21,7 @@ const fetchThreeItem = (endpoint) => {
           underline="none"
           component="button"
           variant="p"
-          className="text-sm text-color-400 font-medium font-outfit capitalize hover:text-color-500"
+          className="text-sm text-color-400  font-outfit capitalize hover:text-color-500"
           onClick={() => {
             alert("I'm a button.");
           }}
