@@ -8,7 +8,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import TripleCardComponent from "./components/TripleCardComponent";
 
 function App() {
-  const { upcomingMovies, upcomingLoading, popularMovies, popularLoading } =
+  const { upcomingMovies, upcomingLoading, popularMovies, popularLoading ,topRatedMovies} =
     useContext(MovieContext);
   const theme = createTheme({
     typography: {
@@ -23,21 +23,21 @@ function App() {
       <div className="font-outfit relative flex w-full   h-screen bg-color-100 ">
 
         {/* nav */}
-        <div className="fixed top-0 left-0 w-full h-16 z-20 bg-color-100 shadow-sm">
+        <div className="fixed top-0 left-0 w-full h-16 z-20 bg-color-100 ">
           <div className="container h-full flex  px-4 justify-end mx-auto  rounded-lg">
             {/* nav contents here */}
             <Paper
-              variant="contained"
+              variant="outlined"
               className="h-full w-full bg-inherit"
             ></Paper>
           </div>
         </div>
 
         {/* sidebar */}
-        <div className=" w-96  rounded-lg h-full z-30 bg-color-100 ">
+        <div className=" w-96  rounded-lg h-full z-10 bg-color-100 ">
           {/* sidebar contents here */}
           <Paper
-            variant="contained"
+            variant="outlined"
             className="h-full w-full bg-inherit"
             square
           ></Paper>
@@ -45,7 +45,7 @@ function App() {
 
         {/* body */}
         <div className=" px-8    h-screen overflow-y-auto  no-scrollbar w-full ">
-          <div className="h-auto mt-24  min-h-[200vh]  flex flex-col items-start  justify-start   pb-8  px-2 py-4  mb-16 w-full   rounded-lg">
+          <div className="h-auto mt-24  min-h-screen  flex flex-col items-start  justify-start   pb-8  px-2 py-4  mb-16 w-full  space-y-4 rounded-lg">
 
             {/* contents here */}
 
@@ -62,6 +62,13 @@ function App() {
                 upcomingLoading={popularLoading}
                 upcomingMovies={popularMovies}
               ></TripleCardComponent>
+
+               {/* category 3 */}
+               <TripleCardComponent
+                title="top rated"
+                upcomingLoading={popularLoading}
+                upcomingMovies={topRatedMovies}
+              ></TripleCardComponent>
               
           </div>
         </div>
@@ -70,7 +77,7 @@ function App() {
         <div className="w-72 mt-24 ml-0 mr-8  rounded-lg h-96">
           {/* page nav contents here */}
           <Paper
-            variant="contained"
+            variant="outlined"
             className="h-full bg-color-100  w-full "
           ></Paper>
         </div>

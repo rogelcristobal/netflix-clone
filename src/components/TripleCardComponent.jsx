@@ -21,7 +21,7 @@ const fetchThreeItem = (endpoint) => {
           underline="none"
           component="button"
           variant="p"
-          className="text-sm text-color-400 font-medium font-outfit capitalize hover:text-color-500"
+          className="text-sm text-color-400  font-outfit capitalize hover:text-color-500"
           onClick={() => {
             alert("I'm a button.");
           }}
@@ -33,7 +33,7 @@ const fetchThreeItem = (endpoint) => {
           {/* used paper as a container */}
       <Paper
         component="div"
-        variant="contained"
+        variant="outlined"
         className=" h-full w-fit  py-6 px-6 grid place-content-center rounded-lg "
       >
         {/* map only 3 item */}
