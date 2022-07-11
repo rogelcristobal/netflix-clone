@@ -14,7 +14,6 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
 const CardComponent = ({ data }) => {
-  console.log(data)
   return (
     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
       <Card
@@ -39,7 +38,7 @@ const CardComponent = ({ data }) => {
 
         <CardContent className="flex flex-col relative p-2 ">
           {/* progress bar */}
-          <Tooltip title={`vote count ${data?.vote_count}`} arrow followCursor placement="top-start"  >
+          <Tooltip title={`vote count ${data?.vote_count}`} arrow followCursor placement="top-start"  TransitionComponent={Zoom}>
             <div
               className="h-9 w-9 absolute -top-6 right-4  transition-all duration-300 ease-in-out hover:scale-[1.3]"
             >
@@ -93,10 +92,10 @@ const CardComponent = ({ data }) => {
             </>
           ) : (
             <>
-              <Skeleton animation="wave">
+              <Skeleton animation="wave" className="h-8">
                 <Typography
                   variant="p"
-                  className="font-medium text-left tracking-wide mt-4   text-black"
+                  className=" mt-4 w-full "
                   color="initial"
                 >
                   {data?.title}
@@ -105,7 +104,7 @@ const CardComponent = ({ data }) => {
               <Skeleton>
                 <Typography
                   variant="p"
-                  className="font-medium w-fit h-fit mt-2 text-xs text-left tracking-wide  text-color-500"
+                  className=" w-full  mt-2 "
                   color="initial"
                 >
                   {data?.release_date}
