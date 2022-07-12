@@ -74,7 +74,7 @@ function App() {
                     className="  h-fit py-8 rounded-lg bg-inherit"
                   >
                     <List>
-                      <NavLink  to="/homepage" className='no-underline '>
+                      <NavLink  to="/homepage/" className='no-underline '>
                         {({ isActive }) => (
                           <ListItem disablePadding>
                           <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
@@ -88,7 +88,7 @@ function App() {
                         </ListItem>
                         )}
                       </NavLink>
-                      <NavLink  to="/homepage/tvShows" className='no-underline '>
+                      <NavLink to="/homepage/tvShows" className='no-underline '>
                         {({ isActive }) => (
                           <ListItem disablePadding>
                           <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
