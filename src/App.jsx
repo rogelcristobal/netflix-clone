@@ -24,7 +24,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route
-          exact
+          
           path="/"
           element={
             <div className="h-96 w-96 bg-blue-300 grid place-content-center">
@@ -74,7 +74,7 @@ function App() {
                     className="  h-fit py-8 rounded-lg bg-inherit"
                   >
                     <List>
-                      <NavLink  to="/homepage/" className='no-underline '>
+                      <NavLink  to="/homepage" className='no-underline '>
                         {({ isActive }) => (
                           <ListItem disablePadding>
                           <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
@@ -88,7 +88,7 @@ function App() {
                         </ListItem>
                         )}
                       </NavLink>
-                      <NavLink exact to="/homepage/tvShows" className='no-underline '>
+                      <NavLink  to="/homepage/tvShows" className='no-underline '>
                         {({ isActive }) => (
                           <ListItem disablePadding>
                           <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
@@ -102,7 +102,7 @@ function App() {
                         </ListItem>
                         )}
                       </NavLink>
-                      <NavLink exact to="/homepage/forRent" className='no-underline '>
+                      <NavLink  to="/homepage/forRent" className='no-underline '>
                         {({ isActive }) => (
                           <ListItem disablePadding>
                           <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
@@ -116,7 +116,7 @@ function App() {
                         </ListItem>
                         )}
                       </NavLink>
-                      <NavLink exact to="/homepage/theaters" className='no-underline '>
+                      <NavLink  to="/homepage/theaters" className='no-underline '>
                         {({ isActive }) => (
                           <ListItem disablePadding>
                           <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
@@ -142,7 +142,7 @@ function App() {
 
               {/* body */}
               <Routes>
-                <Route exact path="/" element={<Home />}></Route>
+                <Route path="/" element={<Home />}></Route>
                 <Route path="/tvShows" element={<Home />}></Route>
                 <Route path="/forRent" element={<Home />}></Route>
                 <Route path="/theaters" element={<Home />}></Route>
