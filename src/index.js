@@ -6,15 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./app/store";
 import { Provider } from "react-redux";
 import { MovieProvider } from "./context/MovieContext";
+import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <MovieProvider>
-    {/* <React.StrictMode> */}
-      <App />
-    {/* </React.StrictMode> */}
-    </MovieProvider>
-  </Provider>  
+    <BrowserRouter basename="/netflix-clone">
+      <MovieProvider>
+        {/* <React.StrictMode> */}
+        <App />
+        {/* </React.StrictMode> */}
+      </MovieProvider>
+    </BrowserRouter>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

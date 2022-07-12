@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Link, Paper, Grid } from "@mui/material";
 import CardComponent from "./CardComponent";
-const TripleCardComponent = ({ upcomingMovies ,title}) => {
+const TripleCardComponent = ({ movies ,title}) => {
 //   gets first 3 items in the returned array
 const fetchThreeItem = (endpoint) => {
     return endpoint?.results.slice(0, 5);
@@ -21,7 +21,7 @@ const fetchThreeItem = (endpoint) => {
           underline="none"
           component="button"
           variant="p"
-          className="text-sm text-color-400  font-outfit capitalize hover:text-color-500"
+          className="text-base text-color-primary font-medium  font-outfit capitalize hover:text-color-500"
           onClick={() => {
             alert("I'm a button.");
           }}
@@ -33,14 +33,14 @@ const fetchThreeItem = (endpoint) => {
           {/* used paper as a container */}
       <Paper
         component="div"
-        variant="outlined"
-        className=" h-full w-fit  py-6 px-6 grid place-content-center rounded-lg "
+        variant="contained"
+        className=" h-full w-fit bg-color-200  py-6 px-6 grid place-content-center rounded-lg "
       >
         {/* map only 3 item */}
         <Grid container spacing={2} columns={5}>
-          {(!upcomingMovies
+          {(!movies
             ? Array.from(new Array(5))
-            : fetchThreeItem(upcomingMovies)
+            : fetchThreeItem(movies)
           ).map((item, id) => (
             <Grid item xs={1} key={id}>
               <CardComponent data={item} />
