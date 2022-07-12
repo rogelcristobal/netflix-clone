@@ -1,6 +1,6 @@
 import axios from "axios";
 import request from "./api";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function useFetchPopular() {
 	const [popularMovies, setPopularMovies] = useState(null);

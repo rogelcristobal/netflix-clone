@@ -3,9 +3,11 @@ import useFetchUpcomingMovie from "../fetch/useFetchUpcomingMovie";
 import useFetchPopular from "../fetch/useFetchPopular";
 import useFetchGenre from "../fetch/useFetchGenre";
 import useFetchTopRated from "../fetch/useFetchTopRated";
+import useFetchNowPlayingMovie from "../fetch/useFetchNowPlaying";
 const MovieContext = createContext();
 
 export const MovieProvider = ({ children }) => {
+	const {nowPlayingMovie} = useFetchNowPlayingMovie()
 	const { upcomingMovies, upcomingLoading } = useFetchUpcomingMovie();
 	const { popularMovies, popularLoading } = useFetchPopular();
 	const { topRatedMovies} = useFetchTopRated()
@@ -14,6 +16,7 @@ export const MovieProvider = ({ children }) => {
 		<MovieContext.Provider
 			value={{
 				genre,
+				nowPlayingMovie,
 				upcomingMovies,
 				popularMovies,
 				popularLoading,
