@@ -6,16 +6,19 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./app/store";
 import { Provider } from "react-redux";
 import { MovieProvider } from "./context/MovieContext";
+import { AuthProvider } from "./context/AuthContext";
 import { HashRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <HashRouter>
-      <MovieProvider>
-        {/* <React.StrictMode> */}
-        <App />
-        {/* </React.StrictMode> */}
-      </MovieProvider>
+      <AuthProvider>
+        <MovieProvider>
+          {/* <React.StrictMode> */}
+          <App />
+          {/* </React.StrictMode> */}
+        </MovieProvider>
+      </AuthProvider>
     </HashRouter>
   </Provider>
 );

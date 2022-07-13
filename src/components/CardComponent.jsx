@@ -104,7 +104,7 @@ const CardComponent = ({ data }) => {
             </>
           ) : (
             <>
-              <Skeleton animation="wave" className="h-8">
+              <Skeleton className="h-8">
                 <Typography
                   variant="p"
                   className=" mt-4 w-full "
