@@ -1,5 +1,9 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import Home from "./pages/Home";
+import MovieCreationOutlinedIcon from '@mui/icons-material/MovieCreationOutlined';
+import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
+import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
+import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined';
+import MovieCategories from "./pages/MovieCategories";
 import {
   Paper,
   Typography,
@@ -17,6 +21,11 @@ function App() {
       fontFamily: ["outfit", "Supreme", "Clash Display", "sans-serif"].join(
         ","
       ),
+      palette: {
+        secondary: {
+          main: 'rgb(17, 24, 39)',
+        },
+      },
     },
   });
   // styles
@@ -24,7 +33,6 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route
-          
           path="/"
           element={
             <div className="h-96 w-96 bg-blue-300 grid place-content-center">
@@ -61,91 +69,65 @@ function App() {
               </div>
 
               {/* sidebar */}
-              <div className=" w-96 rounded-lg h-full bg-color-100">
+              <div className=" w-96 z-20 rounded-lg h-full bg-gray-900">
                 {/* sidebar contents here */}
                 <Paper
-                  variant="outlined"
+                  variant="contained"
                   className=" w-full bg-inherit  h-full pt-20 box-border"
                   square
                 >
                   <Paper
                     variant="contained"
                     sx={{ overflow: "auto", boxSizing: "border-box" }}
-                    className="  h-fit py-8 rounded-lg bg-inherit"
+                    className="  h-fit py-4 rounded-lg  bg-gray-900"
                   >
                     <List>
-                      <NavLink  to="/homepage/" className='no-underline '>
-                        {({ isActive }) => (
-                          <ListItem disablePadding>
-                          <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
-                            <Typography
-                              variant="p"
-                              className={`capitalize  font-medium text-sm  ${isActive?'text-white':'text-black'}	`}
-                            >
-                              movies
-                            </Typography>
-                          </ListItemButton>
-                        </ListItem>
-                        )}
-                      </NavLink>
-                      <NavLink to="/homepage/tvShows" className='no-underline '>
-                        {({ isActive }) => (
-                          <ListItem disablePadding>
-                          <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
-                            <Typography
-                              variant="p"
-                              className={`capitalize  font-medium text-sm  ${isActive?'text-white':'text-black'}	`}
-                            >
-                              TV Shows
-                            </Typography>
-                          </ListItemButton>
-                        </ListItem>
-                        )}
-                      </NavLink>
-                      <NavLink  to="/homepage/forRent" className='no-underline '>
-                        {({ isActive }) => (
-                          <ListItem disablePadding>
-                          <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
-                            <Typography
-                              variant="p"
-                              className={`capitalize  font-medium text-sm  ${isActive?'text-white':'text-black'}	`}
-                            >
-                              for rent
-                            </Typography>
-                          </ListItemButton>
-                        </ListItem>
-                        )}
-                      </NavLink>
-                      <NavLink  to="/homepage/theaters" className='no-underline '>
-                        {({ isActive }) => (
-                          <ListItem disablePadding>
-                          <ListItemButton className={`px-8 mx-4 py-2 ${isActive?'bg-color-primary':'bg-inherit'}  rounded-lg `}>
-                            <Typography
-                              variant="p"
-                              className={`capitalize  font-medium text-sm  ${isActive?'text-white':'text-black'}	`}
-                            >
-                              in theaters
-                            </Typography>
-                          </ListItemButton>
-                        </ListItem>
-                        )}
-                      </NavLink>
-                     
-
-                     
+                      {[
+                        { path: "/", title: "movies" ,icon:<MovieCreationOutlinedIcon className="text-white text-base "/>},
+                        { path: "/tvShows", title: "tv shows",icon:<LiveTvOutlinedIcon className="text-white text-base "/>},
+                        { path: "/forRent", title: "for rent",icon: <PaidOutlinedIcon className="text-white text-base "/>},
+                        { path: "/theaters", title: "in theaters" ,icon:<TheatersOutlinedIcon className="text-white text-base "/> },
+                      ].map((item, id) => (
+                        <NavLink
+                          to={`/homepage${item.path}`}
+                          key={id}
+                          className="no-underline "
+                        >
+                          {({ isActive }) => (
+                            <ListItem disablePadding>
+                              <ListItemButton
+                                className={` px-9  py-3 space-x-5 ${
+                                  isActive
+                                    ? "bg-gray-800 hover:bg-gray-800"
+                                    : "hover:bg-gray-800 bg-inherit"
+                                }`}
+                              >
+                                {item?.icon}
+                                <Typography
+                                  variant="p"
+                                  className={`capitalize  font-[400] text-sm   ${
+                                    isActive ? "text-color-100" : "text-color-100"
+                                  }	`}
+                                  >
+                                  {item.title}
+                                </Typography>
+                              </ListItemButton>
+                            </ListItem>
+                          )}
+                        </NavLink>
+                      ))}
                     </List>
-                    <Divider className="mt-8" variant="middle"></Divider>
-                   
+                    {/* <Divider className="mt-8" variant="middle"></Divider> */}
                   </Paper>
                 </Paper>
               </div>
 
               {/* body */}
               <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/tvShows" element={<Home />}></Route>
-                <Route path="/forRent" element={<Home />}></Route>
-                <Route path="/theaters" element={<Home />}></Route>
+                <Route path="/" element={<MovieCategories />}></Route>
+                <Route path="/tvShows" element={<MovieCategories />}></Route>
+                <Route path="/forRent" element={<MovieCategories />}></Route>
+                <Route path="/theaters" element={<MovieCategories />}></Route>
               </Routes>
             </div>
           }

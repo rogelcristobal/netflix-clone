@@ -13,7 +13,7 @@ const fetchThreeItem = (endpoint) => {
       <Box className="flex items-center justify-between w-full  mb-4">
         <Typography
           variant="h6"
-          className="font-semibold capitalize text-2xl text-color-black "
+          className="font-semibold capitalize text-xl text-color-black "
         >
           {title}
         </Typography>
@@ -21,7 +21,7 @@ const fetchThreeItem = (endpoint) => {
           underline="none"
           component="button"
           variant="p"
-          className="text-base text-color-primary font-medium  font-outfit capitalize hover:text-color-500"
+          className="text-sm hover:text-color-primary   font-outfit capitalize text-color-400"
           onClick={() => {
             alert("I'm a button.");
           }}
