@@ -39,7 +39,7 @@ function App() {
           element={
             <div className="h-96 w-96 bg-blue-300 grid place-content-center">
               put log in here
-              <button onClick={()=>nav('/homepage/')}>go home</button>
+              <button onClick={()=>nav('/homepage')}>go home</button>
             </div>
           }
         ></Route>
