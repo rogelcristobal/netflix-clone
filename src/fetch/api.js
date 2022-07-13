@@ -1,6 +1,7 @@
 const key = "754cb358915af129a5a352e456f121ff";
 
 const request = {
+	getLatestMovie:`https://api.themoviedb.org/3/movie/latest?api_key=${key}&language=en-US&page=1`,
 	getNowPlayingMovie:`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`,
 	getTopRatedMovies:`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,
 	getPopularMovies: `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`,
