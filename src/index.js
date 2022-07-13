@@ -6,17 +6,17 @@ import reportWebVitals from "./reportWebVitals";
 import store from "./app/store";
 import { Provider } from "react-redux";
 import { MovieProvider } from "./context/MovieContext";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <BrowserRouter basename="/netflix-clone">
+    <HashRouter basename="/login">
       <MovieProvider>
         {/* <React.StrictMode> */}
         <App />
         {/* </React.StrictMode> */}
       </MovieProvider>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 );
 

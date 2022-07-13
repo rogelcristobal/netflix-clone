@@ -1,5 +1,6 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import MovieCreationOutlinedIcon from '@mui/icons-material/MovieCreationOutlined';
+import { useNavigate } from "react-router-dom";
 import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
 import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
 import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined';
@@ -16,6 +17,7 @@ import {
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 function App() {
+  const nav=useNavigate()
   const theme = createTheme({
     typography: {
       fontFamily: ["outfit", "Supreme", "Clash Display", "sans-serif"].join(
@@ -37,6 +39,7 @@ function App() {
           element={
             <div className="h-96 w-96 bg-blue-300 grid place-content-center">
               put log in here
+              <button onClick={()=>nav('/homepage/')}>go home</button>
             </div>
           }
         ></Route>
