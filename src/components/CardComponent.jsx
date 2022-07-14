@@ -18,7 +18,7 @@ const CardComponent = ({ data }) => {
     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
       <Card
         variant="contained"
-        className="cursor-pointer w-36 h-fit pb-2 bg-inherit rounded-lg "
+        className="cursor-pointer w-36 h-fit pb-2 bg-inherit  "
         // onClick={() => alert(`${data.id}\n${data.title}`)}
       >
         {!data ? (
@@ -32,7 +32,7 @@ const CardComponent = ({ data }) => {
           <Skeleton
             variant="rectangular"
             animation="wave"
-            className="h-48 rounded-lg w-full shadow-lg"
+            className="h-48  w-full  rounded-lg"
           ></Skeleton>
         )}
 

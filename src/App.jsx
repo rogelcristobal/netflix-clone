@@ -1,9 +1,10 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import MovieCreationOutlinedIcon from '@mui/icons-material/MovieCreationOutlined';
+import MovieIcon from "@mui/icons-material/Movie";
 import { useNavigate } from "react-router-dom";
-import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
-import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined';
-import TheatersOutlinedIcon from '@mui/icons-material/TheatersOutlined';
+import LiveTvOutlinedIcon from "@mui/icons-material/LiveTvOutlined";
+import { TelevisionSimple,FilmStrip } from "phosphor-react";
+import PaidIcon from "@mui/icons-material/Paid";
+import TheatersOutlinedIcon from "@mui/icons-material/TheatersOutlined";
 import MovieCategories from "./pages/MovieCategories";
 import {
   Paper,
@@ -17,15 +18,15 @@ import {
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 function App() {
-  const nav=useNavigate()
+  const nav = useNavigate();
   const theme = createTheme({
     typography: {
       fontFamily: ["outfit", "Supreme", "Clash Display", "sans-serif"].join(
         ","
       ),
       palette: {
-        secondary: {
-          main: 'rgb(17, 24, 39)',
+        primary: {
+          main: "rgb(17, 24, 39)",
         },
       },
     },
@@ -39,16 +40,16 @@ function App() {
           element={
             <div className="h-96 w-96 bg-blue-300 grid place-content-center">
               put log in here
-              <button onClick={()=>nav('/homepage')}>go home</button>
+              <button onClick={() => nav("/homepage")}>go home</button>
             </div>
           }
         ></Route>
         <Route
           path="/homepage/*"
           element={
-            <div className="font-outfit relative flex w-full    h-screen bg-color-100 ">
+            <div className="font-outfit relative flex w-full    h-screen bg-color-200 ">
               {/* nav */}
-              <div className="fixed top-0 left-0 w-full h-14 z-20  bg-color-100 ">
+              <div className="fixed top-0 left-0 w-full h-14 z-20  ">
                 <div className="container h-full flex  px-4 justify-end mx-auto  rounded-lg ">
                   {/* nav contents here */}
                   <Paper
@@ -57,7 +58,7 @@ function App() {
                   >
                     <Button
                       variant="text"
-                      className="bg-color-primary rounded-full px-5 py-1.5"
+                      className="bg-color-primary rounded-lg px-5 py-1.5"
                     >
                       <Typography
                         variant="p"
@@ -68,28 +69,70 @@ function App() {
                     </Button>
                   </Paper>
                 </div>
-                <Divider variant="middle"></Divider>
+                {/* <Divider variant="middle"></Divider> */}
               </div>
 
               {/* sidebar */}
-              <div className=" w-96 z-20 rounded-lg h-full bg-gray-900">
+              <div className=" w-96 z-10 rounded-lg h-full bg-color-100">
                 {/* sidebar contents here */}
                 <Paper
                   variant="contained"
-                  className=" w-full bg-inherit  h-full pt-20 box-border"
+                  className=" w-full bg-inherit px-4 h-full pt-20 box-border  "
                   square
                 >
                   <Paper
                     variant="contained"
                     sx={{ overflow: "auto", boxSizing: "border-box" }}
-                    className="  h-fit py-4 rounded-lg  bg-gray-900"
+                    className="  h-fit py-4  rounded-lg  bg-color-100 "
                   >
                     <List>
+
                       {[
-                        { path: "/", title: "movies" ,icon:<MovieCreationOutlinedIcon className="text-white text-base "/>},
-                        { path: "/tvShows", title: "tv shows",icon:<LiveTvOutlinedIcon className="text-white text-base "/>},
-                        { path: "/forRent", title: "for rent",icon: <PaidOutlinedIcon className="text-white text-base "/>},
-                        { path: "/theaters", title: "in theaters" ,icon:<TheatersOutlinedIcon className="text-white text-base "/> },
+                        {
+                          path: "/",
+                          title: "movies",
+                          icon: function (state) {
+                            return (
+                              <FilmStrip size={14} weight="fill" color={`${state ?'white':'rgb(101, 119, 134)'}`} />
+                            );
+                          },
+                        },
+                        {
+                          path: "/tvShows",
+                          title: "tv shows",
+                          icon: function (state) {
+                            return (
+                             <TelevisionSimple size={14} weight="fill" color={`${state ?'white':'rgb(101, 119, 134)'}`} />
+
+                            );
+                          },
+                        },
+                        {
+                          path: "/forRent",
+                          title: "for rent",
+                          icon: function (state) {
+                            return (
+                              <PaidIcon
+                                className={`${
+                                  state ? "text-color-100" : "text-color-500"
+                                } text-base `}
+                              />
+                            );
+                          },
+                        },
+                        {
+                          path: "/theaters",
+                          title: "in theaters",
+                          icon: function (state) {
+                            return (
+                              <TheatersOutlinedIcon
+                                className={`${
+                                  state ? "text-color-100" : "text-color-500"
+                                } text-base `}
+                              />
+                            );
+                          },
+                        },
                       ].map((item, id) => (
                         <NavLink
                           to={`/homepage${item.path}`}
@@ -97,25 +140,30 @@ function App() {
                           className="no-underline "
                         >
                           {({ isActive }) => (
-                            <ListItem disablePadding>
-                              <ListItemButton
-                                className={` px-9  py-3 space-x-5 ${
-                                  isActive
-                                    ? "bg-gray-800 hover:bg-gray-800"
-                                    : "hover:bg-gray-800 bg-inherit"
-                                }`}
-                              >
-                                {item?.icon}
-                                <Typography
-                                  variant="p"
-                                  className={`capitalize  font-[400] text-sm   ${
-                                    isActive ? "text-color-100" : "text-color-100"
-                                  }	`}
+                            <>
+                              <ListItem disablePadding>
+                                <ListItemButton
+                                  className={` rounded-xl  px-6  py-3  ${
+                                    isActive
+                                      ? "bg-color-primary"
+                                      : "hover:bg-color-200"
+                                  }`}
+                                >
+                                  {item?.icon(isActive)}
+                                  <Typography
+                                    variant="p"
+                                    className={`capitalize  font-[500] text-sm  ml-4 ${
+                                      isActive
+                                        ? "text-color-100"
+                                        : "text-color-500"
+                                    }	`}
                                   >
-                                  {item.title}
-                                </Typography>
-                              </ListItemButton>
-                            </ListItem>
+                                    {item.title}
+                                  </Typography>
+                                </ListItemButton>
+                              </ListItem>
+
+                            </>
                           )}
                         </NavLink>
                       ))}
