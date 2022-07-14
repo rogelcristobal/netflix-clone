@@ -17,7 +17,7 @@ const CardComponent = ({ data }) => {
   return (
     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
       <Card
-        variant="contained"
+        variant="outlined"
         className="cursor-pointer w-36 h-fit pb-2 bg-inherit  "
         // onClick={() => alert(`${data.id}\n${data.title}`)}
       >

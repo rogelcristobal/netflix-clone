@@ -10,7 +10,7 @@ const fetchThreeItem = (endpoint) => {
   return (
     <div className="flex flex-col items-center justify-center w-full  py-2 ">
         {/* title and CTA */}
-      <Box className="flex items-center justify-between w-full  mb-6">
+      <Box className="flex items-center justify-between w-full  mb-4">
         <Typography
           variant="h6"
           className="font-semibold capitalize text-xl text-color-black cursor-default"
@@ -33,11 +33,11 @@ const fetchThreeItem = (endpoint) => {
           {/* used paper as a container */}
       <Paper
         component="div"
-        variant="contained"
-        className=" h-full w-full bg-color-100  py-8 px-4 grid place-content-center rounded-lg "
+        variant="outlined"
+        className=" h-full w-full bg-color-200  py-6 px-4 grid place-content-center rounded-lg "
       >
         {/* map only 5 item */}
-        <Grid container spacing={1} columns={5}>
+        <Grid container spacing={2} columns={5}>
           {(!movies
             ? Array.from(new Array(5))
             : fetchThreeItem(movies)

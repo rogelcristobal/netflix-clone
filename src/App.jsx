@@ -1,11 +1,12 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import MovieIcon from "@mui/icons-material/Movie";
 import { useNavigate } from "react-router-dom";
-import LiveTvOutlinedIcon from "@mui/icons-material/LiveTvOutlined";
 import { TelevisionSimple,FilmStrip } from "phosphor-react";
 import PaidIcon from "@mui/icons-material/Paid";
 import TheatersOutlinedIcon from "@mui/icons-material/TheatersOutlined";
+// pages
 import MovieCategories from "./pages/MovieCategories";
+import TVCategories from "./pages/TVCategories";
+// MUI
 import {
   Paper,
   Typography,
@@ -13,7 +14,6 @@ import {
   Button,
   ListItemButton,
   List,
-  Divider,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -47,18 +47,18 @@ function App() {
         <Route
           path="/homepage/*"
           element={
-            <div className="font-outfit relative flex w-full    h-screen bg-color-200 ">
+            <div className="font-outfit relative flex w-full    h-screen bg-color-100  ">
               {/* nav */}
-              <div className="fixed top-0 left-0 w-full h-14 z-20  ">
+              <div className="fixed top-0 left-0 w-full h-14 z-10  bg-inherit ">
                 <div className="container h-full flex  px-4 justify-end mx-auto  rounded-lg ">
                   {/* nav contents here */}
                   <Paper
-                    variant="contained"
+                    variant="outlined"
                     className="h-full w-full bg-inherit flex items-center justify-end px-2"
                   >
                     <Button
                       variant="text"
-                      className="bg-color-primary rounded-lg px-5 py-1.5"
+                      className="bg-color-primary rounded-full px-5 py-1.5"
                     >
                       <Typography
                         variant="p"
@@ -76,14 +76,14 @@ function App() {
               <div className=" w-96 z-10 rounded-lg h-full bg-color-100">
                 {/* sidebar contents here */}
                 <Paper
-                  variant="contained"
-                  className=" w-full bg-inherit px-4 h-full pt-20 box-border  "
+                  variant="outlined"
+                  className=" w-full  px-6 h-full pt-20 box-border  "
                   square
                 >
                   <Paper
-                    variant="contained"
+                    variant="outlined"
                     sx={{ overflow: "auto", boxSizing: "border-box" }}
-                    className="  h-fit py-4  rounded-lg  bg-color-100 "
+                    className="  h-fit py-2  rounded-lg  bg-color-100 "
                   >
                     <List>
 
@@ -108,8 +108,8 @@ function App() {
                           },
                         },
                         {
-                          path: "/forRent",
-                          title: "for rent",
+                          path: "/people",
+                          title: "people",
                           icon: function (state) {
                             return (
                               <PaidIcon
@@ -120,19 +120,7 @@ function App() {
                             );
                           },
                         },
-                        {
-                          path: "/theaters",
-                          title: "in theaters",
-                          icon: function (state) {
-                            return (
-                              <TheatersOutlinedIcon
-                                className={`${
-                                  state ? "text-color-100" : "text-color-500"
-                                } text-base `}
-                              />
-                            );
-                          },
-                        },
+
                       ].map((item, id) => (
                         <NavLink
                           to={`/homepage${item.path}`}
@@ -143,7 +131,7 @@ function App() {
                             <>
                               <ListItem disablePadding>
                                 <ListItemButton
-                                  className={` rounded-xl  px-6  py-3  ${
+                                  className={` rounded-full  px-6  py-2 my-1 ${
                                     isActive
                                       ? "bg-color-primary"
                                       : "hover:bg-color-200"
@@ -152,7 +140,7 @@ function App() {
                                   {item?.icon(isActive)}
                                   <Typography
                                     variant="p"
-                                    className={`capitalize  font-[500] text-sm  ml-4 ${
+                                    className={`capitalize  font-[400] text-sm  ml-4 ${
                                       isActive
                                         ? "text-color-100"
                                         : "text-color-500"
@@ -168,18 +156,16 @@ function App() {
                         </NavLink>
                       ))}
                     </List>
-                    {/* <Divider className="mt-8" variant="middle"></Divider> */}
-                  </Paper>
+                   </Paper>
                 </Paper>
               </div>
 
               {/* body */}
               <Routes>
                 <Route path="/" element={<MovieCategories />}></Route>
-                <Route path="/tvShows" element={<MovieCategories />}></Route>
+                <Route path="/tvShows" element={<TVCategories />}></Route>
                 <Route path="/forRent" element={<MovieCategories />}></Route>
-                <Route path="/theaters" element={<MovieCategories />}></Route>
-              </Routes>
+               </Routes>
             </div>
           }
         ></Route>
