@@ -1,8 +1,7 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { TelevisionSimple,FilmStrip } from "phosphor-react";
+import { TelevisionSimple,FilmStrip,Users} from "phosphor-react";
 import PaidIcon from "@mui/icons-material/Paid";
-import TheatersOutlinedIcon from "@mui/icons-material/TheatersOutlined";
 // pages
 import MovieCategories from "./pages/MovieCategories";
 import TVCategories from "./pages/TVCategories";
@@ -47,18 +46,18 @@ function App() {
         <Route
           path="/homepage/*"
           element={
-            <div className="font-outfit relative flex w-full    h-screen bg-color-100  ">
+            <div className="font-outfit relative flex w-full    h-screen box-border ">
               {/* nav */}
               <div className="fixed top-0 left-0 w-full h-14 z-10  bg-inherit ">
                 <div className="container h-full flex  px-4 justify-end mx-auto  rounded-lg ">
                   {/* nav contents here */}
                   <Paper
-                    variant="outlined"
+                    variant="contained"
                     className="h-full w-full bg-inherit flex items-center justify-end px-2"
                   >
                     <Button
                       variant="text"
-                      className="bg-color-primary rounded-full px-5 py-1.5"
+                      className="bg-color-primary rounded-lg px-5 py-1.5"
                     >
                       <Typography
                         variant="p"
@@ -73,17 +72,17 @@ function App() {
               </div>
 
               {/* sidebar */}
-              <div className=" w-96 z-10 rounded-lg h-full bg-color-100">
+              <div className=" w-96 z-10 rounded-lg h-full ">
                 {/* sidebar contents here */}
                 <Paper
-                  variant="outlined"
-                  className=" w-full  px-6 h-full pt-20 box-border  "
+                  variant="contained"
+                  className=" w-full  px-6 h-full pt-20 box-border  bg-inherit"
                   square
                 >
                   <Paper
-                    variant="outlined"
+                    variant="contained"
                     sx={{ overflow: "auto", boxSizing: "border-box" }}
-                    className="  h-fit py-2  rounded-lg  bg-color-100 "
+                    className="  h-fit py-2  rounded-lg  bg-inherit"
                   >
                     <List>
 
@@ -93,16 +92,16 @@ function App() {
                           title: "movies",
                           icon: function (state) {
                             return (
-                              <FilmStrip size={14} weight="fill" color={`${state ?'white':'rgb(101, 119, 134)'}`} />
+                              <FilmStrip size={13} weight="bold" color={`${state ?'white':'rgb(101, 119, 134)'}`} />
                             );
                           },
                         },
                         {
                           path: "/tvShows",
-                          title: "tv shows",
+                          title: "TV shows",
                           icon: function (state) {
                             return (
-                             <TelevisionSimple size={14} weight="fill" color={`${state ?'white':'rgb(101, 119, 134)'}`} />
+                             <TelevisionSimple size={13} weight="bold" color={`${state ?'white':'rgb(101, 119, 134)'}`} />
 
                             );
                           },
@@ -112,7 +111,8 @@ function App() {
                           title: "people",
                           icon: function (state) {
                             return (
-                              <PaidIcon
+                              <Users
+                                size={13} weight="bold"
                                 className={`${
                                   state ? "text-color-100" : "text-color-500"
                                 } text-base `}
@@ -131,9 +131,9 @@ function App() {
                             <>
                               <ListItem disablePadding>
                                 <ListItemButton
-                                  className={` rounded-full  px-6  py-2 my-1 ${
+                                  className={` rounded-lg  px-6  py-2 my-1 ${
                                     isActive
-                                      ? "bg-color-primary"
+                                      ? "bg-color-primary "
                                       : "hover:bg-color-200"
                                   }`}
                                 >
@@ -159,7 +159,7 @@ function App() {
                    </Paper>
                 </Paper>
               </div>
-
+                                    
               {/* body */}
               <Routes>
                 <Route path="/" element={<MovieCategories />}></Route>
