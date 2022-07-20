@@ -37,11 +37,7 @@ function App() {
         <Route
           path="/"
           element={
-<<<<<<< HEAD
-            <div className="h-96 w-96 bg-gradient-to-r from-cyan-500 to-blue-500 grid place-content-center">
-=======
             <div className="h-96 w-96 bg-blue-300 grid place-content-center">
->>>>>>> parent of 37a0be9 (added header)
               put log in here
               <button onClick={() => nav("/homepage")}>go home</button>
             </div>
@@ -50,17 +46,10 @@ function App() {
         <Route
           path="/homepage/*"
           element={
-<<<<<<< HEAD
-            <div className="font-outfit relative flex w-full  bg-color-100  h-screen box-border ">
-              {/* nav */}
-              <div className="fixed top-0 left-0 w-full h-14 z-10   ">
-                <div className="container h-full flex  px-4 justify-end mx-auto   ">
-=======
             <div className="font-outfit relative flex w-full    h-screen box-border ">
               {/* nav */}
               <div className="fixed top-0 left-0 w-full h-14 z-10  bg-inherit ">
                 <div className="container h-full flex  px-4 justify-end mx-auto  rounded-lg ">
->>>>>>> parent of 37a0be9 (added header)
                   {/* nav contents here */}
                   <Paper
                     variant="contained"
@@ -68,11 +57,7 @@ function App() {
                   >
                     <Button
                       variant="text"
-<<<<<<< HEAD
-                      className="bg-color-primary  px-5 py-1.5"
-=======
                       className="bg-color-primary rounded-lg px-5 py-1.5"
->>>>>>> parent of 37a0be9 (added header)
                     >
                       <Typography
                         variant="p"
@@ -87,109 +72,16 @@ function App() {
               </div>
 
               {/* sidebar */}
-<<<<<<< HEAD
-              <div className=" w-96 z-10  h-full ">
-                {/* sidebar contents here */}
-                <Paper
-                  variant="contained"
-                  className=" w-full   h-full pt-20 box-border  bg-inherit"
-=======
               <div className=" w-96 z-10 rounded-lg h-full ">
                 {/* sidebar contents here */}
                 <Paper
                   variant="contained"
                   className=" w-full  px-6 h-full pt-20 box-border  bg-inherit"
->>>>>>> parent of 37a0be9 (added header)
                   square
                 >
                   <Paper
                     variant="contained"
                     sx={{ overflow: "auto", boxSizing: "border-box" }}
-<<<<<<< HEAD
-                    className="  h-fit py-2 px-4   bg-inherit"
-                  >
-                    <List>
-                      {[
-                        {
-                          path: "/",
-                          title: "movies",
-                          icon: function (state) {
-                            return (
-                              <FilmStrip
-                                size={15}
-                                weight="bold"
-                                color={`${state ? "white" : "black"}`}
-                              />
-                            );
-                          },
-                        },
-                        {
-                          path: "/tvShows",
-                          title: "TV shows",
-                          icon: function (state) {
-                            return (
-                              <TelevisionSimple
-                                size={15}
-                                weight="bold"
-                                color={`${state ? "white" : "black"}`}
-                              />
-                            );
-                          },
-                        },
-                        {
-                          path: "/people",
-                          title: "people",
-                          icon: function (state) {
-                            return (
-                              <Users
-                                size={15}
-                                weight="bold"
-                                className={`${
-                                  state ? "text-color-100" : "text-color-black"
-                                } text-base `}
-                              />
-                            );
-                          },
-                        },
-                      ].map((item, id) => (
-                        <NavLink
-                          to={`/homepage${item.path}`}
-                          key={id}
-                          className="no-underline "
-                        >
-                          {({ isActive }) => (
-                            <>
-                              <ListItem disablePadding>
-                                <ListItemButton
-                                  className={` rounded-lg  px-8  py-3  ${
-                                    isActive
-                                      ? "bg-color-primary "
-                                      : "hover:bg-color-200"
-                                  }`}
-                                >
-                                  {item?.icon(isActive)}
-                                  <Typography
-                                    variant="p"
-                                    className={`capitalize  font-[400] text-sm  ml-8 ${
-                                      isActive
-                                        ? "text-color-100"
-                                        : "text-color-black"
-                                    }	`}
-                                  >
-                                    {item.title}
-                                  </Typography>
-                                </ListItemButton>
-                              </ListItem>
-                            </>
-                          )}
-                        </NavLink>
-                      ))}
-                    </List>
-                  </Paper>
-                </Paper>
-              </div>
-
-=======
                     className="  h-fit py-2  rounded-lg  bg-inherit"
                   >
                     <List>
@@ -268,17 +160,12 @@ function App() {
                 </Paper>
               </div>
                                     
->>>>>>> parent of 37a0be9 (added header)
               {/* body */}
               <Routes>
                 <Route path="/" element={<MovieCategories />}></Route>
                 <Route path="/tvShows" element={<TVCategories />}></Route>
                 <Route path="/forRent" element={<MovieCategories />}></Route>
-<<<<<<< HEAD
-              </Routes>
-=======
                </Routes>
->>>>>>> parent of 37a0be9 (added header)
             </div>
           }
         ></Route>
