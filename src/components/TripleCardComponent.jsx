@@ -33,8 +33,13 @@ const fetchThreeItem = (endpoint) => {
           {/* used paper as a container */}
       <Paper
         component="div"
+<<<<<<< HEAD
         variant="contained"
         className=" h-full w-full bg-inherit  py-8 px-6 grid place-content-center rounded-lg "
+=======
+        variant="outlined"
+        className=" h-full w-full bg-color-200  py-6 px-4 grid place-content-center rounded-lg "
+>>>>>>> parent of cdff63f (added a searchbar)
       >
         {/* map only 5 item */}
         <Grid container spacing={2} columns={5}>
