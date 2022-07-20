@@ -22,7 +22,7 @@ const MovieCategories = () => {
 					className={`box-border px-12  py-14 pt-32 h-fit w-full rounded-t-none 
            flex-col flex items-start justify-center relative overflow-hidden`}
 				>
-					{randomMovie()?.backdrop_path ? (
+					{/* {randomMovie()?.backdrop_path ? (
 						<>
 							<img
 								src={`https://image.tmdb.org/t/p/w1280/${randomMovie()}`}
@@ -37,7 +37,7 @@ const MovieCategories = () => {
 							variant="rectangular"
 							className="absolute top-0 left-0 w-full h-full bg-color-300"
 						></Skeleton>
-					)}
+					)} */}
 
 					<Typography variant="h4" className="text-white z-10">
 						Welcome!
