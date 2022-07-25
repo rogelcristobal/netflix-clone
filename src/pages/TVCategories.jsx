@@ -1,59 +1,61 @@
-import React from 'react';
 import { useContext } from "react";
-import MovieContext from "../context/MovieContext";
-import {
-  Paper,
-  Box,
-  Typography,
-  CardContent,
-  Skeleton,
-  CardMedia,
-} from "@mui/material";
-
+import ShowsContext from "../context/ShowsContext";
 import TripleCardComponent from "../components/TripleCardComponent";
+import { Box, Typography, Link, Paper } from "@mui/material";
 
-const TVCategories = () => {
-    const {
-        nowPlayingMovie,
-        upcomingMovies,
-        popularMovies,
-        topRatedMovies,
-        latestMovie,
-      } = useContext(MovieContext);
-    
+const MovieCategories = () => {
+  const {
+    airingToday,
+    onAir,
+    popularShow,
+    topRatedShow,
+
+  } = useContext(ShowsContext);
   return (
     <>
-    <div className=" px-8    h-screen overflow-y-auto  no-scrollbar w-full ">
-      <div className="h-auto mt-20  min-h-screen  flex flex-col items-start  justify-start   pb-8 bg-inherit px-8 py-4  mb-16   space-y-2 rounded-lg">
-        {/* contents here */}
+      <div className=" px-4 pt-2 box-border   h-full overflow-y-auto   w-full ">
+        <div className="h-auto  min-h-screen box-border flex flex-col items-start  justify-start    bg-inherit      space-y-2 rounded-lg">
+          {/* contents here */}
+          <Paper variant="contained" className=" h-60 w-full box-border flex items-end p-4 px-6 bg-[#233044] mb-6 rounded-xl">
+            <Box className="flex  items-center justify-between  w-fit mb-4">
+              {/* <Typography
+                variant="p"
+                className="font-semibold capitalize tracking-wide text-4xl text-color-100 cursor-default"
+              >
+                welcome
+              </Typography> */}
+            </Box>
+          
+          </Paper>
+          <div className="px-8 py-4">
 
-        {/* categories */}
+          {/* categories */}
 
-        {[
-          { title: " airing today", data: nowPlayingMovie },
-          { title: " on the air", data: popularMovies },
-          { title: "popular shows", data: topRatedMovies },
-          { title: "top rated shows", data: upcomingMovies },
-        ].map((item, id) => (
-          <TripleCardComponent
+          {[
+            { title: "airing today", data: airingToday },
+            { title: "on the air", data: onAir },
+            { title: "popular TV shows", data: popularShow },
+            { title: "top rated TV shows", data: topRatedShow },
+          ].map((item, id) => (
+            <TripleCardComponent
             key={id}
             title={item.title}
             movies={item.data}
-          ></TripleCardComponent>
-        ))}
+            ></TripleCardComponent>
+            ))}
+        </div>
       </div>
-    </div>
+      </div>
 
-    {/*page nav*/}
-    <div className="w-80 mt-20 ml-0 mr-8   h-80">
-      {/* page nav contents here */}
-      <Paper
-        variant="outlined"
-        className="h-full   w-full rounded-lg bg-color-200 "
-      ></Paper>
-    </div>
-  </>
+      {/*page nav*/}
+      <div className="w-60   mx-4   h-80">
+        <Paper
+          variant="contained"
+          className="h-full   w-full rounded-lg bg-inherit "
+        ></Paper>
+      </div>
+    </>
   );
-}
+};
 
-export default TVCategories;
+export default MovieCategories;

@@ -34,7 +34,7 @@ const fetchThreeItem = (endpoint) => {
           {/* used paper as a container */}
       <Paper
         component="div"
-        variant="contained"
+        variant=""
         className=" h-full w-full   py-6 px-4 grid place-content-center rounded-lg bg-inherit"
       >
         {/* map only 5 item */}
