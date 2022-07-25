@@ -1,8 +1,7 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { TelevisionSimple,FilmStrip } from "phosphor-react";
 import PaidIcon from "@mui/icons-material/Paid";
-import TheatersOutlinedIcon from "@mui/icons-material/TheatersOutlined";
+
 // pages
 import MovieCategories from "./pages/MovieCategories";
 import TVCategories from "./pages/TVCategories";
@@ -32,9 +31,11 @@ function App() {
     },
   });
   // styles
+  // #1b2635
+  // #233044
   return (
     <ThemeProvider theme={theme}>
-      <Routes>
+      <Routes>s
         <Route
           path="/"
           element={
@@ -47,22 +48,22 @@ function App() {
         <Route
           path="/homepage/*"
           element={
-            <div className="font-outfit relative flex w-full    h-screen bg-color-100  ">
+            <div className="font-outfit relative flex w-full    h-screen bg-[#1b2635] ">
               {/* nav */}
-              <div className="fixed top-0 left-0 w-full h-14 z-10  bg-inherit ">
+              <div className="fixed top-0 left-0 w-full h-14 z-10  ">
                 <div className="container h-full flex  px-4 justify-end mx-auto  rounded-lg ">
                   {/* nav contents here */}
                   <Paper
-                    variant="outlined"
+                    variant=""
                     className="h-full w-full bg-inherit flex items-center justify-end px-2"
                   >
                     <Button
                       variant="text"
-                      className="bg-color-primary rounded-full px-5 py-1.5"
+                      className="bg-primary-300 rounded-xl px-5 py-1.5"
                     >
                       <Typography
                         variant="p"
-                        className="text-color-100 text-xs tracking-wide capitalize"
+                        className="text-color-100 text-sm tracking-wide capitalize"
                       >
                         sign in
                       </Typography>
@@ -73,54 +74,28 @@ function App() {
               </div>
 
               {/* sidebar */}
-              <div className=" w-96 z-10 rounded-lg h-full bg-color-100">
+              <div className=" w-72 z-10 rounded-lg h-full ">
                 {/* sidebar contents here */}
                 <Paper
-                  variant="outlined"
-                  className=" w-full  px-6 h-full pt-20 box-border  "
+                  variant="contained"
+                  className=" w-full  px-4 h-full pt-20 box-border  bg-[#233044]"
                   square
                 >
                   <Paper
-                    variant="outlined"
+                    variant="contained"
                     sx={{ overflow: "auto", boxSizing: "border-box" }}
-                    className="  h-fit py-2  rounded-lg  bg-color-100 "
+                    className="  h-fit py-2  rounded-lg  bg-inherit"
                   >
                     <List>
-
                       {[
                         {
                           path: "/",
                           title: "movies",
-                          icon: function (state) {
-                            return (
-                              <FilmStrip size={14} weight="fill" color={`${state ?'white':'rgb(101, 119, 134)'}`} />
-                            );
-                          },
                         },
                         {
                           path: "/tvShows",
                           title: "tv shows",
-                          icon: function (state) {
-                            return (
-                             <TelevisionSimple size={14} weight="fill" color={`${state ?'white':'rgb(101, 119, 134)'}`} />
-
-                            );
-                          },
                         },
-                        {
-                          path: "/people",
-                          title: "people",
-                          icon: function (state) {
-                            return (
-                              <PaidIcon
-                                className={`${
-                                  state ? "text-color-100" : "text-color-500"
-                                } text-base `}
-                              />
-                            );
-                          },
-                        },
-
                       ].map((item, id) => (
                         <NavLink
                           to={`/homepage${item.path}`}
@@ -131,16 +106,15 @@ function App() {
                             <>
                               <ListItem disablePadding>
                                 <ListItemButton
-                                  className={` rounded-full  px-6  py-2 my-1 ${
+                                  className={` rounded-xl  px-6  py-3 my-1 ${
                                     isActive
-                                      ? "bg-color-primary"
+                                      ? "bg-[#202c3f]"
                                       : "hover:bg-color-200"
                                   }`}
                                 >
-                                  {item?.icon(isActive)}
                                   <Typography
                                     variant="p"
-                                    className={`capitalize  font-[400] text-sm  ml-4 ${
+                                    className={`capitalize  font-[400] tracking-wide  text-sm ml-4 ${
                                       isActive
                                         ? "text-color-100"
                                         : "text-color-500"
@@ -150,22 +124,24 @@ function App() {
                                   </Typography>
                                 </ListItemButton>
                               </ListItem>
-
                             </>
                           )}
                         </NavLink>
                       ))}
                     </List>
-                   </Paper>
+                  </Paper>
                 </Paper>
               </div>
 
               {/* body */}
-              <Routes>
-                <Route path="/" element={<MovieCategories />}></Route>
-                <Route path="/tvShows" element={<TVCategories />}></Route>
-                <Route path="/forRent" element={<MovieCategories />}></Route>
-               </Routes>
+
+              <div className="flex items-start justify-start pt-16 box-border">
+                <Routes>
+                  <Route path="/" element={<MovieCategories />}></Route>
+                  <Route path="/tvShows" element={<TVCategories />}></Route>
+                  <Route path="/forRent" element={<MovieCategories />}></Route>
+                </Routes>
+              </div>
             </div>
           }
         ></Route>
@@ -176,3 +152,4 @@ function App() {
 
 export default App;
 // https://dribbble.com/shots/6839523-Music-App
+// https://berrydashboard.io/free/

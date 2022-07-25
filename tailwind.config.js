@@ -24,7 +24,11 @@ module.exports = {
         'color-400':'#AAB8C2',
         'color-500':'#657786',
         'color-black':'#14171A',
-        'color-primary':'#1DA1F2'
+        'primary-100':'#E3F2FD',
+        'primary-200':'#90CAF9',
+        'primary-300':'#2196F3',
+        'primary-400':'#1E88E5',
+        'primary-500':'#1565C0',
       },textColor:{
         'color-100':'#FFFFFF',
         'color-200':'#F5F8FA',
@@ -32,7 +36,11 @@ module.exports = {
         'color-400':'#AAB8C2',
         'color-500':'#657786',
         'color-black':'#14171A',
-        'color-primary':'#1DA1F2'      
+        'primary-100':'#E3F2FD',
+        'primary-200':'#90CAF9',
+        'primary-300':'#2196F3',
+        'primary-400':'#1E88E5',
+        'primary-500':'#1565C0',    
       }
     },
   },

@@ -17,11 +17,11 @@ const CardComponent = ({ data }) => {
   return (
     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
       <Card
-        variant="outlined"
+        variant="contained"
         className="cursor-pointer w-36 h-fit pb-2 bg-inherit  "
         // onClick={() => alert(`${data.id}\n${data.title}`)}
       >
-        {data ? (
+        {!data ? (
           <CardMedia
             component="img"
             className="h-48 w-full object-cover rounded-lg shadow-lg"
@@ -47,9 +47,9 @@ const CardComponent = ({ data }) => {
           >
             <div className="h-9 w-9 absolute -top-6 right-4  transition-all duration-300 ease-in-out hover:scale-[1.3]">
               <CircularProgressbar
-                value={`${data ? data?.vote_average : 0}`}
+                value={`${!data ? data?.vote_average : 0}`}
                 maxValue={10}
-                text={`${data ? data?.vote_average : ""} `}
+                text={`${!data ? data?.vote_average : ""} `}
                 styles={buildStyles({
                   // Rotation of path and trail, in number of turns (0-1)
                   rotation: 0,
@@ -69,15 +69,14 @@ const CardComponent = ({ data }) => {
                   // Colors
                   pathColor: `sky`,
                   textColor: "#f88",
-                  trailColor: "#d6d6d6",
-                  backgroundColor: "#3e98c7",
+                  trailColor: "#233044",
                 })}
                 strokeWidth="12"
-                className=" p-1 rounded-full bg-white"
+                className=" p-1 rounded-full bg-[#1b2635]"
               />
             </div>
           </Tooltip>
-          {data ? (
+          {!data ? (
             <>
               <Typography
                 variant="p"

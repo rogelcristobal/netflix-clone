@@ -13,9 +13,10 @@ const fetchThreeItem = (endpoint) => {
       <Box className="flex items-center justify-between w-full  mb-4">
         <Typography
           variant="h6"
-          className="font-semibold capitalize text-xl text-color-black cursor-default"
+          className="font-semibold capitalize relative text-xl text-color-100 tracking-wide cursor-default"
         >
           {title}
+          <div className="absolute h-full w-1 bg-primary-300 top-0 -left-4 rounded-full"></div>
         </Typography>
         <Link
           underline="none"
@@ -33,8 +34,8 @@ const fetchThreeItem = (endpoint) => {
           {/* used paper as a container */}
       <Paper
         component="div"
-        variant="outlined"
-        className=" h-full w-full bg-color-200  py-6 px-4 grid place-content-center rounded-lg "
+        variant="contained"
+        className=" h-full w-full   py-6 px-4 grid place-content-center rounded-lg bg-inherit"
       >
         {/* map only 5 item */}
         <Grid container spacing={2} columns={5}>

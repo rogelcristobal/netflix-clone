@@ -1,15 +1,7 @@
 import { useContext } from "react";
 import MovieContext from "../context/MovieContext";
-import {
-  Paper,
-  Box,
-  Typography,
-  CardContent,
-  Skeleton,
-  CardMedia,
-} from "@mui/material";
-
 import TripleCardComponent from "../components/TripleCardComponent";
+import { Box, Typography, Link, Paper } from "@mui/material";
 
 const MovieCategories = () => {
   const {
@@ -19,12 +11,24 @@ const MovieCategories = () => {
     topRatedMovies,
     latestMovie,
   } = useContext(MovieContext);
-  console.log(latestMovie)
+  console.log(latestMovie);
   return (
     <>
-      <div className=" px-8    h-screen overflow-y-auto  no-scrollbar w-full ">
-        <div className="h-auto mt-20  min-h-screen  flex flex-col items-start  justify-start   pb-8 bg-inherit px-8 py-4  mb-16   space-y-2 rounded-lg">
+      <div className=" px-4    h-full overflow-y-auto   w-full ">
+        <div className="h-auto  min-h-screen box-border flex flex-col items-start  justify-start    bg-inherit      space-y-2 rounded-lg">
           {/* contents here */}
+          <Paper variant="contained" className=" h-60 w-full box-border flex items-end p-4 px-6 bg-[#233044] mb-6 rounded-xl">
+            <Box className="flex  items-center justify-between  w-fit mb-4">
+              {/* <Typography
+                variant="p"
+                className="font-semibold capitalize tracking-wide text-4xl text-color-100 cursor-default"
+              >
+                welcome
+              </Typography> */}
+            </Box>
+          
+          </Paper>
+          <div className="px-8 py-4">
 
           {/* categories */}
 
@@ -35,20 +39,20 @@ const MovieCategories = () => {
             { title: "upcoming movies", data: upcomingMovies },
           ].map((item, id) => (
             <TripleCardComponent
-              key={id}
-              title={item.title}
-              movies={item.data}
+            key={id}
+            title={item.title}
+            movies={item.data}
             ></TripleCardComponent>
-          ))}
+            ))}
         </div>
+      </div>
       </div>
 
       {/*page nav*/}
-      <div className="w-80 mt-20 ml-0 mr-8   h-80">
-        {/* page nav contents here */}
+      <div className="w-60   mx-4   h-80">
         <Paper
-          variant="outlined"
-          className="h-full   w-full rounded-lg bg-color-200 "
+          variant="contained"
+          className="h-full   w-full rounded-lg bg-inherit "
         ></Paper>
       </div>
     </>

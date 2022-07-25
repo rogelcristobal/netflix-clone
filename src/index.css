@@ -8,12 +8,12 @@
     }
     
     ::-webkit-scrollbar-track {
-        @apply bg-neutral-200 rounded-full
+        @apply bg-inherit rounded-full
 
     }
     
     ::-webkit-scrollbar-thumb {
-        @apply bg-neutral-300 rounded-full
+        @apply bg-[#233044] rounded-full
     }
     .border-sample{
         @apply border border-neutral-300
