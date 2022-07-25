@@ -14,7 +14,7 @@ const MovieCategories = () => {
   console.log(latestMovie);
   return (
     <>
-      <div className=" px-4    h-full overflow-y-auto   w-full ">
+      <div className=" px-4 pt-2 box-border   h-full overflow-y-auto   w-full ">
         <div className="h-auto  min-h-screen box-border flex flex-col items-start  justify-start    bg-inherit      space-y-2 rounded-lg">
           {/* contents here */}
           <Paper variant="contained" className=" h-60 w-full box-border flex items-end p-4 px-6 bg-[#233044] mb-6 rounded-xl">

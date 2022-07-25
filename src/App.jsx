@@ -1,7 +1,6 @@
 import { Routes, Route, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import PaidIcon from "@mui/icons-material/Paid";
-
+import { FiSearch } from "react-icons/fi";
 // pages
 import MovieCategories from "./pages/MovieCategories";
 import TVCategories from "./pages/TVCategories";
@@ -13,9 +12,9 @@ import {
   Button,
   ListItemButton,
   List,
+  IconButton,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-
 function App() {
   const nav = useNavigate();
   const theme = createTheme({
@@ -33,9 +32,11 @@ function App() {
   // styles
   // #1b2635
   // #233044
+  const root = window.document.documentElement;
+  root.classList.add("dark");
   return (
     <ThemeProvider theme={theme}>
-      <Routes>s
+      <Routes>
         <Route
           path="/"
           element={
@@ -48,15 +49,27 @@ function App() {
         <Route
           path="/homepage/*"
           element={
-            <div className="font-outfit relative flex w-full    h-screen bg-[#1b2635] ">
+            <div className="font-outfit relative flex w-full   h-screen bg-[#1b2635] ">
               {/* nav */}
               <div className="fixed top-0 left-0 w-full h-14 z-10  ">
                 <div className="container h-full flex  px-4 justify-end mx-auto  rounded-lg ">
                   {/* nav contents here */}
                   <Paper
-                    variant=""
-                    className="h-full w-full bg-inherit flex items-center justify-end px-2"
+                    variant="contained"
+                    className="h-full w-[calc(100%-16rem)] bg-inherit flex items-center justify-between px-2"
                   >
+                    <div className="flex items-center justify-center">
+                      <IconButton
+                        aria-label="search"
+                        size="medium"
+                        className="text-gray-700 space-x-4  "
+                      >
+                        <FiSearch
+                        // onClick={()=>setTheme(colorTheme)}
+                        ></FiSearch>
+                      </IconButton>
+                        <input type="text" placeholder="search here " className="bg-inherit focus:bg-[#18222f]/75 appearance-none outline-none rounded-lg placeholder:capitalize w-52 py-2 px-3  leading-tight focus:outline-none shadow-none border-none focus:shadow-outline placeholder:text-gray-700 text-white text-md transition-all ease duration-300" />
+                    </div>
                     <Button
                       variant="text"
                       className="bg-primary-300 rounded-xl px-5 py-1.5"
@@ -78,7 +91,7 @@ function App() {
                 {/* sidebar contents here */}
                 <Paper
                   variant="contained"
-                  className=" w-full  px-4 h-full pt-20 box-border  bg-[#233044]"
+                  className=" w-full  px-4 h-full pt-20 box-border bg-[#233044]"
                   square
                 >
                   <Paper
@@ -109,7 +122,7 @@ function App() {
                                   className={` rounded-xl  px-6  py-3 my-1 ${
                                     isActive
                                       ? "bg-[#202c3f]"
-                                      : "hover:bg-color-200"
+                                      : "hover:bg-[#202c3f]"
                                   }`}
                                 >
                                   <Typography

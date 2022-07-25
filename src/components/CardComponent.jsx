@@ -15,7 +15,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 const CardComponent = ({ data }) => {
   return (
-    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
+    <motion.div whileHover={{ scale: 1.05}} whileTap={{ scale: 1 }}>
       <Card
         variant="contained"
         className="cursor-pointer w-36 h-fit pb-2 bg-inherit  "
@@ -76,30 +76,16 @@ const CardComponent = ({ data }) => {
               />
             </div>
           </Tooltip>
-          {!data ? (
+          {!data.title ? (
             <>
               <Typography
                 variant="p"
-                className="font-medium  text-left tracking-wide mt-4 w-fit  text-black"
+                className=" text-sm text-left tracking-wider mt-4 w-fit  text-color-400"
                 color="initial"
               >
                 {data?.title}
               </Typography>
-              <Tooltip
-                title="released date"
-                placement="top-start"
-                TransitionComponent={Zoom}
-                arrow
-                followCursor
-              >
-                <Typography
-                  variant="p"
-                  className="font-medium w-fit h-fit mt-2 text-xs text-left tracking-wide  text-color-500"
-                  color="initial"
-                >
-                  {data?.release_date}
-                </Typography>
-              </Tooltip>
+             
             </>
           ) : (
             <>
@@ -112,15 +98,7 @@ const CardComponent = ({ data }) => {
                   {data?.title}
                 </Typography>
               </Skeleton>
-              <Skeleton>
-                <Typography
-                  variant="p"
-                  className=" w-full  mt-2 "
-                  color="initial"
-                >
-                  {data?.release_date}
-                </Typography>
-              </Skeleton>
+              
             </>
           )}
         </CardContent>
