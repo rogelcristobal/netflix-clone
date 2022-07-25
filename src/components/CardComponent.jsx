@@ -68,7 +68,7 @@ const CardComponent = ({ data }) => {
 
                   // Colors
                   pathColor: `sky`,
-                  textColor: "#f88",
+                  textColor: "white",
                   trailColor: "#233044",
                 })}
                 strokeWidth="12"
@@ -84,21 +84,15 @@ const CardComponent = ({ data }) => {
                 color="initial"
               >
                 {data?.title}
+                
+                {data?.name}
               </Typography>
              
             </>
           ) : (
             <>
-              <Skeleton className="h-8">
-                <Typography
-                  variant="p"
-                  className=" mt-4 w-full "
-                  color="initial"
-                >
-                  {data?.title}
-                </Typography>
+              <Skeleton className="h-8">   
               </Skeleton>
-              
             </>
           )}
         </CardContent>

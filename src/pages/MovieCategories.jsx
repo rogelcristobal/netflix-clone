@@ -11,7 +11,6 @@ const MovieCategories = () => {
     topRatedMovies,
     latestMovie,
   } = useContext(MovieContext);
-  console.log(latestMovie);
   return (
     <>
       <div className=" px-4 pt-2 box-border   h-full overflow-y-auto   w-full ">

@@ -62,13 +62,14 @@ function App() {
                       <IconButton
                         aria-label="search"
                         size="medium"
-                        className="text-gray-700 space-x-4  "
+                        className="text-gray-700 space-x-4  hover:text-color-300 hover:bg-[#18222f]"
                       >
                         <FiSearch
                         // onClick={()=>setTheme(colorTheme)}
                         ></FiSearch>
                       </IconButton>
-                        <input type="text" placeholder="search here " className="bg-inherit focus:bg-[#18222f]/75 appearance-none outline-none rounded-lg placeholder:capitalize w-52 py-2 px-3  leading-tight focus:outline-none shadow-none border-none focus:shadow-outline placeholder:text-gray-700 text-white text-md transition-all ease duration-300" />
+                      {/* search bar */}
+                        <input type="text" placeholder="search here " className="bg-inherit focus:bg-[#18222f]/75 appearance-none outline-none rounded-lg placeholder:capitalize w-72 py-3 px-3  leading-tight focus:outline-none shadow-none border-none focus:shadow-outline placeholder:text-gray-700 text-white text-md transition-all ease duration-300" />
                     </div>
                     <Button
                       variant="text"
