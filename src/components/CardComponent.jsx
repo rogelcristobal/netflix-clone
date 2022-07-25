@@ -76,7 +76,7 @@ const CardComponent = ({ data }) => {
               />
             </div>
           </Tooltip>
-          {!data.title ? (
+          {!data ? (
             <>
               <Typography
                 variant="p"

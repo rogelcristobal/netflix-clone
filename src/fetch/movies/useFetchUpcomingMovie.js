@@ -1,5 +1,5 @@
 import axios from "axios";
-import request from "./api";
+import request from "../api"
 
 import { useState, useEffect } from "react";
 export default function useFetchUpcomingMovie() {
