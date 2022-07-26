@@ -1,4 +1,5 @@
 import { Routes, Route, NavLink } from "react-router-dom";
+import {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 // pages
@@ -15,25 +16,45 @@ import {
   IconButton,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import axios from "axios";
+
+
+
 function App() {
   const nav = useNavigate();
   const theme = createTheme({
     typography: {
       fontFamily: ["outfit", "Supreme", "Clash Display", "sans-serif"].join(
         ","
-      ),
-      palette: {
-        primary: {
-          main: "rgb(17, 24, 39)",
+        ),
+        palette: {
+          primary: {
+            main: "rgb(17, 24, 39)",
+          },
         },
       },
-    },
-  });
-  // styles
-  // #1b2635
-  // #233044
-  const root = window.document.documentElement;
-  root.classList.add("dark");
+    });
+    // styles
+    // #1b2635
+    // #233044
+  const key = "754cb358915af129a5a352e456f121ff";
+  const [searchAnyResults, setSearchAny] = useState(null);
+  const [search, setSearch] = useState("");
+  const [loading,setLadoign] = useState(true)
+  const handleSearch=async(phrase)=>{
+    console.log(phrase)
+    try {
+      const response = await axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${key}&query=${phrase}&language=en-US&page=1&include_adult=false`)
+      setSearchAny((prev)=> prev =response.data.results)
+    } catch (error) {
+    }
+  }
+  if(loading){return null}else{
+    console.log(searchAnyResults)
+  }
+ 
+
+ 
   return (
     <ThemeProvider theme={theme}>
       <Routes>
@@ -58,10 +79,11 @@ function App() {
                     variant="contained"
                     className="h-full w-[calc(100%-16rem)] bg-inherit flex items-center justify-between px-2"
                   >
-                    <div className="flex items-center justify-center">
+                    <div className="flex items-center justify-center space-x-4">
                       <IconButton
+                        onClick={()=>handleSearch(search)}
                         aria-label="search"
-                        size="medium"
+                        size="small"
                         className="text-gray-700 space-x-4  hover:text-color-300 hover:bg-[#18222f]"
                       >
                         <FiSearch
@@ -69,11 +91,17 @@ function App() {
                         ></FiSearch>
                       </IconButton>
                       {/* search bar */}
-                        <input type="text" placeholder="search here " className="bg-inherit focus:bg-[#18222f]/75 appearance-none outline-none rounded-lg placeholder:capitalize w-72 py-3 px-3  leading-tight focus:outline-none shadow-none border-none focus:shadow-outline placeholder:text-gray-700 text-white text-md transition-all ease duration-300" />
+                      <input
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        type="text"
+                        placeholder="search here "
+                        className="bg-inherit focus:bg-[#18222f]/75 appearance-none outline-none rounded-lg placeholder:capitalize w-72 py-3 px-3  leading-tight font-base focus:outline-none shadow-none border-none focus:shadow-outline placeholder:text-gray-700 text-white text-md transition-all ease duration-300"
+                      />
                     </div>
                     <Button
                       variant="text"
-                      className="bg-primary-300 rounded-xl px-5 py-1.5"
+                      className="bg-primary-300 rounded-lg px-5 py-1.5"
                     >
                       <Typography
                         variant="p"
