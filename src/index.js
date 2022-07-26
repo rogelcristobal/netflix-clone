@@ -8,22 +8,25 @@ import { Provider } from "react-redux";
 import { MovieProvider } from "./context/MovieContext";
 import { ShowsProvider } from "./context/ShowsContext";
 import { AuthProvider } from "./context/AuthContext";
+import { SearchProvider } from "./context/SearchContext";
 import { HashRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-    <HashRouter>
-      <AuthProvider>
-        <MovieProvider>
-          <ShowsProvider>
-          {/* <React.StrictMode> */}
-          <App />
-          {/* </React.StrictMode> */}
-          </ShowsProvider>
-        </MovieProvider>
-      </AuthProvider>
-    </HashRouter>
-  </Provider>
+	<Provider store={store}>
+		<HashRouter>
+			<AuthProvider>
+				<MovieProvider>
+					<SearchProvider>
+						<ShowsProvider>
+							{/* <React.StrictMode> */}
+							<App />
+							{/* </React.StrictMode> */}
+						</ShowsProvider>
+					</SearchProvider>
+				</MovieProvider>
+			</AuthProvider>
+		</HashRouter>
+	</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

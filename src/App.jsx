@@ -1,7 +1,8 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import { useState, useMemo } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import SearchContext from "./context/SearchContext";
 // pages
 import MovieCategories from "./pages/MovieCategories";
 import TVCategories from "./pages/TVCategories";
@@ -53,12 +54,8 @@ function App() {
 	// 	console.log(searchAnyResults);
 	// 	setLoading(true);
 	// }
-	const { handleSearch, searchAnyResults, loading, setLoading } =
-		useSearchAny();
-	if (!loading) {
-		console.log(searchAnyResults);
-		setLoading(true);
-	}
+	const { handleSearch } = useContext(SearchContext);
+
 	return (
 		<ThemeProvider theme={theme}>
 			<Routes>
@@ -89,6 +86,7 @@ function App() {
 												e.stopPropagation();
 												handleSearch(search);
 												setSearch("");
+												nav("homepage/result");
 											}}
 											className="flex items-center justify-center space-x-4"
 										>
@@ -115,7 +113,6 @@ function App() {
 										<Button
 											variant="text"
 											className="bg-primary-300 rounded-lg px-5 py-1.5"
-											onClick={() => nav("homepage/result")}
 										>
 											<Typography
 												variant="p"
@@ -191,7 +188,7 @@ function App() {
 
 							{/* body */}
 
-							<div className="flex items-start justify-start pt-16 box-border">
+							<div className="flex items-start justify-start w-full pt-16 box-border">
 								<Routes>
 									<Route path="/" element={<MovieCategories />}></Route>
 									<Route path="/result" element={<SearchResults />}></Route>

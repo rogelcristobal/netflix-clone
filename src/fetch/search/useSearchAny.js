@@ -10,7 +10,7 @@ const useSearchAny = () => {
 				`https://api.themoviedb.org/3/search/multi?api_key=${key}&query=${phrase}&language=en-US&page=1&include_adult=false`
 			);
 			setSearchAny(response.data.results);
-			setLoading(!loading);
+			setLoading(false);
 		} catch (error) {}
 	};
 
