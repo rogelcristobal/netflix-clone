@@ -14,22 +14,15 @@ const MovieCategories = () => {
 	return (
 		<>
 			<div className=" px-4 pt-2 box-border   h-full overflow-y-auto   w-full ">
-				<div className="h-auto  min-h-full box-border flex flex-col items-start  justify-start    bg-inherit      space-y-2 rounded-lg">
+				<div className="h-auto w-full bg-color-200  min-h-full box-border flex flex-col items-start  justify-start        space-y-2 rounded-xl">
 					{/* contents here */}
-					<Paper
+					{/* <Paper
 						variant="contained"
-						className=" h-60 w-full box-border flex items-end p-4 px-6 bg-[#233044] mb-6 rounded-xl"
+						className=" h-40 w-full  box-border flex items-end p-4 px-6 bg-[#233044] mb-6 rounded-xl"
 					>
-						<Box className="flex  items-center justify-between  w-fit mb-4">
-							{/* <Typography
-                variant="p"
-                className="font-semibold capitalize tracking-wide text-4xl text-color-100 cursor-default"
-              >
-                welcome
-              </Typography> */}
-						</Box>
-					</Paper>
-					<div className="px-8 py-4">
+						<Box className="flex  items-center justify-between  w-fit mb-4"></Box>
+					</Paper> */}
+					<div className="px-4 py-4 w-full">
 						{/* categories */}
 
 						{[
@@ -49,12 +42,12 @@ const MovieCategories = () => {
 			</div>
 
 			{/*page nav*/}
-			<div className="w-60   mx-4   h-80">
+			{/* <div className="w-60   mx-4   h-80">
 				<Paper
 					variant="contained"
 					className="h-full   w-full rounded-lg bg-inherit "
 				></Paper>
-			</div>
+			</div> */}
 		</>
 	);
 };
