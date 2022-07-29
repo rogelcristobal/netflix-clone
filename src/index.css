@@ -3,14 +3,11 @@
 @tailwind utilities;
 
 @layer components {
-    ::-webkit-scrollbar {
-        @apply w-2  
-    }
-    
-    ::-webkit-scrollbar-track {
-        @apply bg-inherit rounded-full
+	::-webkit-scrollbar {
+		@apply w-2;
+	}
 
-    }
+    
     
     ::-webkit-scrollbar-thumb {
         @apply bg-color-200 hover:bg-color-300 dark:bg-[#233044]/25 rounded-full

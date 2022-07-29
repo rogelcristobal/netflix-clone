@@ -1,11 +1,11 @@
 import React from "react";
 import { Box, Typography, Link, Paper, Grid } from "@mui/material";
 import CardComponent from "./CardComponent";
-const TripleCardComponent = ({ movies ,title}) => {
-//   gets first 3 items in the returned array
-const fetchThreeItem = (endpoint) => {
-    return endpoint?.results.slice(0, 5);
-  };
+const TripleCardComponent = ({ movies, title }) => {
+	//   gets first 3 items in the returned array
+	const fetchThreeItem = (endpoint) => {
+		return endpoint?.results.slice(0, 5);
+	};
 
   return (
     <Paper className="flex flex-col items-center justify-center w-full  h-fit bg-color-100  rounded-xl overflow-hidden">

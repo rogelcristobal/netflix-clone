@@ -1,13 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Skeleton,
-  Tooltip,
-  Zoom,
+	Card,
+	CardMedia,
+	CardContent,
+	Typography,
+	Skeleton,
+	Tooltip,
+	Zoom,
 } from "@mui/material";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
@@ -54,17 +54,17 @@ const CardComponent = ({ data }) => {
                   // Rotation of path and trail, in number of turns (0-1)
                   rotation: 0,
 
-                  // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                  strokeLinecap: "butt",
+									// Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+									strokeLinecap: "butt",
 
-                  // Text size
-                  textSize: "2rem",
+									// Text size
+									textSize: "2rem",
 
-                  // How long animation takes to go from one percentage to another, in seconds
-                  pathTransitionDuration: 0.5,
+									// How long animation takes to go from one percentage to another, in seconds
+									pathTransitionDuration: 0.5,
 
-                  // Can specify path transition in more detail, or remove it entirely
-                  // pathTransition: 'none',
+									// Can specify path transition in more detail, or remove it entirely
+									// pathTransition: 'none',
 
                   // Colors
                   pathColor: `sky`,
