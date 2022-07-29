@@ -18,8 +18,8 @@ const CardComponent = ({ data }) => {
     <motion.div whileHover={{ scale: 1.05}} whileTap={{ scale: 1 }}>
       <Card
         variant="contained"
-        className="cursor-pointer w-36 h-fit pb-2 bg-inherit  "
-        // onClick={() => alert(`${data.id}\n${data.title}`)}
+        className="cursor-pointer w-full h-fit pb-2 bg-inherit  "
+        // onClick={() => alert(`${!data.id}\n${!data.title}`)}
       >
         {!data ? (
           <CardMedia
@@ -45,7 +45,7 @@ const CardComponent = ({ data }) => {
             placement="top-start"
             TransitionComponent={Zoom}
           >
-            <div className="h-9 w-9 absolute -top-6 right-4  transition-all duration-300 ease-in-out hover:scale-[1.3]">
+            <div className="h-10 w-10 absolute -top-6 right-4  transition-all duration-300 ease-in-out hover:scale-[1.3]">
               <CircularProgressbar
                 value={`${!data ? data?.vote_average : 0}`}
                 maxValue={10}
@@ -68,11 +68,12 @@ const CardComponent = ({ data }) => {
 
                   // Colors
                   pathColor: `sky`,
-                  textColor: "white",
-                  trailColor: "#233044",
+                  textColor: "gray",
+                  // trailColor: "#233044",
+                  trailColor:'  rgb(225, 232, 237)'
                 })}
-                strokeWidth="12"
-                className=" p-1 rounded-full bg-[#1b2635]"
+                strokeWidth="14"
+                className=" p-1 rounded-full  bg-color-100 dark:bg-[#1b2635]"
               />
             </div>
           </Tooltip>
