@@ -1,16 +1,8 @@
-import { useContext } from "react";
-import MovieContext from "../context/MovieContext";
-import TripleCardComponent from "../components/TripleCardComponent";
+
 import { Box, Typography, Link, Paper,Grid } from "@mui/material";
 
 const MovieCategories = () => {
-  const {
-    nowPlayingMovie,
-    upcomingMovies,
-    popularMovies,
-    topRatedMovies,
-    latestMovie,
-  } = useContext(MovieContext);
+ 
   return (
     <>
       <div className=" px-4 pt-2 box-border flex flex-col items-center justify-start  h-full overflow-y-auto space-y-5  w-full ">
