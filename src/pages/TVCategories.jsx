@@ -1,16 +1,8 @@
-import { useContext } from "react";
-import ShowsContext from "../context/ShowsContext";
 import TripleCardComponent from "../components/TripleCardComponent";
 import { Box, Typography, Link, Paper } from "@mui/material";
-
+import useFetchPopularShow from '../fetch/shows/useFetchPopularShow'
 const MovieCategories = () => {
-  const {
-    airingToday,
-    onAir,
-    popularShow,
-    topRatedShow,
-
-  } = useContext(ShowsContext);
+  const popularShow=useFetchPopularShow()
   return (
     <>
       <div className=" px-4 pt-2 box-border   h-full overflow-y-auto   w-full ">
@@ -31,7 +23,7 @@ const MovieCategories = () => {
 
           {/* categories */}
 
-          {[
+          {/* {[
             { title: "airing today", data: airingToday },
             { title: "on the air", data: onAir },
             { title: "popular TV shows", data: popularShow },
@@ -42,7 +34,7 @@ const MovieCategories = () => {
             title={item.title}
             movies={item.data}
             ></TripleCardComponent>
-            ))}
+            ))} */}
         </div>
       </div>
       </div>

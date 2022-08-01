@@ -5,8 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import store from "./app/store";
 import { Provider } from "react-redux";
-import { MovieProvider } from "./context/MovieContext";
-import { ShowsProvider } from "./context/ShowsContext";
 import { AuthProvider } from "./context/AuthContext";
 import { SearchProvider } from "./context/SearchContext";
 import { HashRouter } from "react-router-dom";
@@ -15,16 +13,12 @@ root.render(
 	<Provider store={store}>
 		<HashRouter>
 			<AuthProvider>
-				<MovieProvider>
 					<SearchProvider>
-						<ShowsProvider>
 							{/* <React.StrictMode> */}
 							<App />
 							{/* </React.StrictMode> */}
-						</ShowsProvider>
 					</SearchProvider>
-				</MovieProvider>
-			</AuthProvider>
+				</AuthProvider>
 		</HashRouter>
 	</Provider>
 );

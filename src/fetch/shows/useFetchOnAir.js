@@ -1,20 +1,13 @@
 import request from '../api';
 import axios from 'axios';
-import { useEffect,useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 const useFetchOnAir = () => {
-    const [onAir,setOnAir] = useState(null)
-    const fetch=async()=>{
-        try {
-            const response = await axios.get(request.getOnAir)
-            setOnAir(response.data)
-        } catch (error) {
-            
-        }
-    }
-    useEffect(() => {
-   fetch()
- }, []);
- return {onAir}
+   
+    const onAirQuery = useQuery(['onAir'],async()=>{
+        const response = await axios.get(request.getOnAir)
+        return response.data
+    })
+    return onAirQuery
 }
 
 export default useFetchOnAir;
