@@ -59,10 +59,10 @@ function App() {
           <Route
             path="/homepage/*"
             element={
-              <div className="font-clash relative flex w-full   h-screen bg-color-100 dark:bg-[#161c24]  ">
+              <div className="font-outfit relative flex w-full   h-screen bg-color-100 dark:bg-[#161c24]  ">
                 {/* nav */}
-                <div className="fixed top-0 left-0 w-full h-16 z-30  bg-transparent">
-                  <div className="container h-full flex  justify-end mx-auto items-center  ">
+                <div className="fixed top-0 left-0 w-full h-16 z-10  ">
+                  <div className="container h-full flex  justify-end mx-auto items-center rounded-lg ">
                     {/* nav contents here */}
                     <Paper
                       variant="contained"
@@ -75,31 +75,30 @@ function App() {
                         onClick={() => setMenuStatus(!menuStatus)}
                         aria-label="log-in"
                         size="medium"
-                        className={`text-color-black   ${
+                        className={`text-color-300 rounded-full  ${
                           !menuStatus
-                            ? " bg-primary-black "
-                            : "bg-inherit "
-                        } space-x-4 p-2.5 hover:bg-color-200    transition duration-500 ease-in-out`}
+                            ? " hover:bg-primary-400/10 "
+                            : "bg-inherit hover:bg-primary-400/10"
+                        } space-x-4 p-2.5   transition duration-500 ease-in-out`}
                       >
                         <FiMenu></FiMenu>
                       </IconButton>
 
                       <div className="flex items-center justify-between space-x-4">
-                        {/* <IconButton
+                        <IconButton
                           aria-label="log-in"
                           size="small"
-                          className="text-color-black     space-x-4 p-2    transition duration-500 ease-in-out"
+                          className="text--100 rounded-lg bg-primary-100   space-x-4 p-2  hover:bg-primary-400 hover:text-color-100 transition duration-500 ease-in-out"
                         >
                           <FiSettings></FiSettings>
                         </IconButton>
                         <IconButton
                           aria-label="log-in"
                           size="small"
-                          className="text-color-black      p-2    transition-all duration-500 ease-in-out"
+                          className="text--100 rounded-lg bg-primary-100    p-2  hover:bg-primary-400 hover:text-color-100 transition-all duration-500 ease-in-out"
                         >
                           <FiUser></FiUser>
-                        </IconButton> */}
-                      
+                        </IconButton>
                       </div>
                     </Paper>
                   </div>
@@ -113,14 +112,14 @@ function App() {
                 >
                   {/* sidebar contents here */}
                   <Paper
-                    variant="outlined"
-                    className=" w-full   h-full pt-20 box-border bg-color-100 dark:bg-[#19212b]  flex flex-col items-end justify-start "
+                    variant="contained"
+                    className=" w-full   h-full pt-20 box-border bg-color-100 dark:bg-[#19212b]  flex flex-col items-center justify-start "
                     square
                   >
                     <Paper
                       variant="contained"
                       sx={{ overflow: "auto", boxSizing: "border-box" }}
-                      className="  h-fit py-2 w-full   bg-inherit"
+                      className="  h-fit py-2 w-56 rounded-lg  bg-inherit"
                     >
                       <List>
                         {[
@@ -142,15 +141,15 @@ function App() {
                               <>
                                 <ListItem disablePadding>
                                   <ListItemButton
-                                    className={`   px-8  py-4 my-1 ${
+                                    className={` rounded-lg  px-6  py-3 my-1 ${
                                       isActive
-                                        ? " bg-color-black"
+                                        ? " bg-primary-400/10"
                                         : "bg-inherit"
                                     }`}
                                   >
                                     <Typography
                                       variant="p"
-                                      className={`capitalize  font-[500] tracking-wide  text-sm ml-4 ${
+                                      className={`capitalize  font-[400] tracking-wide  text-sm ml-4 ${
                                         isActive
                                           ? "text-color-100"
                                           : "text-color-500"
@@ -170,7 +169,7 @@ function App() {
                 </div>
                 {/* body */}
 
-                <div className="flex items-start justify-start w-full pt-0 box-border">
+                <div className="flex items-start justify-start w-full pt-16 box-border">
                   <Routes>
                     <Route path="/" element={<MovieCategories />}></Route>
                     <Route path="/result" element={<SearchResults />}></Route>
