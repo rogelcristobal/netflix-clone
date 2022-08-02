@@ -1,60 +1,84 @@
 import React from "react";
 import { Box, Typography, Link, Paper, Grid } from "@mui/material";
 import CardComponent from "./CardComponent";
-const TripleCardComponent = ({ movie, title }) => {
+const TripleCardComponent = ({ movie, title,isSpanTwo }) => {
   //   gets first 3 items in the returned array
-  const selectFourItem = (endpoint) => {
-    if(movie.isLoading){
-      return  Array.from(new Array(4))
-    }else{
-     return endpoint.data?.results.slice(0, 4);
+  const selectFourItem = (endpoint,state) => {
+    if (movie.isLoading) {
+      if(!state){
+        return Array.from(new Array(4))
+      }else{
+        return Array.from(new Array(5)) 
+      }
+    } else {
+      if(!state){
+        return endpoint.data?.results.slice(0, 4);
+      }else{
+        return endpoint.data?.results.slice(0, 5);  
+      }
     }
   };
   // sample logs
-  if (movie.isLoading){
-    console.log("loading wait")
-  }else{
-
-    console.log(movie.data)
+  if (movie.isLoading) {
+    console.log("loading wait");
+  } else {
+    console.log(movie.data);
   }
   return (
     <Paper
       variant="contained"
-      className="flex flex-col items-start justify-center w-full  h-fit bg-color-100  rounded-2xl overflow-hidden px-8 box-border py-6 "
+      className="flex flex-col items-start justify-center w-full  h-fit bg-inherit  rounded-xl overflow-hidden px-6 box-border py-6 "
     >
       <Box className="flex items-center justify-between w-full h-auto mb-6">
-        <Typography variant="p" className=" capitalize font-medium text-lg text-color-black">
+        <Typography
+          variant="p"
+          className=" capitalize font-semibold text-lg text-gray-700"
+        >
           {title}
         </Typography>
         <Link
           underline="none"
           component="button"
           onClick={() => alert("x")}
-          className="text-gray-400 font-[500] font-general"
+          className="text-gray-500 font-semibold font-general"
         >
           See all
         </Link>
       </Box>
 
       {/* map only 5 item */}
-      
-        <Grid container spacing={2} columns={4}>
-          
-             
-            {  selectFourItem(movie).map((item, id) => (
-              <Grid item xs={1} key={id}>
-              <CardComponent title={item?.title} poster={item?.poster_path} subheader={id} />
-              </Grid>
-              ))}
-            
-            
-      </Grid>
-    
+
+      {isSpanTwo ? (
+        <Grid container spacing={2} columns={5}>
+          {selectFourItem(movie,false).map((item, id) => (
+            <Grid item xs={id === 0 ? 2 : 1} key={id}>
+              <CardComponent
+                title={item?.title}
+                poster={item?.poster_path}
+                subheader={id}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      ) : 
+      <Grid container spacing={2} columns={5}>
+          {selectFourItem(movie,true).map((item, id) => (
+            <Grid item xs={1} key={id}>
+              <CardComponent
+                title={item?.title}
+                poster={item?.poster_path}
+                subheader={id}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      }
     </Paper>
   );
 };
-TripleCardComponent.defaultProps={
-  title:'section title'
-}
+TripleCardComponent.defaultProps = {
+  title: "section title",
+  isSpanTwo:false
+};
 
 export default TripleCardComponent;

@@ -61,13 +61,13 @@ function App() {
           <Route
             path="/homepage/*"
             element={
-              <div className="font-general relative flex w-full   h-screen bg-color-100 dark:bg-[#1b2635]   ">
+              <div className="font-general relative flex w-full box-border   h-screen bg-color-100  ">
                 {/* nav */}
-                <div className="fixed top-0 left-0 w-full h-20 z-20 ">
+                <div className="fixed top-0 left-0 w-full h-16 z-10 ">
                   <div className="container h-full flex  justify-end mx-auto items-center rounded-lg ">
                     {/* nav contents here */}
                     <Paper
-                      variant="outlined"
+                      variant="contained"
                       className={`h-full w-full  bg-inherit flex items-center justify-between  transition-all ease-in-out duration-500`}
                     >
                       {/* ham */}
@@ -83,12 +83,12 @@ function App() {
 
                 {/* sidebar */}
                 <div
-                  className={` w-80 z-10  h-full  overflow-x-hidden transition-all ease-in-out duration-500`}
+                  className={` w-72 z-10  h-full  overflow-x-hidden transition-all ease-in-out duration-500`}
                 >
                   {/* sidebar contents here */}
                   <Paper
                     variant="outlined"
-                    className=" w-full px-4  h-full pt-20 box-border bg-color-100 dark:bg-[#19212b]  flex flex-col items-center justify-start "
+                    className=" w-full px-4  h-full pt-20 box-border bg-color-100  flex flex-col items-center justify-start "
                     square
                   >
                    
@@ -96,15 +96,10 @@ function App() {
                 </div>
                 {/* body */}
 
-                <div className="flex items-start justify-start w-full px-4 pt-24 h-auto overflow-scroll box-border">
+                <div className="flex items-start justify-start w-full px-4 pt-16 h-screen  box-border">
                   <Routes>
                     <Route path="/" element={<MovieCategories />}></Route>
-                    <Route path="/result" element={<SearchResults />}></Route>
-                    <Route path="/tvShows" element={<TVCategories />}></Route>
-                    <Route
-                      path="/forRent"
-                      element={<MovieCategories />}
-                    ></Route>
+                    
                   </Routes>
                 </div>
               </div>

@@ -19,13 +19,13 @@ const CardComponent = ({ title,poster,subheader }) => {
       <Card
         variant="contained"
         
-        className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-2xl space-y-1"
+        className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1"
         // onClick={() => alert(`${!data.id}\n${!data.title}`)}
       >
         {!poster ? (
           <CardMedia
             component="img"
-            className="h-32 w-full object-cover rounded-2xl "
+            className="h-32 w-full object-cover rounded-xl "
             title=""
             image={`https://image.tmdb.org/t/p/w500/${poster}`}
           />
@@ -33,7 +33,7 @@ const CardComponent = ({ title,poster,subheader }) => {
           <Skeleton
             variant="rectangular"
             animation="wave"
-            className="h-32 w-full bg-color-300   rounded-lg"
+            className="h-32 w-full bg-color-200   rounded-xl"
           ></Skeleton>
         )}
 
@@ -41,15 +41,15 @@ const CardComponent = ({ title,poster,subheader }) => {
           {title ? (
             <>
               <CardHeader
-                className="capitalize tracking-wide p-1 text-color-500"
-                titleTypographyProps={{ fontSize: "0.8rem",fontWeight:500 }}
+                className="capitalize   p-1 text-color-700"
+                titleTypographyProps={{ fontSize: "0.8rem",fontWeight:600 }}
                  title={title}
                
               />
             </>
           ) : (
             <>
-              <Skeleton className="h-12 bg-color-200">
+              <Skeleton className="h-12 bg-inherit">
               <CardHeader
                 className="capitalize tracking-wide"
                 titleTypographyProps={{ fontSize: "0.8rem",fontWeight:600 }}
