@@ -87,7 +87,7 @@ function App() {
                 >
                   {/* sidebar contents here */}
                   <Paper
-                    variant="outlined"
+                    variant="contained"
                     className=" w-full px-4  h-full pt-20 box-border bg-color-100  flex flex-col items-center justify-start "
                     square
                   >
