@@ -1,4 +1,5 @@
 import { Box, Typography, Link, Paper, Grid } from "@mui/material";
+import TripleCardComponent from "../components/TripleCardComponent";
 import useFetchNowPlayingMovie from "../fetch/movies/useFetchNowPlayingMovie";
 import useFetchLatestMovie from "../fetch/movies/useFetchLatestMovie";
 import useFetchPopularMovie from "../fetch/movies/useFetchPopularMovie";
@@ -6,29 +7,26 @@ import useFetchTopRatedMovie from "../fetch/movies/useFetchTopRatedMovie";
 import useFetchUpcomingMovie from "../fetch/movies/useFetchUpcomingMovie";
 const MovieCategories = () => {
   // queries
-  const upcomingMovieQuery = useFetchUpcomingMovie();
+  const popularMovieQuery = useFetchPopularMovie()
 
   return (
     <>
-      <div className=" px-4 pt-2 box-border flex flex-col items-center justify-start  h-full overflow-y-auto space-y-5  w-full ">
-        <div className="h-auto  min-h-full   box-border flex flex-col items-start  justify-start    gap-8   w-full   rounded-2xl">
-          <div className="px-4 space-y-5 py-4 h-full w-full box-border ">
-            <Grid container spacing={2} columns={4} className="h-full">
-              <Grid item xs={2}>
-                
-              </Grid>
-            </Grid>
-          </div>
-        </div>
-      </div>
+      <Paper variant="contained" className=" px-4 pt-0 box-border flex flex-col items-center justify-start    overflow-y-scroll space-y-3 mt-0 w-full rounded-2xl">
+        <Paper variant="outlined" className="h-96  w-full rounded-2xl">
+
+        </Paper>
+        
+        <TripleCardComponent title={"popular now"} movie={popularMovieQuery}></TripleCardComponent>
+        
+      </Paper>
 
       {/*page nav*/}
-      {/* <div className="w-60 mt-2  mx-4   h-80">
+      <Paper variant="contained" className="w-60   mx-4   h-80">
 				<Paper
 					variant="outlined"
-					className="h-full   w-full rounded-lg bg-inherit "
+					className="h-full   w-full rounded-2xl bg-inherit "
 				></Paper>
-			</div> */}
+			</Paper>
     </>
   );
 };

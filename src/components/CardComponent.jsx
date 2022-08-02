@@ -1,98 +1,61 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-	Card,
-	CardMedia,
-	CardContent,
-	Typography,
-	Skeleton,
-	Tooltip,
-	Zoom,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Skeleton,
+  Tooltip,
+  Zoom,
+  CardHeader,
+  Avatar,
+  IconButton,
 } from "@mui/material";
 
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
-
-const CardComponent = ({ data }) => {
+const CardComponent = ({ title,poster,subheader }) => {
   return (
-    <motion.div whileHover={{ scale: 1.05}} whileTap={{ scale: 1 }}>
+    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
       <Card
         variant="contained"
-        className="cursor-pointer w-full h-fit pb-2 bg-inherit  "
+        
+        className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-2xl space-y-1"
         // onClick={() => alert(`${!data.id}\n${!data.title}`)}
       >
-        {!data ? (
+        {!poster ? (
           <CardMedia
             component="img"
-            className="h-48 w-full object-cover rounded-lg shadow-lg"
+            className="h-32 w-full object-cover rounded-2xl "
             title=""
-            image={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
+            image={`https://image.tmdb.org/t/p/w500/${poster}`}
           />
         ) : (
           <Skeleton
             variant="rectangular"
             animation="wave"
-            className="h-48  w-full  rounded-lg"
+            className="h-32 w-full bg-color-300   rounded-lg"
           ></Skeleton>
         )}
 
-        <CardContent className="flex flex-col relative p-2 ">
-          {/* progress bar */}
-          <Tooltip
-            title={`vote average`}
-            arrow
-            followCursor
-            placement="top-start"
-            TransitionComponent={Zoom}
-          >
-            <div className="h-10 w-10 absolute -top-6 right-4  transition-all duration-300 ease-in-out hover:scale-[1.3]">
-              <CircularProgressbar
-                value={`${!data ? data?.vote_average : 0}`}
-                maxValue={10}
-                text={`${!data ? data?.vote_average : ""} `}
-                styles={buildStyles({
-                  // Rotation of path and trail, in number of turns (0-1)
-                  rotation: 0,
-
-									// Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-									strokeLinecap: "butt",
-
-									// Text size
-									textSize: "2rem",
-
-									// How long animation takes to go from one percentage to another, in seconds
-									pathTransitionDuration: 0.5,
-
-									// Can specify path transition in more detail, or remove it entirely
-									// pathTransition: 'none',
-
-                  // Colors
-                  pathColor: `sky`,
-                  textColor: "gray",
-                  // trailColor: "#233044",
-                  trailColor:'  rgb(225, 232, 237)'
-                })}
-                strokeWidth="14"
-                className=" p-1 rounded-full  bg-color-100 dark:bg-[#1b2635]"
-              />
-            </div>
-          </Tooltip>
-          {!data ? (
+        <CardContent className="flex flex-col h-16 items-start justify-center p-0 w-full ">
+          {title ? (
             <>
-              <Typography
-                variant="p"
-                className=" text-sm text-left tracking-wider mt-4 w-fit  text-color-400"
-                color="initial"
-              >
-                {data?.title}
-                
-                {data?.name}
-              </Typography>
-             
+              <CardHeader
+                className="capitalize tracking-wide p-1 text-color-500"
+                titleTypographyProps={{ fontSize: "0.8rem",fontWeight:500 }}
+                 title={title}
+               
+              />
             </>
           ) : (
             <>
-              <Skeleton className="h-8">   
+              <Skeleton className="h-12 bg-color-200">
+              <CardHeader
+                className="capitalize tracking-wide"
+                titleTypographyProps={{ fontSize: "0.8rem",fontWeight:600 }}
+                title="item title"
+               
+              />
               </Skeleton>
             </>
           )}

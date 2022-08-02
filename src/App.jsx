@@ -27,7 +27,7 @@ function App() {
   const nav = useNavigate();
   const theme = createTheme({
     typography: {
-      fontFamily: ["outfit", "Supreme", "Clash Display", "sans-serif"].join(
+      fontFamily: [ "General Sans", "sans-serif"].join(
         ","
       ),
       palette: {
@@ -35,7 +35,9 @@ function App() {
           main: "rgb(17, 24, 39)",
         },
       },
+     
     },
+   
   });
   // styles
   // [#1b2635]
@@ -59,7 +61,7 @@ function App() {
           <Route
             path="/homepage/*"
             element={
-              <div className="font-outfit relative flex w-full   h-screen bg-color-100 dark:bg-[#1b2635]   ">
+              <div className="font-general relative flex w-full   h-screen bg-color-100 dark:bg-[#1b2635]   ">
                 {/* nav */}
                 <div className="fixed top-0 left-0 w-full h-20 z-20 ">
                   <div className="container h-full flex  justify-end mx-auto items-center rounded-lg ">
@@ -72,7 +74,7 @@ function App() {
                     
 
                       <div className="flex items-center justify-between w-full space-x-4">
-                     
+
                     
                       </div>
                     </Paper>
@@ -94,7 +96,7 @@ function App() {
                 </div>
                 {/* body */}
 
-                <div className="flex items-start justify-start w-full pt-16 box-border">
+                <div className="flex items-start justify-start w-full px-4 pt-24 h-auto overflow-scroll box-border">
                   <Routes>
                     <Route path="/" element={<MovieCategories />}></Route>
                     <Route path="/result" element={<SearchResults />}></Route>
