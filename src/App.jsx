@@ -1,21 +1,10 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiUser, FiSettings } from "react-icons/fi";
-import {HiMenuAlt4} from "react-icons/hi"
 // pages
 import MovieCategories from "./pages/MovieCategories";
-import TVCategories from "./pages/TVCategories";
-import SearchResults from "./pages/SearchResults";
 // MUI
 import {
-  Paper,
-  Typography,
-  ListItem,
-  Divider,
-  ListItemButton,
-  List,
-  IconButton,
+  Paper, Button,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -27,7 +16,7 @@ function App() {
   const nav = useNavigate();
   const theme = createTheme({
     typography: {
-      fontFamily: [ "General Sans", "sans-serif"].join(
+      fontFamily: [ "outfit Sans", "sans-serif"].join(
         ","
       ),
       palette: {
@@ -61,24 +50,27 @@ function App() {
           <Route
             path="/homepage/*"
             element={
-
-              <div className="font-general relative flex w-full box-border   h-screen bg-color-100  ">
+              <div className="font-outfit relative flex w-full box-border   h-screen bg-color-100  ">
                 {/* nav */}
-                <div className="fixed top-0 left-0 w-full h-16 z-20 ">
-                  <div className="container h-full flex  justify-end mx-auto items-center rounded-lg ">
+                <div className="fixed top-0 left-0 w-full h-20  z-20 ">
+                  <div className="container h-full flex   justify-end mx-auto items-center rounded-lg ">
                     {/* nav contents here */}
                     <Paper
-                      variant="outlined"
-                      className={`h-full w-full  bg-transparent flex items-center justify-between  transition-all ease-in-out duration-500`}
+                      variant="contained"
+                      className={`h-full w-[calc(100%-13rem)] pt-2 bg-transparent flex items-center justify-between  transition-all ease-in-out duration-500 px-4 box-border`}
                     >
                       {/* ham */}
                     
 
-                      <div className="flex items-center justify-between w-full space-x-4">
+                      <div className="flex items-center justify-start  space-x-6">
+                        <p className="text-md font-medium text-red-500">Movies</p>
+                        <p className="text-md font-medium">TV Shows</p>
 
                     
 
                       </div>
+                    
+
                     </Paper>
                   </div>
                 </div>
@@ -89,9 +81,8 @@ function App() {
                 >
                   {/* sidebar contents here */}
                   <Paper
-
-                    variant="outlined"
-                    className=" w-full px-4  h-full pt-20 box-border bg-inherit  flex flex-col items-center justify-start "
+                    variant="contained"
+                    className=" w-full px-4  h-full pt-20 box-border bg-color-100  flex flex-col items-center justify-start "
                     square
                   >
                    
@@ -99,9 +90,7 @@ function App() {
                 </div>
                 {/* body */}
 
-
-                <div className="flex items-start justify-start w-full  h-screen  box-border">
-
+                <div className="flex items-start justify-start w-full  h-full  box-border">
                   <Routes>
                     <Route path="/" element={<MovieCategories />}></Route>
                     

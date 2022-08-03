@@ -1,22 +1,20 @@
 
 import {
-  Box,
   Typography,
   Link,
   Paper,
-  Grid,
-  Chip,
-  Stack,
   ListItem,
   ListItemButton,
   ListItemAvatar,
   List,
   Skeleton,
+  
 } from "@mui/material";
+import {HiOutlineChevronDown} from "react-icons/hi"
 import TripleCardComponent from "../components/TripleCardComponent";
 
 import useFetchNowPlayingMovie from "../fetch/movies/useFetchNowPlayingMovie";
-import useFetchLatestMovie from "../fetch/movies/useFetchLatestMovie";
+
 import useFetchPopularMovie from "../fetch/movies/useFetchPopularMovie";
 import useFetchTopRatedMovie from "../fetch/movies/useFetchTopRatedMovie";
 import useFetchUpcomingMovie from "../fetch/movies/useFetchUpcomingMovie";
@@ -30,10 +28,11 @@ const MovieCategories = () => {
   const nowPlayingMovieQuery = useFetchNowPlayingMovie();
   const topRatedMovieQuery = useFetchTopRatedMovie();
   const upcomingMovieQuery = useFetchUpcomingMovie();
-  // const movieGenre = useFetchMovieGenres();
+  const movieGenre = useFetchMovieGenres();
   const popularArtist = useFetchPopularArtist();
   const sliceArtists = (endpoint, state) => {
-    if (popularArtist.isLoading) {
+    console.log(movieGenre.data)
+    if (movieGenre.isLoading) {
       if (!state) {
         return Array.from(new Array(4));
       } else {
@@ -41,28 +40,30 @@ const MovieCategories = () => {
       }
     } else {
       if (!state) {
-        return endpoint.data?.results.slice(0, 4);
+        return endpoint.data?.genres.slice(0, 4);
       } else {
-        return endpoint.data?.results.slice(0, 5);
+        return endpoint.data?.genres.slice(0, 5);
       }
     }
   };
-  console.log(sliceArtists(popularArtist, true));
   return (
     <>
 
       <Paper
-        variant="outlined"
-        className=" bg-inherit  flex flex-col items-center justify-start   mt-0 w-full  h-full box-border mx-2"
-      square>
+        variant="contained"
+        className=" bg-inherit  flex flex-col items-center justify-start    pt-0 w-full  h-full box-border mx-2"
+        square
+      >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 no-scrollbar   box-border space-y-6">
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4  no-scrollbar  box-border space-y-2">
+
           <Paper
-            variant="outlined"
-            className="h-96 bg-inherit mb-4   w-full rounded-2xl rounded-t-none"
+            variant="contained"
+            className="h-52 bg-color-200 mb-4 mt-20  w-full rounded-2xl "
           ></Paper>
+
           {[
-            { title: "popular now", data: popularMovieQuery },
+            { title: "trending", data: popularMovieQuery },
             { title: "now playing", data: nowPlayingMovieQuery },
             { title: "top rated movies", data: topRatedMovieQuery },
             { title: "upcoming movies", data: upcomingMovieQuery },
@@ -78,50 +79,39 @@ const MovieCategories = () => {
                 
         </div>
       </Paper>
-
       {/*page nav*/}
 
       <Paper
         variant="contained"
-        className="w-60 mt-20  box-border pr-3 bg-inherit  h-auto "
+        className="w-60 mt-20 py-2 box-border mr-3 bg-inherit   h-auto "
       >
         <Paper
-          variant="outlined"
+          variant="contained"
           className=" p-4 box-border  w-full rounded-2xl bg-inherit h-auto space-y-2"
         >
           <Typography
             variant="p"
-            className="text-neutral-700 font-semibold tracking-wide"
+            className="text-neutral-700 font-semibold text-lg tracking-wide"
           >
-            Popular Artists
+            Genres
           </Typography>
           <List>
             {popularArtist.isLoading
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl">
-                      <Skeleton className="h-12 w-8  rounded-full">
-                     
-                      </Skeleton>
-                      <Skeleton>
-                      
-                      </Skeleton>
+                      <Skeleton className="h-12 w-8  rounded-full"></Skeleton>
+                      <Skeleton></Skeleton>
                     </ListItemButton>
                   </ListItem>
                 ))
-              : sliceArtists(popularArtist).map((item, index) => (
-                  <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl">
-                      <ListItemAvatar>
-                        <img
-                          src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
-                          alt=""
-                          className="w-12 h-12 rounded-full object-cover"
-                        />
-                      </ListItemAvatar>
+              : sliceArtists(movieGenre).map((item, index) => (
+                  <ListItem key={index} disablePadding >
+                    <ListItemButton className="rounded-lg py-1.5">
+                      
                       <Typography
                         variant="p"
-                        className="text-xs  ml-2 font-medium text-neutral-700"
+                        className="text-sm  w-20 text-neutral-400"
                       >
                         {item.name}
                       </Typography>
@@ -129,7 +119,17 @@ const MovieCategories = () => {
                   </ListItem>
                 ))}
           </List>
+          <Link className="flex items-center justify-start text-sm font-medium font-outfit text-neutral-400 w-full py-1 rounded-xl" underline="none" component="button">
+            See More
+            {/* <HiOutlineChevronDown className="text-lg  ml-4 font-bold"></HiOutlineChevronDown> */}
+          </Link>
         </Paper>
+        {/* <Paper
+          variant="outlined"
+          className=" p-4 box-border  w-full rounded-2xl bg-inherit h-full space-y-2"
+        >
+          
+        </Paper> */}
       </Paper>
     </>
   );
