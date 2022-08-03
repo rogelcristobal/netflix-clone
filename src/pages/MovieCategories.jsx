@@ -1,3 +1,4 @@
+
 import {
   Typography,
   Link,
@@ -11,13 +12,16 @@ import {
 } from "@mui/material";
 import {HiOutlineChevronDown} from "react-icons/hi"
 import TripleCardComponent from "../components/TripleCardComponent";
+
 import useFetchNowPlayingMovie from "../fetch/movies/useFetchNowPlayingMovie";
 
 import useFetchPopularMovie from "../fetch/movies/useFetchPopularMovie";
 import useFetchTopRatedMovie from "../fetch/movies/useFetchTopRatedMovie";
 import useFetchUpcomingMovie from "../fetch/movies/useFetchUpcomingMovie";
+
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
 import useFetchPopularArtist from "../fetch/people/useFetchPopularArtist";
+
 const MovieCategories = () => {
   // queries
   const popularMovieQuery = useFetchPopularMovie();
@@ -44,6 +48,7 @@ const MovieCategories = () => {
   };
   return (
     <>
+
       <Paper
         variant="contained"
         className=" bg-inherit  flex flex-col items-center justify-start    pt-0 w-full  h-full box-border mx-2"
@@ -70,9 +75,12 @@ const MovieCategories = () => {
               isSpanTwo={id === 0 ? true : false}
             ></TripleCardComponent>
           ))}
+
+                
         </div>
       </Paper>
       {/*page nav*/}
+
       <Paper
         variant="contained"
         className="w-60 mt-20 py-2 box-border mr-3 bg-inherit   h-auto "
