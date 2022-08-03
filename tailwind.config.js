@@ -12,11 +12,9 @@ module.exports = {
     extend: {
       
       fontFamily:{
-        'supreme':['Supreme',"sans-serif"],
+        'amulya':['Amulya',"sans-serif"],
         'outfit':["Outfit",'sans-serif'],
-        'excon':["Excon",'sans-serif'],
-        'melo':["MeloDrama",'sans-serif' ],
-        'clash':["Clash Display",'sans-serif']
+       'general':["General Sans",'sans-serif']
 
       },
       backgroundColor:{

@@ -10,7 +10,7 @@
     
     
     ::-webkit-scrollbar-thumb {
-        @apply bg-color-200 hover:bg-color-300 dark:bg-[#233044]/25 rounded-full
+        @apply bg-[#233044]/25 
     }
     .border-sample{
         @apply border border-neutral-300

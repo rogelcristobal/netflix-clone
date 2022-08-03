@@ -1,59 +1,136 @@
-import { Box, Typography, Link, Paper, Grid } from "@mui/material";
-import {BsPlayCircleFill} from 'react-icons/bs'
-import {RiNumbersFill} from 'react-icons/ri'
-import {AiFillStar} from 'react-icons/ai'
+
+import {
+  Box,
+  Typography,
+  Link,
+  Paper,
+  Grid,
+  Chip,
+  Stack,
+  ListItem,
+  ListItemButton,
+  ListItemAvatar,
+  List,
+  Skeleton,
+} from "@mui/material";
+import TripleCardComponent from "../components/TripleCardComponent";
+
 import useFetchNowPlayingMovie from "../fetch/movies/useFetchNowPlayingMovie";
 import useFetchLatestMovie from "../fetch/movies/useFetchLatestMovie";
 import useFetchPopularMovie from "../fetch/movies/useFetchPopularMovie";
 import useFetchTopRatedMovie from "../fetch/movies/useFetchTopRatedMovie";
 import useFetchUpcomingMovie from "../fetch/movies/useFetchUpcomingMovie";
-import Category from "../components/Category";
+
+import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
+import useFetchPopularArtist from "../fetch/people/useFetchPopularArtist";
+
 const MovieCategories = () => {
   // queries
+  const popularMovieQuery = useFetchPopularMovie();
+  const nowPlayingMovieQuery = useFetchNowPlayingMovie();
+  const topRatedMovieQuery = useFetchTopRatedMovie();
   const upcomingMovieQuery = useFetchUpcomingMovie();
-
+  // const movieGenre = useFetchMovieGenres();
+  const popularArtist = useFetchPopularArtist();
+  const sliceArtists = (endpoint, state) => {
+    if (popularArtist.isLoading) {
+      if (!state) {
+        return Array.from(new Array(4));
+      } else {
+        return Array.from(new Array(5));
+      }
+    } else {
+      if (!state) {
+        return endpoint.data?.results.slice(0, 4);
+      } else {
+        return endpoint.data?.results.slice(0, 5);
+      }
+    }
+  };
+  console.log(sliceArtists(popularArtist, true));
   return (
     <>
-      <div className=" px-4 pt-2 box-border flex flex-col items-center justify-start  h-full overflow-y-auto space-y-5  w-full ">
-        <div className="h-auto  min-h-full   box-border flex flex-col items-start  justify-start    gap-8   w-full   no-scrollbar rounded-lg">
-          <div className="p-4 gap-4 text-color-500  h-full w-full box-border mb-6 rounded-2xl grid  grid-cols-12 grid-rows-4">
 
-            <div className="h-full w-full rounded-2xl bg-[#151920] col-span-4 ">b</div>
-            <div className="h-full w-full rounded-2xl bg-[#151920] col-span-5 row-span-3">a</div>
-            <div className="h-full w-full rounded-2xl bg-[#151920] col-span-2 ">c</div>
+      <Paper
+        variant="outlined"
+        className=" bg-inherit  flex flex-col items-center justify-start   mt-0 w-full  h-full box-border mx-2"
+      square>
+        {/* scrollable content */}
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 no-scrollbar   box-border space-y-6">
+          <Paper
+            variant="outlined"
+            className="h-96 bg-inherit mb-4   w-full rounded-2xl rounded-t-none"
+          ></Paper>
+          {[
+            { title: "popular now", data: popularMovieQuery },
+            { title: "now playing", data: nowPlayingMovieQuery },
+            { title: "top rated movies", data: topRatedMovieQuery },
+            { title: "upcoming movies", data: upcomingMovieQuery },
+          ].map((item, id) => (
+            <TripleCardComponent
+              key={id}
+              title={item.title}
+              movie={item.data}
+              isSpanTwo={id === 0 ? true : false}
+            ></TripleCardComponent>
+          ))}
 
-
-
-            {/* <Grid container columns={4} spacing={1} columnSpacing={2} className="h-48 w-full  ">
-              {[
-                { title: "popular", sub: "popular movies now",avatar:<AiFillStar className="text-lg text-color-500 "/>},
-                { title: "top rated", sub: "top rated movies ",avatar:<RiNumbersFill className="text-lg text-color-500 "/>   },
-                { title: "now playing", sub: "popular movies now",avatar:<BsPlayCircleFill className="text-lg text-color-500 "/>  },
-              
-              ].map((item, id) => (
-                <Grid item xs={2} key={id} className="h-fit shadow-sm">
-                  <Category
-                    title={item.title}
-                    subTitle={item.sub}
-                    avatar={item.avatar}
-                    color="bg-[#1b2635]"
-                  ></Category>
-                </Grid>
-              ))}
-            </Grid> */}
-
-            {/* bg-[#151920]  */}
-          </div>
+                
         </div>
-      </div>
+      </Paper>
 
       {/*page nav*/}
-      {/* <div className="w-60 mt-4  mx-4   h-80">
+
+      <Paper
+        variant="contained"
+        className="w-60 mt-20  box-border pr-3 bg-inherit  h-auto "
+      >
         <Paper
-          variant="contained"
-          className="h-full   w-full rounded-lg bg-inherit"
-        ></Paper>
-      </div> */}
+          variant="outlined"
+          className=" p-4 box-border  w-full rounded-2xl bg-inherit h-auto space-y-2"
+        >
+          <Typography
+            variant="p"
+            className="text-neutral-700 font-semibold tracking-wide"
+          >
+            Popular Artists
+          </Typography>
+          <List>
+            {popularArtist.isLoading
+              ? Array.from(new Array(4)).map((item, index) => (
+                  <ListItem key={index} disablePadding>
+                    <ListItemButton className="rounded-xl">
+                      <Skeleton className="h-12 w-8  rounded-full">
+                     
+                      </Skeleton>
+                      <Skeleton>
+                      
+                      </Skeleton>
+                    </ListItemButton>
+                  </ListItem>
+                ))
+              : sliceArtists(popularArtist).map((item, index) => (
+                  <ListItem key={index} disablePadding>
+                    <ListItemButton className="rounded-xl">
+                      <ListItemAvatar>
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500/${item.profile_path}`}
+                          alt=""
+                          className="w-12 h-12 rounded-full object-cover"
+                        />
+                      </ListItemAvatar>
+                      <Typography
+                        variant="p"
+                        className="text-xs  ml-2 font-medium text-neutral-700"
+                      >
+                        {item.name}
+                      </Typography>
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+          </List>
+        </Paper>
+      </Paper>
     </>
   );
 };
