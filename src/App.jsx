@@ -61,6 +61,7 @@ function App() {
           <Route
             path="/homepage/*"
             element={
+
               <div className="font-general relative flex w-full box-border   h-screen bg-color-100  ">
                 {/* nav */}
                 <div className="fixed top-0 left-0 w-full h-16 z-20 ">
@@ -76,6 +77,7 @@ function App() {
                       <div className="flex items-center justify-between w-full space-x-4">
 
                     
+
                       </div>
                     </Paper>
                   </div>
@@ -87,6 +89,7 @@ function App() {
                 >
                   {/* sidebar contents here */}
                   <Paper
+
                     variant="outlined"
                     className=" w-full px-4  h-full pt-20 box-border bg-inherit  flex flex-col items-center justify-start "
                     square
@@ -96,7 +99,9 @@ function App() {
                 </div>
                 {/* body */}
 
+
                 <div className="flex items-start justify-start w-full  h-screen  box-border">
+
                   <Routes>
                     <Route path="/" element={<MovieCategories />}></Route>
                     

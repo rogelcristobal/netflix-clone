@@ -1,3 +1,4 @@
+
 import {
   Box,
   Typography,
@@ -13,13 +14,16 @@ import {
   Skeleton,
 } from "@mui/material";
 import TripleCardComponent from "../components/TripleCardComponent";
+
 import useFetchNowPlayingMovie from "../fetch/movies/useFetchNowPlayingMovie";
 import useFetchLatestMovie from "../fetch/movies/useFetchLatestMovie";
 import useFetchPopularMovie from "../fetch/movies/useFetchPopularMovie";
 import useFetchTopRatedMovie from "../fetch/movies/useFetchTopRatedMovie";
 import useFetchUpcomingMovie from "../fetch/movies/useFetchUpcomingMovie";
+
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
 import useFetchPopularArtist from "../fetch/people/useFetchPopularArtist";
+
 const MovieCategories = () => {
   // queries
   const popularMovieQuery = useFetchPopularMovie();
@@ -46,6 +50,7 @@ const MovieCategories = () => {
   console.log(sliceArtists(popularArtist, true));
   return (
     <>
+
       <Paper
         variant="outlined"
         className=" bg-inherit  flex flex-col items-center justify-start   mt-0 w-full  h-full box-border mx-2"
@@ -69,10 +74,13 @@ const MovieCategories = () => {
               isSpanTwo={id === 0 ? true : false}
             ></TripleCardComponent>
           ))}
+
+                
         </div>
       </Paper>
 
       {/*page nav*/}
+
       <Paper
         variant="contained"
         className="w-60 mt-20  box-border pr-3 bg-inherit  h-auto "
