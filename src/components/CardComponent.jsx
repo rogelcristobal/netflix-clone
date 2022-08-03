@@ -4,13 +4,8 @@ import {
   Card,
   CardMedia,
   CardContent,
-  Typography,
   Skeleton,
-  Tooltip,
-  Zoom,
-  CardHeader,
-  Avatar,
-  IconButton,
+  CardHeader, Typography,
 } from "@mui/material";
 
 const CardComponent = ({ title,poster,subheader }) => {
@@ -37,15 +32,10 @@ const CardComponent = ({ title,poster,subheader }) => {
           ></Skeleton>
         )}
 
-        <CardContent className="flex flex-col h-16 items-start justify-center p-0 w-full ">
+        <CardContent className="flex flex-col  h-16 items-start justify-center p-0 w-full ">
           {title ? (
             <>
-              <CardHeader
-                className="capitalize   p-1 text-neutral-700"
-                titleTypographyProps={{ fontSize: "0.8rem",fontWeight:500 }}
-                 title={title}
-               
-              />
+              <Typography variant="p" className="text-sm font-outfit font-medium" >{title}</Typography>
             </>
           ) : (
             <>
