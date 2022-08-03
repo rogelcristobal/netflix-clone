@@ -19,20 +19,16 @@ const TripleCardComponent = ({ movie, title,isSpanTwo }) => {
     }
   };
   // sample logs
-  if (movie.isLoading) {
-    console.log("loading wait");
-  } else {
-    console.log(movie.data);
-  }
+ 
   return (
     <Paper
-      variant="contained"
+      variant="outlined"
       className="flex flex-col items-start justify-center w-full  h-fit bg-inherit  rounded-xl overflow-hidden px-6 box-border py-6 "
     >
       <Box className="flex items-center justify-between w-full h-auto mb-6">
         <Typography
           variant="p"
-          className=" capitalize font-semibold text-lg text-gray-700"
+          className=" capitalize font-semibold text-xl text-neutral-700"
         >
           {title}
         </Typography>

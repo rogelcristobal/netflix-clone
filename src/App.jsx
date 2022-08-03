@@ -63,12 +63,12 @@ function App() {
             element={
               <div className="font-general relative flex w-full box-border   h-screen bg-color-100  ">
                 {/* nav */}
-                <div className="fixed top-0 left-0 w-full h-16 z-10 ">
+                <div className="fixed top-0 left-0 w-full h-16 z-20 ">
                   <div className="container h-full flex  justify-end mx-auto items-center rounded-lg ">
                     {/* nav contents here */}
                     <Paper
-                      variant="contained"
-                      className={`h-full w-full  bg-inherit flex items-center justify-between  transition-all ease-in-out duration-500`}
+                      variant="outlined"
+                      className={`h-full w-full  bg-transparent flex items-center justify-between  transition-all ease-in-out duration-500`}
                     >
                       {/* ham */}
                     
@@ -87,8 +87,8 @@ function App() {
                 >
                   {/* sidebar contents here */}
                   <Paper
-                    variant="contained"
-                    className=" w-full px-4  h-full pt-20 box-border bg-color-100  flex flex-col items-center justify-start "
+                    variant="outlined"
+                    className=" w-full px-4  h-full pt-20 box-border bg-inherit  flex flex-col items-center justify-start "
                     square
                   >
                    
@@ -96,7 +96,7 @@ function App() {
                 </div>
                 {/* body */}
 
-                <div className="flex items-start justify-start w-full px-4 pt-16 h-screen  box-border">
+                <div className="flex items-start justify-start w-full  h-screen  box-border">
                   <Routes>
                     <Route path="/" element={<MovieCategories />}></Route>
                     
@@ -117,5 +117,5 @@ export default App;
 // https://demos.wrappixel.com/premium-admin-templates/react/flexy-react/dark/#/dashboards/dashboard1
 
 // netflix
-
+// https://dribbble.com/shots/17158926-Wave-Music-Streaming-Project
 // https://dribbble.com/shots/14655584-White-and-clean-TV-app

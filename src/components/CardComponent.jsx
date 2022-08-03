@@ -25,7 +25,7 @@ const CardComponent = ({ title,poster,subheader }) => {
         {!poster ? (
           <CardMedia
             component="img"
-            className="h-32 w-full object-cover rounded-xl "
+            className="h-40 w-full object-cover rounded-xl "
             title=""
             image={`https://image.tmdb.org/t/p/w500/${poster}`}
           />
@@ -33,7 +33,7 @@ const CardComponent = ({ title,poster,subheader }) => {
           <Skeleton
             variant="rectangular"
             animation="wave"
-            className="h-32 w-full bg-color-200   rounded-xl"
+            className="h-40 w-full bg-color-200   rounded-xl"
           ></Skeleton>
         )}
 
@@ -41,8 +41,8 @@ const CardComponent = ({ title,poster,subheader }) => {
           {title ? (
             <>
               <CardHeader
-                className="capitalize   p-1 text-color-700"
-                titleTypographyProps={{ fontSize: "0.8rem",fontWeight:600 }}
+                className="capitalize   p-1 text-neutral-700"
+                titleTypographyProps={{ fontSize: "0.8rem",fontWeight:500 }}
                  title={title}
                
               />
