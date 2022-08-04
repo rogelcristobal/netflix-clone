@@ -28,18 +28,14 @@ const TripleCardComponent = ({ movie, title,isSpanTwo }) => {
       <Box className="flex items-center justify-between w-full h-auto mb-6">
         <Typography
           variant="p"
-          className=" capitalize font-semibold text-xl text-neutral-700"
+          className=" capitalize font-semibold text-xl text-white"
         >
           {title}
         </Typography>
-        <Link
-          underline="none"
-          component="button"
-          onClick={() => alert("x")}
-          className="text-gray-400 font-medium font-general"
-        >
-          See all
-        </Link>
+        <Link className="flex items-center justify-start text-sm  font-outfit text-neutral-300  " underline="none" component="button">
+            See More
+            {/* <HiOutlineChevronDown className="text-lg  ml-4 font-bold"></HiOutlineChevronDown> */}
+          </Link>
       </Box>
 
       {/* map only 5 item */}

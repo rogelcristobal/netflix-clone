@@ -20,7 +20,7 @@ const CardComponent = ({ title,poster,subheader }) => {
         {!poster ? (
           <CardMedia
             component="img"
-            className="h-40 w-full object-cover rounded-xl "
+            className="h-40 w-full object-cover rounded-2xl "
             title=""
             image={`https://image.tmdb.org/t/p/w500/${poster}`}
           />
@@ -28,14 +28,14 @@ const CardComponent = ({ title,poster,subheader }) => {
           <Skeleton
             variant="rectangular"
             animation="wave"
-            className="h-40 w-full bg-color-200   rounded-xl"
+            className="h-40 w-full bg-[#22232e]   rounded-2xl"
           ></Skeleton>
         )}
 
         <CardContent className="flex flex-col  h-16 items-start justify-center p-0 w-full ">
           {title ? (
             <>
-              <Typography variant="p" className="text-sm font-outfit font-medium" >{title}</Typography>
+              <Typography variant="p" className="text-sm font-outfit font-medium text-gray-400" >{title}</Typography>
             </>
           ) : (
             <>
