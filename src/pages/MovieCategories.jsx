@@ -31,7 +31,7 @@ const MovieCategories = () => {
   const movieGenre = useFetchMovieGenres();
   const popularArtist = useFetchPopularArtist();
   const sliceArtists = (endpoint, state) => {
-    console.log(movieGenre.data)
+    // console.log(movieGenre.data)
     if (movieGenre.isLoading) {
       if (!state) {
         return Array.from(new Array(4));
@@ -55,11 +55,17 @@ const MovieCategories = () => {
         square
       >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4  no-scrollbar  box-border space-y-2">
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4  no-scrollbar  box-border space-y-3">
+          <Paper
+            variant="outlined"
+            className="h-40  mb-4 mt-24 box-border w-full rounded-2xl p-6 text-neutral-700"
+          >
+            <Typography variant="p" className="text-lg font-semibold">Follow Artist</Typography>
+          </Paper>
 
           <Paper
             variant="contained"
-            className="h-52 bg-color-200 mb-4 mt-20  w-full rounded-2xl "
+            className="h-52 bg-color-200    w-full rounded-2xl "
           ></Paper>
 
           {[
@@ -86,7 +92,7 @@ const MovieCategories = () => {
         className="w-60 mt-20 py-2 box-border mr-3 bg-inherit   h-auto "
       >
         <Paper
-          variant="contained"
+          variant="outlined"
           className=" p-4 box-border  w-full rounded-2xl bg-inherit h-auto space-y-2"
         >
           <Typography

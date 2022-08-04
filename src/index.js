@@ -9,7 +9,10 @@ import { AuthProvider } from "./context/AuthContext";
 import { SearchProvider } from "./context/SearchContext";
 import { HashRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
 root.render(
+
 	<Provider store={store}>
 		<HashRouter>
 			<AuthProvider>
@@ -21,6 +24,7 @@ root.render(
 				</AuthProvider>
 		</HashRouter>
 	</Provider>
+	
 );
 
 // If you want to start measuring performance in your app, pass a function

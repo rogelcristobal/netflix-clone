@@ -4,15 +4,37 @@ import { useNavigate } from "react-router-dom";
 import MovieCategories from "./pages/MovieCategories";
 // MUI
 import {
-  Paper, Button,
+  Paper,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import useFetchNetwork from './fetch/useFetchNetwork'
 const queryClient = new QueryClient();
 
+
 function App() {
+  return(
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
+      <NetflixClone></NetflixClone>
+    </QueryClientProvider>
+  )
+}
+function NetflixClone(){
+  // styles
+  // [#1b2635]
+  // [#212b36]
+  const networkQuery = useFetchNetwork()
+  console.log(networkQuery.data)
+  if(networkQuery.isLoading){
+    console.log('loading')
+  }else if(networkQuery.isError){
+    console.log(networkQuery.error)
+  }else{
+    console.log(networkQuery.data)
+  }
   const nav = useNavigate();
   const theme = createTheme({
     typography: {
@@ -28,14 +50,7 @@ function App() {
     },
    
   });
-  // styles
-  // [#1b2635]
-  // [#212b36]
-
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-
       <ThemeProvider theme={theme}>
         <Routes>
           <Route
@@ -52,19 +67,19 @@ function App() {
             element={
               <div className="font-outfit relative flex w-full box-border   h-screen bg-color-100  ">
                 {/* nav */}
-                <div className="fixed top-0 left-0 w-full h-20  z-20 ">
+                <div className="fixed top-0 left-0 w-full h-20  z-10 bg-color-100">
                   <div className="container h-full flex   justify-end mx-auto items-center rounded-lg ">
                     {/* nav contents here */}
                     <Paper
-                      variant="contained"
-                      className={`h-full w-[calc(100%-13rem)] pt-2 bg-transparent flex items-center justify-between  transition-all ease-in-out duration-500 px-4 box-border`}
+                      variant="outlined"
+                      className={`h-full w-[calc(100%-13rem)] pt-2  flex items-center justify-between  transition-all ease-in-out duration-500 px-4 box-border`}
                     >
                       {/* ham */}
                     
 
                       <div className="flex items-center justify-start  space-x-6">
-                        <p className="text-md font-medium text-red-500">Movies</p>
-                        <p className="text-md font-medium">TV Shows</p>
+                        <p className="text-sm font-medium text-red-500">Movies</p>
+                        <p className="text-sm font-medium text-neutral-400">TV Shows</p>
 
                     
 
@@ -81,7 +96,7 @@ function App() {
                 >
                   {/* sidebar contents here */}
                   <Paper
-                    variant="contained"
+                    variant="outlined"
                     className=" w-full px-4  h-full pt-20 box-border bg-color-100  flex flex-col items-center justify-start "
                     square
                   >
@@ -101,7 +116,6 @@ function App() {
           ></Route>
         </Routes>
       </ThemeProvider>
-    </QueryClientProvider>
   );
 }
 
