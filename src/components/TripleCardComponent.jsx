@@ -28,11 +28,11 @@ const TripleCardComponent = ({ movie, title,isSpanTwo }) => {
       <Box className="flex items-center justify-between w-full h-auto mb-6">
         <Typography
           variant="p"
-          className=" capitalize font-semibold text-xl text-white"
+          className=" capitalize font-medium tracking-wide text-2xl text-gray-200"
         >
           {title}
         </Typography>
-        <Link className="flex items-center justify-start text-sm  font-outfit text-neutral-300  " underline="none" component="button">
+        <Link className="flex items-center justify-start text-sm  font-outfit text-gray-700  " underline="none" component="button">
             See More
             {/* <HiOutlineChevronDown className="text-lg  ml-4 font-bold"></HiOutlineChevronDown> */}
           </Link>
@@ -41,7 +41,7 @@ const TripleCardComponent = ({ movie, title,isSpanTwo }) => {
       {/* map only 5 item */}
 
       {isSpanTwo ? (
-        <Grid container spacing={2} columns={5} className="px-6 box-border">
+        <Grid container spacing={2} columns={5} className="px-4 box-border">
           {selectFourItem(movie,false).map((item, id) => (
             <Grid item xs={id === 0 ? 2 : 1} key={id}>
               <CardComponent

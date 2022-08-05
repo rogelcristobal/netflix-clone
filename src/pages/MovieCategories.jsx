@@ -12,7 +12,7 @@ import {
   Grid,
 } from "@mui/material";
 import TripleCardComponent from "../components/TripleCardComponent";
-
+import {BsArrowRight} from 'react-icons/bs'
 import useFetchNowPlayingMovie from "../fetch/movies/useFetchNowPlayingMovie";
 
 import useFetchPopularMovie from "../fetch/movies/useFetchPopularMovie";
@@ -28,6 +28,7 @@ const MovieCategories = () => {
   const nowPlayingMovieQuery = useFetchNowPlayingMovie();
   const topRatedMovieQuery = useFetchTopRatedMovie();
   const upcomingMovieQuery = useFetchUpcomingMovie();
+  const popularArtist = useFetchPopularArtist()
   const movieGenre = useFetchMovieGenres();
   const sliceGenre = (endpoint, state) => {
     // console.log(movieGenre.data)
@@ -45,6 +46,7 @@ const MovieCategories = () => {
       }
     }
   };
+  console.log(popularArtist.data?.results)
 
   return (
     <>
@@ -54,32 +56,54 @@ const MovieCategories = () => {
         square
       >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2 no-scrollbar  box-border space-y-3">
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2 no-scrollbar  box-border space-y-7  ">
           {/* <Paper
             variant="contained"
-            className="bg-color-200  py-4 px-4 h-80 mt-20 w-full  box-border rounded-2xl"
+            className="bg-color-200  py-4 px-4 h-80 mt-20 w-full  box-border rounded-lg"
           ></Paper> */}
             <Paper
               variant="contained"
-              className="h-fit bg-inherit  mt-20 box-border w-full rounded-2xl space-y-2 py-4 px-6 text-white "
+              className="h-fit bg-inherit  mt-24 box-border w-full rounded-xl space-y-3 py-4 px-6 text-gray-200 "
             >
-              <Typography variant="p" className="text-2xl font-semibold">
-                Discover Movies
+              <Typography variant="p" className="text-3xl font-medium tracking-wide">
+                Discover New Artists
               </Typography>
-              <Grid container columns={7} spacing={2}>
-                <Grid item xs={4}>
+              {/* scroll through these */}
+              <Grid container columns={10} spacing={2} className="px-4">
+                <Grid item xs={4} >
                   <Paper
                     variant="contained"
-                    className="bg-[#22232e]  py-4 px-4 h-72 w-full  box-border rounded-2xl"
+                    className="bg-[#191920] overflow-hidden h-72 w-full grid place-content-center transition-all ease-in-out duration-500 box-border rounded-xl"
+                  >
+                    {/* {
+                      !popularArtist.isLoading &&
+                      <div className="p-3 bg-color-400/20  rounded-full">
+
+                      <Avatar className="h-24 w-24 ">
+
+                       <img src={`https://image.tmdb.org/t/p/w500${popularArtist.data.results[1].profile_path}`} className="h-full rounded-full w-full object-cover " alt=""/>
+                      </Avatar>
+                      </div>
+                    } */}
+
+                  </Paper>
+                </Grid>
+                <Grid item xs={3}>
+                  <Paper
+                    variant="contained"
+                    className="bg-[#191920]  py-4 px-4 h-52 w-full  box-border rounded-lg"
                   ></Paper>
                 </Grid>
                 <Grid item xs={3}>
                   <Paper
                     variant="contained"
-                    className="bg-[#22232e]  py-4 px-4 h-72 w-full  box-border rounded-2xl"
+                    className="bg-[#191920]  py-4 px-4 h-52 w-full  box-border rounded-lg"
                   ></Paper>
                 </Grid>
               </Grid>
+
+
+              
             </Paper>
 
           {[
@@ -101,15 +125,15 @@ const MovieCategories = () => {
 
       <Paper
         variant="contained"
-        className="w-60 mt-20 py-2 box-border mr-3 bg-inherit   h-auto "
+        className="w-72 mt-0 pt-20 py-2 box-border mr-3 bg-inherit   h-full "
       >
         <Paper
           variant="contained"
-          className=" p-4 box-border  w-full rounded-2xl bg-inherit h-auto space-y-2"
+          className=" p-6 box-border  w-full rounded-xl bg-inherit h-auto space-y-2"
         >
           <Typography
             variant="p"
-            className="text-black font-semibold text-md tracking-wide"
+            className="text-gray-600 font-medium text-md tracking-wide"
           >
             Genres
           </Typography>
@@ -131,7 +155,7 @@ const MovieCategories = () => {
                 ))
               : sliceGenre(movieGenre).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-lg py-1.5">
+                    <ListItemButton className="rounded-xl py-3">
                       <Typography
                         variant="p"
                         className="text-sm  w-20 text-gray-700"
@@ -153,7 +177,7 @@ const MovieCategories = () => {
         </Paper>
         {/* <Paper
           variant="contained"
-          className=" p-4 box-border  w-full rounded-2xl bg-inherit h-full space-y-2"
+          className=" p-4 box-border  w-full rounded-xl bg-inherit h-full space-y-2"
         >
           
         </Paper> */}
