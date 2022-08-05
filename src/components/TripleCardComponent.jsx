@@ -28,7 +28,7 @@ const TripleCardComponent = ({ movie, title,isSpanTwo }) => {
       <Box className="flex items-center justify-between w-full h-auto mb-6">
         <Typography
           variant="p"
-          className=" capitalize font-medium tracking-wide text-2xl text-gray-200"
+          className=" capitalize font-medium tracking-wide text-xl text-gray-200"
         >
           {title}
         </Typography>

@@ -9,7 +9,7 @@ import SearchModal from "./components/SearchModal";
 import MovieCategories from "./pages/MovieCategories";
 import ModalBG from "./components/modal/ModalBG";
 // MUI
-import { Paper,  IconButton } from "@mui/material";
+import { Paper,  IconButton, Tooltip } from "@mui/material";
 // react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -86,10 +86,12 @@ function NetflixClone() {
                     </div>
 
                     <div className="flex items-center h-full w-72 justify-start">
+                      <Tooltip title="search"  arrow placement="top-end">
                       <IconButton aria-label="" className="hover:bg-color-500/10 text-gray-400 hover:text-gray-100" onClick={()=>setSearchModal(!searchModal)}>
                         
                         <RiSearchLine className=" font-medium text-xl"></RiSearchLine>
                       </IconButton>
+                      </Tooltip>
                     </div>
 
 

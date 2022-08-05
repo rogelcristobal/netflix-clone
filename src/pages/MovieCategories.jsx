@@ -56,7 +56,7 @@ const MovieCategories = () => {
         square
       >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2   box-border space-y-7  ">
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2   box-border space-y-7  scroll-smooth	">
           {/* <Paper
             variant="contained"
             className="bg-color-200  py-4 px-4 h-80 mt-20 w-full  box-border rounded-lg"
@@ -172,15 +172,9 @@ const MovieCategories = () => {
             component="button"
           >
             See More
-            {/* <HiOutlineChevronDown className="text-lg  ml-4 font-bold"></HiOutlineChevronDown> */}
-          </Link>
+             </Link>
         </Paper>
-        {/* <Paper
-          variant="contained"
-          className=" p-4 box-border  w-full rounded-xl bg-inherit h-full space-y-2"
-        >
-          
-        </Paper> */}
+        
       </Paper>
     </>
   );
