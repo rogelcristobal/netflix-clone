@@ -4,7 +4,8 @@ import { useContext } from "react";
 // hooks
 import {SearchModalProvider} from './context/SearchModalContext'
 import SearchModalContext from "./context/SearchModalContext";
-// pages
+// components
+import SearchModal from "./components/SearchModal";
 import MovieCategories from "./pages/MovieCategories";
 import ModalBG from "./components/modal/ModalBG";
 // MUI
@@ -62,7 +63,9 @@ function NetflixClone() {
               {/* nav */}
               {
                 searchModal&&
-                  <ModalBG></ModalBG>
+                  <ModalBG contextFunction={setSearchModal} contextState={searchModal}>
+                    <SearchModal></SearchModal>
+                  </ModalBG>
               }
               <div className="fixed top-0 left-0 w-full h-20  z-10 bg-transparent ">
                 <div className="container h-full flex   justify-end mx-auto items-center rounded-lg ">

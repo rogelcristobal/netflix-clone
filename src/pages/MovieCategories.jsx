@@ -56,7 +56,7 @@ const MovieCategories = () => {
         square
       >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2 no-scrollbar  box-border space-y-7  ">
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2   box-border space-y-7  ">
           {/* <Paper
             variant="contained"
             className="bg-color-200  py-4 px-4 h-80 mt-20 w-full  box-border rounded-lg"
@@ -155,7 +155,7 @@ const MovieCategories = () => {
                 ))
               : sliceGenre(movieGenre).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl py-3">
+                    <ListItemButton className="rounded-xl hover:bg-[#191920] py-3">
                       <Typography
                         variant="p"
                         className="text-sm  w-20 text-gray-700"

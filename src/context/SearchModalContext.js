@@ -1,6 +1,5 @@
 import {  createContext } from "react";
 import { useState } from "react";
-
 const SearchModalContext = createContext()
 
 export const SearchModalProvider = ({children})=>{
