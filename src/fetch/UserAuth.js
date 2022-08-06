@@ -1,14 +1,16 @@
-import { createContext, useState, useEffect } from "react";
-import { auth } from "../firebase";
+import { useState, useEffect } from "react";
 import {
 	signInWithEmailAndPassword,
-	signOut,
 	onAuthStateChanged,
+	signOut,
 } from "firebase/auth";
-const AuthContext = createContext();
-export const AuthProvider = ({ children }) => {
+import { auth } from "../firebase";
+import { useQuery } from "@tanstack/react-query";
+export default function UserAuth() {
 	const [user, setUser] = useState();
-
+	// const loginQuery = useQuery(["logIn"], async (email, password) => {
+	// 	return await signInWithEmailAndPassword(auth, email, password);
+	// });
 	const login = (email, password) => {
 		return signInWithEmailAndPassword(auth, email, password);
 	};
@@ -23,11 +25,6 @@ export const AuthProvider = ({ children }) => {
 			unsubscribe();
 		};
 	}, []);
-	return (
-		<AuthContext.Provider value={{ login, logout, user }}>
-			{children}
-		</AuthContext.Provider>
-	);
-};
 
-export default AuthContext;
+	return { user, login, logout };
+}
