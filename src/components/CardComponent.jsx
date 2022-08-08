@@ -17,7 +17,7 @@ const CardComponent = ({ title, poster, subheader }) => {
 				className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1   "
 				// onClick={() => alert(`${!data.id}\n${!data.title}`)}
 			>
-				{!poster ? (
+				{poster ? (
 					<div className="relative w-full h-fit ">
 						<CardMedia
 							component="img"
@@ -31,12 +31,12 @@ const CardComponent = ({ title, poster, subheader }) => {
 					<Skeleton
 						variant="rectangular"
 						animation="wave"
-						className="h-52 w-full bg-[#191920]   rounded-xl"
+						className="h-52 w-full bg-color-black  rounded-xl"
 					></Skeleton>
 				)}
 
 				<CardContent className="flex flex-col absolute z-0 bottom-0 py-1 h-14 items-center justify-center p-0 w-full  bg-color-500/20   drop-shadow-lg  pointer-events-none">
-					{!title ? (
+					{title ? (
 						<>
 							<Typography
 								variant="p"

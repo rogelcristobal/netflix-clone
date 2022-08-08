@@ -45,7 +45,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 			{/* map only 5 item */}
 
 			{isSpanTwo ? (
-				<Grid container spacing={2} columns={5} className="px-4 box-border">
+				<Grid container spacing={2} columns={6} className="px-4 box-border">
 					{selectFourItem(movie, false).map((item, id) => (
 						<Grid item xs={id === 0 ? 2 : 1} key={id}>
 							<CardComponent
