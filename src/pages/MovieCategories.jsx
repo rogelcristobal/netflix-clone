@@ -50,18 +50,18 @@ const MovieCategories = () => {
   return (
     <>
       <Paper
-        variant="contained"
-        className=" bg-inherit  flex flex-col items-center justify-start    pt-0 w-full  h-full box-border mx-2"
+        variant="outlined"
+        className=" bg-inherit  flex flex-col items-center justify-start    pt-20 w-full  h-full box-border mx-2"
         square
       >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2   box-border space-y-7 scroll-smooth	">
-          <Paper
-            variant="contained"
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2   box-border space-y-7 scroll-smooth	no-scrollbar">
+          {/* <Paper
+            variant="outlined"
             className="bg-color-black  py-4 px-4 h-96 mt-20 w-full  box-border rounded-lg"
-          ></Paper>
-          <Paper
-            variant="contained"
+          ></Paper> */}
+          {/* <Paper
+            variant="outlined"
             className="h-fit bg-inherit  mt-24 box-border w-full rounded-xl space-y-3 py-4 px-6 text-gray-200 "
           >
             <Typography
@@ -70,11 +70,10 @@ const MovieCategories = () => {
             >
               Trending now
             </Typography>
-            {/* scroll through these */}
             <Grid container columns={12} spacing={2} className="px-4">
               <Grid item xs={6}>
                 <Paper
-                  variant="contained"
+                  variant="outlined"
                   className="bg-color-black overflow-hidden h-72 w-full grid place-content-center transition-all ease-in-out duration-500 box-border rounded-xl"
                 ></Paper>
               </Grid>
@@ -86,12 +85,12 @@ const MovieCategories = () => {
               </Grid>
               <Grid item xs={3}>
                 <Paper
-                  variant="contained"
+                  variant="outlined"
                   className="bg-color-black   py-4 px-4 h-52 w-full  box-border rounded-lg"
                 ></Paper>
               </Grid>
             </Grid>
-          </Paper>
+          </Paper> */}
 
           {[
             { title: "popular", data: popularMovieQuery },
@@ -111,11 +110,11 @@ const MovieCategories = () => {
       {/*page nav*/}
 
       <Paper
-        variant="contained"
+        variant="outlined"
         className="w-72 mt-0 pt-20 py-2 box-border mr-3 bg-inherit   h-full "
       >
-        <Paper
-          variant="contained"
+        {/* <Paper
+          variant="outlined"
           className=" p-6 box-border  w-full rounded-xl bg-inherit h-auto space-y-2"
         >
           <Typography
@@ -128,7 +127,7 @@ const MovieCategories = () => {
             {movieGenre.isLoading
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl" variant="contained">
+                    <ListItemButton className="rounded-xl" variant="outlined">
                       <Skeleton>
                         <Typography
                           variant="p"
@@ -160,7 +159,7 @@ const MovieCategories = () => {
           >
             See More
           </Link>
-        </Paper>
+        </Paper> */}
       </Paper>
     </>
   );

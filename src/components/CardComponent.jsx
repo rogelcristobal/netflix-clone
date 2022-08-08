@@ -31,7 +31,7 @@ const CardComponent = ({ title, poster, subheader }) => {
 					<Skeleton
 						variant="rectangular"
 						animation="wave"
-						className="h-52 w-full bg-color-black  rounded-xl"
+						className="h-52 w-full bg-color-300   rounded-xl"
 					></Skeleton>
 				)}
 

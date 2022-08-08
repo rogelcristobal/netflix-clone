@@ -32,7 +32,7 @@ const LoginPage = () => {
     <div className="h-screen w-full bg-color-300  grid gap-20 grid-cols-12 font-outfit relative">
       <img
         src={img}
-        className="h-full w-full object-cover absolute top-0 left-0 object-left "
+        className="h-full w-full object-cover absolute top-0 left-0 object "
         alt=""
         srcset=""
       />
@@ -66,7 +66,7 @@ const LoginPage = () => {
           />
           <input
             type="submit"
-            className="bg-primary-400 shadow-primary-400 shadow-lg  border-none py-2 px-8 rounded-lg cursor-pointer text-white  font-outfit text-xs capitalize tracking-wide"
+            className="bg-red-500 shadow-primary-400 shadow-lg  border-none py-2 px-8 rounded-lg cursor-pointer text-white  font-outfit text-xs capitalize tracking-wide"
             value="sign in"
           />
         </form>

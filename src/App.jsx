@@ -61,7 +61,7 @@ function NetflixClone() {
         <Route
           path="/homepage/*"
           element={
-            <div className="font-outfit relative flex w-full box-border   h-screen bg-[#111115]  ">
+            <div className="font-outfit relative flex w-full box-border   h-screen bg-color-100  ">
               {/* nav */}
               {searchModal && (
                 <ModalBG
@@ -71,7 +71,7 @@ function NetflixClone() {
                   <SearchModal></SearchModal>
                 </ModalBG>
               )}
-              <div className="fixed top-0 left-0 w-full h-20  z-30 bg-transparent ">
+              <div className="fixed top-0 left-0 w-full h-20  shadow-sm z-30 bg-inherit ">
                 <div className="container h-full flex   justify-end mx-auto items-center rounded-lg ">
                   {/* nav contents here */}
                   <Paper
@@ -81,10 +81,10 @@ function NetflixClone() {
                     {/* ham */}
 
                     <div className="flex items-center  justify-around ml-2 space-x-6">
-                      <p className="text-base font-medium text-color-100 ">
+                      <p className="text-sm  text-color-black ">
                         Movies
                       </p>
-                      <p className="text-base font-medium text-gray-500">
+                      <p className="text-sm  text-gray-700">
                         Tv Shows
                       </p>
                     </div>

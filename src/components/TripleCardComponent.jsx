@@ -22,13 +22,13 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 
 	return (
 		<Paper
-			variant="contained"
+			variant="outlined"
 			className="flex flex-col items-start justify-center w-full  h-fit bg-inherit  rounded-xl overflow-hidden px-6 box-border py-6 "
 		>
 			<Box className="flex items-center justify-between w-full h-auto mb-6">
 				<Typography
 					variant="p"
-					className=" capitalize font-medium tracking-wide text-xl text-color-100"
+					className=" capitalize font-medium tracking-wide text-xl text-color-black"
 				>
 					{title}
 				</Typography>
@@ -47,7 +47,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 			{isSpanTwo ? (
 				<Grid container spacing={2} columns={6} className="px-4 box-border">
 					{selectFourItem(movie, false).map((item, id) => (
-						<Grid item xs={id === 0 ? 2 : 1} key={id}>
+						<Grid item xs={id === 0 || id === 1 ? 2 : 1} key={id}>
 							<CardComponent
 								title={item?.title}
 								poster={item?.poster_path}
