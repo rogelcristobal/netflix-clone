@@ -4,13 +4,13 @@
 
 @layer components {
 	::-webkit-scrollbar {
-		@apply w-2;
+		@apply w-1.5 ;
 	}
 
     
     
     ::-webkit-scrollbar-thumb {
-        @apply bg-[#233044]/25 
+        @apply hover:bg-[#233044]/25 bg-gray-900/25 rounded-full
     }
     .border-sample{
         @apply border border-neutral-300
