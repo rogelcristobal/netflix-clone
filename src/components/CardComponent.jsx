@@ -25,7 +25,7 @@ const CardComponent = ({ title, poster, subheader }) => {
 							title=""
 							image={`https://image.tmdb.org/t/p/w500/${poster}`}
 						/>
-						<div className="h-full w-full absolute top-0 hover:bg-black/40 bg-black/20 transition-all ease-in-out duration-300  rounded-xl "></div>
+						<div className="h-full w-full absolute top-0 hover:bg-black/40 bg-black/30 transition-all ease-in-out duration-300  rounded-xl "></div>
 					</div>
 				) : (
 					<Skeleton
