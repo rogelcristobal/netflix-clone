@@ -3,18 +3,24 @@ import { Box, Typography, Link, Paper, Grid } from "@mui/material";
 import CardComponent from "./CardComponent";
 const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 	//   gets first 3 items in the returned array
-	const selectFourItem = (endpoint, state) => {
+	const selectItems = (endpoint, spanState) => {
 		if (movie.isLoading) {
-			if (!state) {
+			// if loading = true
+			if (spanState) {
+				// if it has a span 
 				return Array.from(new Array(4));
 			} else {
-				return Array.from(new Array(5));
+				// span off
+				return Array.from(new Array(3));
 			}
 		} else {
-			if (!state) {
+			// if it is not loading
+			if (spanState) {
+				// if it has a span 
 				return endpoint.data?.results.slice(0, 4);
 			} else {
-				return endpoint.data?.results.slice(0, 5);
+				// span off
+				return endpoint.data?.results.slice(0, 3);
 			}
 		}
 	};
@@ -22,18 +28,18 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 
 	return (
 		<Paper
-			variant="outlined"
-			className="flex flex-col items-start justify-center w-full  h-fit bg-inherit  rounded-xl overflow-hidden px-6 box-border py-6 "
+			variant="contained"
+			className="flex flex-col items-start justify-center w-full  h-fit bg-inherit  rounded-xl overflow-hidden px-4 box-border py-6 "
 		>
 			<Box className="flex items-center justify-between w-full h-auto mb-6">
 				<Typography
 					variant="p"
-					className=" capitalize font-medium tracking-wide text-xl text-color-black"
+					className=" capitalize font-medium tracking-wide text-xl text-color-300"
 				>
 					{title}
 				</Typography>
 				<Link
-					className="flex items-center justify-start text-sm  font-outfit text-gray-700  "
+					className="flex items-center justify-start text-xs tracking-wide font-semibold  font-satoshi text-gray-700  "
 					underline="none"
 					component="button"
 				>
@@ -45,21 +51,21 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 			{/* map only 5 item */}
 
 			{isSpanTwo ? (
-				<Grid container spacing={2} columns={6} className="px-4 box-border">
-					{selectFourItem(movie, false).map((item, id) => (
+				<Grid container spacing={1.5} columns={6} className="px-2 box-border">
+					{selectItems(movie,  true).map((item, id) => (
 						<Grid item xs={id === 0 || id === 1 ? 2 : 1} key={id}>
 							<CardComponent
 								title={item?.title}
-								poster={item?.poster_path}
+								poster={item?.backdrop_path}
 								subheader={id}
 							/>
 						</Grid>
 					))}
 				</Grid>
 			) : (
-				<Grid container spacing={2} columns={5} className="px-6 box-border">
-					{selectFourItem(movie, true).map((item, id) => (
-						<Grid item xs={1} key={id}>
+				<Grid container spacing={1.5} columns={6} className="px-2 box-border">
+					{selectItems(movie, false).map((item, id) => (
+						<Grid item xs={2} key={id}>
 							<CardComponent
 								title={item?.title}
 								poster={item?.poster_path}
@@ -69,6 +75,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 					))}
 				</Grid>
 			)}
+			
 		</Paper>
 	);
 };

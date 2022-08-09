@@ -11,32 +11,32 @@ import {
 
 const CardComponent = ({ title, poster, subheader }) => {
 	return (
-		<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }}>
+		<motion.div whileHover={{ scale: 1.05, zIndex:10}} initial={{zIndex:1}} whileTap={{ scale: 1 }}>
 			<Card
 				variant="contained"
-				className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1   "
+				className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1  hover:drop-shadow-xl "
 				// onClick={() => alert(`${!data.id}\n${!data.title}`)}
 			>
-				{poster ? (
-					<div className="relative w-full h-fit ">
+				{!poster ? (
+					<div className="relative w-full h-fit  	">
 						<CardMedia
 							component="img"
-							className="h-52 w-full object-cover rounded-xl "
+							className="h-48 w-full object-cover rounded-xl "
 							title=""
 							image={`https://image.tmdb.org/t/p/w500/${poster}`}
 						/>
-						<div className="h-full w-full absolute top-0 hover:bg-black/40 bg-black/20 transition-all ease-in-out duration-300  rounded-xl "></div>
+						<div className="h-full w-full absolute top-0 hover:bg-black/30 bg-black/50 transition-all ease-in-out duration-300  rounded-xl "></div>
 					</div>
 				) : (
 					<Skeleton
 						variant="rectangular"
 						animation="wave"
-						className="h-52 w-full bg-color-300   rounded-xl"
+						className="h-48 w-full bg-[#191920]   rounded-xl  "
 					></Skeleton>
 				)}
 
-				<CardContent className="flex flex-col absolute z-0 bottom-0 py-1 h-14 items-center justify-center p-0 w-full  bg-color-500/20   drop-shadow-lg  pointer-events-none">
-					{title ? (
+				<CardContent className="flex flex-col absolute   rounded-b-xl 	 bottom-0 py-1 h-14 items-center justify-center p-0 w-full  bg-color-500/30   drop-shadow-lg  pointer-events-none">
+					{!title ? (
 						<>
 							<Typography
 								variant="p"
