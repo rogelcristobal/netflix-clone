@@ -41,7 +41,6 @@ function NetflixClone() {
   const { searchModal, setSearchModal } = useContext(SearchModalContext);
   const nav = useNavigate();
   const { user, logout } = useContext(AuthContext);
-  console.log(` render in app js: ${user?.uid}`);
   // mui theme
   const theme = createTheme({
     typography: {
@@ -54,23 +53,8 @@ function NetflixClone() {
     },
   });
   // generate a random hex color val from stackoverflow
-  const  stringToColour = function(str) {
-    let hash = 0;
-    if(str){
-
-      for (let i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      let colour = '#';
-      for (let i = 0; i < 3; i++) {
-        let value = (hash >> (i * 8)) & 0xFF;
-        colour += ('00' + value.toString(16)).substr(-2);
-      }
-      return colour;
-    }else{
-      return '#0096F3'
-    }
-  }
+  
+ 
   return (
     <ThemeProvider theme={theme}>
       <Routes>
@@ -107,15 +91,9 @@ function NetflixClone() {
                       </Tooltip>
                       <Box className="flex items-center justify-between space-x-4">
 
-                        <AvatarComponent user={false}>
-                          </AvatarComponent>
-                        {/* <IconButton
-                          variant="text"
-                          color="primary"
-                          className={` rounded-full dark:bg-color-500/10 bg-primary-300 text-gray-200`}
-                        >
-                          <IoPerson className=" font-medium text-sm"></IoPerson>
-                        </IconButton> */}
+                        <AvatarComponent user={user.uid}>
+                        </AvatarComponent>
+                        
                         <IconButton
                           variant="text"
                           color="primary"

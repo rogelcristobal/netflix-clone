@@ -55,7 +55,7 @@ const MovieCategories = () => {
         square
       >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2   box-border space-y-2 scroll-smooth	">
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2  pb-72 box-border space-y-2 scroll-smooth	">
           {/* <Paper
             variant="outlined"
             className="bg-color-black  py-4 px-4 h-96 mt-20 w-full  box-border rounded-lg"
