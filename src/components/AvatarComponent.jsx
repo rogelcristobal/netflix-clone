@@ -1,41 +1,54 @@
-import { IconButton } from "@mui/material";
-import {IoPerson} from "react-icons/io5"
-const Avatar = ({ img,color,user }) => {
-  const  stringToColour = function(str) {
-    let hash = 0;
-    if(str){
-
-      for (let i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+import { IconButton,Tooltip } from "@mui/material";
+import { useState, useEffect } from "react";
+import { IoPersonOutline } from "react-icons/io5";
+const Avatar = ({ user }) => {
+  const [data, setData] = useState(null);
+  const x = 'gabriel cristobal'
+  // stack overflow snippet getting first and last initials of a given name
+  const getInitials = (fullName) => {
+    const allNames = fullName.trim().split(' ');
+    const initials = allNames.reduce((acc, curr, index) => {
+      if(index === 0 || index === allNames.length - 1){
+        acc = `${acc}${curr.charAt(0).toUpperCase()}`;
       }
-      let colour = '#';
-      for (let i = 0; i < 3; i++) {
-        let value = (hash >> (i * 8)) & 0xFF;
-        colour += ('00' + value.toString(16)).substr(-2);
-      }
-      return colour;
-    }else{
-      return '#0096F3'
-    }
+      return acc;
+    }, '');
+    return initials;
   }
+  useEffect(()=>{
+    setData((prev)=> prev = getInitials(user))
+  },[user])
+
   return (
+
     <IconButton
       variant="text"
-      className={` rounded-full dark:bg-color-500/10  bg-primary-300 text-gray-200`}
+      className={`h-9 w-9  rounded-xl bg-[#191920] hover:bg-[#21212b]/30 transition-all ease-out duration-300 hover:text-gray-700 text-gray-400`}
     >
-      {
-        user? 
-        <IoPerson className=" font-medium text-sm bg-red-400"></IoPerson>
-          
-        
-        :  <IoPerson className=" font-medium text-sm"></IoPerson>
-                        
-      }
+      {user ? (
+        <span className=" capitalize font-medium font-satoshi text-sm ">
+          {data}
+        </span>
+      ) : (
+        <IoPersonOutline className=" font-medium text-sm"></IoPersonOutline>
+      )}
     </IconButton>
+      
   );
 };
 
-Avatar.defaultProps={
-    colorGenerated:'#0096F3'
-}
+Avatar.defaultProps = {
+  colorGenerated: "#0096F3",
+};
 export default Avatar;
+
+// psuedo code
+
+/**
+ * avatar(str)
+ * run useEffect pass(str)
+ * !str null return hex code  : primary-color
+ *
+ *
+ *
+ * */
