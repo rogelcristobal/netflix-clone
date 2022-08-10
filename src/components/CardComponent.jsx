@@ -11,7 +11,11 @@ import {
 
 const CardComponent = ({ title, poster, subheader }) => {
 	return (
-		<motion.div whileHover={{ scale: 1.05, zIndex:10}} initial={{zIndex:1}} whileTap={{ scale: 1 }}>
+		<motion.div
+			whileHover={{ scale: 1.05, zIndex: 10 }}
+			initial={{ zIndex: 1 }}
+			whileTap={{ scale: 1 }}
+		>
 			<Card
 				variant="contained"
 				className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1  hover:drop-shadow-xl "
@@ -25,7 +29,8 @@ const CardComponent = ({ title, poster, subheader }) => {
 							title=""
 							image={`https://image.tmdb.org/t/p/w500/${poster}`}
 						/>
-						<div className="h-full w-full absolute top-0 hover:bg-black/30 bg-black/50 transition-all ease-in-out duration-300  rounded-xl "></div>
+
+						<div className="h-full w-full absolute top-0 hover:bg-black/40 bg-black/30 transition-all ease-in-out duration-300  rounded-xl "></div>
 					</div>
 				) : (
 					<Skeleton
