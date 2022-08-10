@@ -5,10 +5,11 @@ import { Navigate } from 'react-router-dom';
 const ProtectedRoute = ({children}) => {
     // const navigate = useNavigate()
     const {user} = useContext(AuthContext)
-    if(!user){
-        return  <Navigate to="/"></Navigate>
+    if(user){
+        return  children
     }
-    return children
+    return  <Navigate to="/"></Navigate>
+    
   
 }
 

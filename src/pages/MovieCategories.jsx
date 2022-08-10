@@ -50,12 +50,12 @@ const MovieCategories = () => {
   return (
     <>
       <Paper
-        variant="outlined"
-        className=" bg-inherit  flex flex-col items-center justify-start    pt-20 w-full  h-full box-border mx-2"
+        variant="contained"
+        className=" bg-inherit  flex flex-col items-center justify-start    pt-20 w-full  h-full box-border"
         square
       >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-4 py-2   box-border space-y-7 scroll-smooth	no-scrollbar">
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2   box-border space-y-2 scroll-smooth	">
           {/* <Paper
             variant="outlined"
             className="bg-color-black  py-4 px-4 h-96 mt-20 w-full  box-border rounded-lg"
@@ -73,19 +73,19 @@ const MovieCategories = () => {
             <Grid container columns={12} spacing={2} className="px-4">
               <Grid item xs={6}>
                 <Paper
-                  variant="outlined"
+                  variant="contained"
                   className="bg-color-black overflow-hidden h-72 w-full grid place-content-center transition-all ease-in-out duration-500 box-border rounded-xl"
                 ></Paper>
               </Grid>
               <Grid item xs={3}>
                 <Paper
-                  variant="outlined"
+                  variant="contained"
                   className="bg-color-black  py-4 px-4 h-52 w-full  box-border rounded-lg"
                 ></Paper>
               </Grid>
               <Grid item xs={3}>
                 <Paper
-                  variant="outlined"
+                  variant="contained"
                   className="bg-color-black   py-4 px-4 h-52 w-full  box-border rounded-lg"
                 ></Paper>
               </Grid>
@@ -93,7 +93,7 @@ const MovieCategories = () => {
           </Paper> */}
 
           {[
-            { title: "popular", data: popularMovieQuery },
+            { title: "popular movies", data: popularMovieQuery },
             { title: "now playing", data: nowPlayingMovieQuery },
             { title: "top rated movies", data: topRatedMovieQuery },
             { title: "upcoming movies", data: upcomingMovieQuery },
@@ -110,16 +110,16 @@ const MovieCategories = () => {
       {/*page nav*/}
 
       <Paper
-        variant="outlined"
-        className="w-72 mt-0 pt-20 py-2 box-border mr-3 bg-inherit   h-full "
+        variant="contained"
+        className="w-60 mt-0 pt-20  box-border mx-6 bg-inherit  h-full "
       >
-        {/* <Paper
-          variant="outlined"
-          className=" p-6 box-border  w-full rounded-xl bg-inherit h-auto space-y-2"
+        <Paper
+          variant="contained"
+          className="  box-border pt-8 px-4 w-full rounded-xl bg-inherit flex flex-col items-left justify-start h-auto space-y-0"
         >
           <Typography
             variant="p"
-            className="text-gray-600 font-medium text-md tracking-wide"
+            className="text-color-300 font-medium text-sm tracking-wide"
           >
             Categories
           </Typography>
@@ -127,7 +127,7 @@ const MovieCategories = () => {
             {movieGenre.isLoading
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl" variant="outlined">
+                    <ListItemButton className="rounded-xl" variant="contained">
                       <Skeleton>
                         <Typography
                           variant="p"
@@ -141,10 +141,10 @@ const MovieCategories = () => {
                 ))
               : sliceGenre(movieGenre).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl hover:bg-[#191920] py-3">
+                    <ListItemButton className="rounded-xl dark:hover:bg-[#191920] hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-semibold hover:font-medium tracking-wide">
                       <Typography
                         variant="p"
-                        className="text-sm  w-20 text-gray-700"
+                        className="text-xs    "
                       >
                         {item.name}
                       </Typography>
@@ -152,14 +152,14 @@ const MovieCategories = () => {
                   </ListItem>
                 ))}
           </List>
-          <Link
+          {/* <Link
             className="flex items-center justify-start text-sm  font-outfit text-gray-700 w-full py-1 rounded-xl"
             underline="none"
             component="button"
           >
             See More
-          </Link>
-        </Paper> */}
+          </Link> */}
+        </Paper>
       </Paper>
     </>
   );

@@ -13,7 +13,7 @@ module.exports = {
       
       fontFamily:{
         'amulya':['Amulya',"sans-serif"],
-        'outfit':["Outfit",'sans-serif'],
+        'satoshi':["Satoshi",'sans-serif'],
        'general':["General Sans",'sans-serif']
 
       },
