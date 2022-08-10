@@ -27,127 +27,121 @@ import { IoPerson } from "react-icons/io5";
 const queryClient = new QueryClient();
 
 function App() {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <SearchModalProvider>
-        <NetflixClone />
-      </SearchModalProvider>
-    </QueryClientProvider>
-  );
+	return (
+		<QueryClientProvider client={queryClient}>
+			<ReactQueryDevtools initialIsOpen={false} />
+			<SearchModalProvider>
+				<NetflixClone />
+			</SearchModalProvider>
+		</QueryClientProvider>
+	);
 }
 function NetflixClone() {
- 
-  const { searchModal, setSearchModal } = useContext(SearchModalContext);
-  const nav = useNavigate();
-  const { user, logout } = useContext(AuthContext);
-  // mui theme
-  const theme = createTheme({
-    typography: {
-      fontFamily: ["Satoshi", "sans-serif"].join(","),
-      palette: {
-        primary: {
-          main: "rgb(17, 24, 39)",
-        },
-      },
-    },
-  });
-  // generate a random hex color val from stackoverflow
-  
- 
-  return (
-    <ThemeProvider theme={theme}>
-      <Routes>
-        <Route path="/" element={<LoginPage />}></Route>
-        <Route
-          path="/homepage/*"
-          element={
-            <div className="font-satoshi relative flex w-full box-border   h-screen  bg-[#111115] ">
-              {/* nav */}
-              {searchModal && (
-                <ModalBG
-                  contextFunction={setSearchModal}
-                  contextState={searchModal}
-                >
-                  <SearchModal></SearchModal>
-                </ModalBG>
-              )}
-              <div className="fixed top-0 left-0 w-full h-20  shadow-sm z-20 bg-inherit ">
-                <div className="container h-full flex   justify-end mx-auto items-center rounded-lg ">
-                  {/* nav contents here */}
-                  <Paper
-                    variant="contained"
-                    className={`h-full w-[calc(100%-14rem)]  bg-transparent  flex flex-col items-between justify-center  transition-all ease-in-out duration-500 px-4 box-border`}
-                  >
-                    <div className="flex items-center h-full w-full justify-between">
-                      <Tooltip title="search" arrow placement="top-end">
-                        <IconButton
-                          aria-label=""
-                          className="hover:bg-color-500/10 text-gray-700 hover:text-color-400  "
-                          onClick={() => setSearchModal(!searchModal)}
-                        >
-                          <RiSearchLine className=" font-medium text-xl"></RiSearchLine>
-                        </IconButton>
-                      </Tooltip>
-                      <Box className="flex items-center justify-between space-x-4">
+	const { searchModal, setSearchModal } = useContext(SearchModalContext);
+	const nav = useNavigate();
+	const { user, logout } = useContext(AuthContext);
+	// mui theme
+	const theme = createTheme({
+		typography: {
+			fontFamily: ["Satoshi", "sans-serif"].join(","),
+			palette: {
+				primary: {
+					main: "rgb(17, 24, 39)",
+				},
+			},
+		},
+	});
+	// generate a random hex color val from stackoverflow
 
-                        <AvatarComponent user={user.uid}>
-                        </AvatarComponent>
-                        
-                        <IconButton
-                          variant="text"
-                          color="primary"
-                          className=" rounded-xl hover:bg-color-500/10 text-gray-700 hover:text-color-400"
-                        >
-                          <IoSettingsOutline className=" font-medium text-xl"></IoSettingsOutline>
-                        </IconButton>
-                      </Box>
+	return (
+		<ThemeProvider theme={theme}>
+			<Routes>
+				<Route path="/" element={<LoginPage />}></Route>
+				<Route
+					path="/homepage/*"
+					element={
+						<div className="font-satoshi relative flex w-full box-border   h-screen  bg-[#111115] ">
+							{/* nav */}
+							{searchModal && (
+								<ModalBG contextFunction={setSearchModal} contextState={searchModal}>
+									<SearchModal></SearchModal>
+								</ModalBG>
+							)}
+							<div className="fixed top-0 left-0 w-full h-20  shadow-sm z-20 bg-inherit ">
+								<div className="container h-full flex   justify-end mx-auto items-center rounded-lg ">
+									{/* nav contents here */}
+									<Paper
+										variant="contained"
+										className={`h-full w-[calc(100%-14rem)]  bg-transparent  flex flex-col items-between justify-center  transition-all ease-in-out duration-500 px-4 box-border`}
+									>
+										<div className="flex items-center h-full w-full justify-end">
+											<Box className="flex items-center justify-between space-x-4">
+												{/* <AvatarComponent user={user?.uid}></AvatarComponent> */}
+												<Tooltip title="search" arrow placement="top-end">
+													<IconButton
+														aria-label=""
+														className="hover:bg-color-500/10 text-gray-700 hover:text-color-400  "
+														onClick={() => setSearchModal(!searchModal)}
+													>
+														<RiSearchLine className=" font-medium text-xl"></RiSearchLine>
+													</IconButton>
+												</Tooltip>
 
-                      </div>
-                    <Divider
-                      variant="middle"
-                      className="bg-gray-700/30"
-                    ></Divider>
-                  </Paper>
-                </div>
-              </div>
+												<IconButton
+													variant="outlined"
+													color="primary"
+													className=" rounded-xl hover:bg-color-500/10 text-gray-700 hover:text-color-400"
+												>
+													<IoSettingsOutline className=" font-medium text-xl"></IoSettingsOutline>
+												</IconButton>
+											</Box>
+										</div>
+										<Divider variant="middle" className="bg-gray-700/30"></Divider>
+									</Paper>
+								</div>
+							</div>
 
-              {/* sidebar */}
-              <div
-                className={` w-80 z-20 flex h-full overflow-x-hidden transition-all ease-in-out duration-500 bg-[#0d0d0f]`}
-              >
-                {/* sidebar contents here */}
-                <Paper
-                  variant="contained"
-                  className=" w-full px-4  h-full pt-6 box-border bg-inherit   flex flex-col items-center justify-start "
-                  square
-                >
-                  <Link
-                    to="/homepage/"
-                    className="no-underline text-color-100 w-full px-6    box-border"
-                  ></Link>
-                </Paper>
-              </div>
-              {/* body */}
+							{/* sidebar */}
+							<div
+								className={` w-80 z-20 flex items-center justify-center h-full overflow-x-hidden transition-all ease-in-out duration-500 bg-inherit box-border overflow-hidden`}
+							>
+								{/* sidebar contents here */}
+								<Paper
+									variant="contained"
+									className=" w-full px-4  h-full pt-6 box-border bg-inherit   flex flex-col items-center justify-start "
+									square
+								>
+									<Link
+										to="/homepage/"
+										className="no-underline text-color-100 w-full px-6    box-border"
+									></Link>
+								</Paper>
+								<Divider
+									variant="middle"
+									orientation="vertical"
+									className="bg-gray-700/30"
+								></Divider>
+							</div>
+							{/* body */}
 
-              <div className="flex items-start justify-start w-full  h-full  box-border">
-                <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      <ProtectedRoute>
-                        <MovieCategories />
-                      </ProtectedRoute>
-                    }
-                  ></Route>
-                </Routes>
-              </div>
-            </div>
-          }
-        ></Route>
-      </Routes>
-    </ThemeProvider>
-  );
+							<div className="flex items-start justify-start w-full  h-full  box-border">
+								<Routes>
+									<Route
+										path="/"
+										element={
+											<ProtectedRoute>
+												<MovieCategories />
+											</ProtectedRoute>
+										}
+									></Route>
+								</Routes>
+							</div>
+						</div>
+					}
+				></Route>
+			</Routes>
+		</ThemeProvider>
+	);
 }
 
 export default App;
