@@ -1,53 +1,109 @@
+import React from "react";
+import {
+  Typography,
+  Paper,
+  ListItem,
+  ListItemButton,
+  List,
+  Skeleton,
+
+} from "@mui/material";
 import TripleCardComponent from "../components/TripleCardComponent";
-import { Box, Typography, Link, Paper } from "@mui/material";
-import useFetchPopularShow from '../fetch/shows/useFetchPopularShow'
-const MovieCategories = () => {
-  const popularShow=useFetchPopularShow()
+
+import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
+const TVCategories = () => {
+  // queries
+  
+  const movieGenre = useFetchMovieGenres();
+  const sliceGenre = (endpoint, state) => {
+    // console.log(movieGenre.data)
+    if (endpoint.isLoading) {
+      if (!state) {
+        return Array.from(new Array(4));
+      } else {
+        return Array.from(new Array(5));
+      }
+    } else {
+      if (!state) {
+        return endpoint.data?.genres.slice(0, 4);
+      } else {
+        return endpoint.data?.genres.slice(0, 5);
+      }
+    }
+  };
+
   return (
     <>
-      <div className=" px-4 pt-2 box-border   h-full overflow-y-auto   w-full ">
-        <div className="h-auto  min-h-screen box-border flex flex-col items-start  justify-start    bg-inherit      space-y-2 rounded-lg">
-          {/* contents here */}
-          <Paper variant="contained" className=" h-60 w-full box-border flex items-end p-4 px-6 bg-[#233044] mb-6 rounded-xl">
-            <Box className="flex  items-center justify-between  w-fit mb-4">
-              {/* <Typography
-                variant="p"
-                className="font-semibold capitalize tracking-wide text-4xl text-color-100 cursor-default"
-              >
-                welcome
-              </Typography> */}
-            </Box>
-          
-          </Paper>
-          <div className="px-8 py-4">
-
-          {/* categories */}
-
-          {/* {[
-            { title: "airing today", data: airingToday },
-            { title: "on the air", data: onAir },
-            { title: "popular TV shows", data: popularShow },
-            { title: "top rated TV shows", data: topRatedShow },
+      <Paper
+        variant="contained"
+        className=" bg-inherit  flex flex-col items-center justify-start    pt-20 w-full  h-full box-border"
+        square
+      >
+        {/* scrollable content */}
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2  pb-72 box-border space-y-2 scroll-smooth	">
+      
+          {[
+            { title: "popular movies", data: [] },
+            { title: "now playing", data:  []},
+            { title: "top rated movies", data:[]  },
+            { title: "upcoming movies", data:  []},
           ].map((item, id) => (
             <TripleCardComponent
-            key={id}
-            title={item.title}
-            movies={item.data}
+              key={id}
+              title={item.title}
+              movie={item.data}
+              isSpanTwo={id === 0 ? true : false}
             ></TripleCardComponent>
-            ))} */}
+          ))}
         </div>
-      </div>
-      </div>
-
+      </Paper>
       {/*page nav*/}
-      <div className="w-60   mx-4   h-80">
+
+      <Paper
+        variant="contained"
+        className="w-60 mt-0 pt-20  box-border mx-6 bg-inherit  h-full "
+      >
         <Paper
           variant="contained"
-          className="h-full   w-full rounded-lg bg-inherit "
-        ></Paper>
-      </div>
+          className="  box-border pt-8 px-4 w-full rounded-xl bg-inherit flex flex-col items-left justify-start h-auto space-y-0"
+        >
+          <Typography
+            variant="p"
+            className="text-color-300 font-medium text-sm tracking-wide"
+          >
+            Categories
+          </Typography>
+          <List>
+            {movieGenre.isLoading
+              ? Array.from(new Array(4)).map((item, index) => (
+                  <ListItem key={index} disablePadding>
+                    <ListItemButton className="rounded-xl" variant="contained">
+                      <Skeleton>
+                        <Typography
+                          variant="p"
+                          className="text-sm  w-20 text-neutral-400"
+                        >
+                          item loading
+                        </Typography>
+                      </Skeleton>
+                    </ListItemButton>
+                  </ListItem>
+                ))
+              : sliceGenre(movieGenre).map((item, index) => (
+                  <ListItem key={index} disablePadding>
+                    <ListItemButton className="rounded-xl dark:hover:bg-[#191920] hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-semibold hover:font-medium tracking-wide">
+                      <Typography variant="p" className="text-xs    ">
+                        {item.name}
+                      </Typography>
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+          </List>
+          
+        </Paper>
+      </Paper>
     </>
   );
 };
 
-export default MovieCategories;
+export default TVCategories;
