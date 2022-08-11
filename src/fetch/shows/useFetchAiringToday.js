@@ -5,7 +5,7 @@ import request from "../api";
 const useFetchAiringToday = () => {
     const airingTodayQuery=useQuery(["airingToday"],async()=>{
         const response = await axios.get(request.getAiringToday)
-        return response
+        return response.data
     })
     return airingTodayQuery
 }

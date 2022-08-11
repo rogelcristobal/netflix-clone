@@ -22,6 +22,8 @@ const TVCategories = () => {
   const topRatedShowQuery = useFetchTopRatedShow()
   const airingTodayQuery = useFetchAiringToday()
   
+  // console.log(`popular =`)
+  
   const movieGenre = useFetchMovieGenres();
   const sliceGenre = (endpoint, state) => {
     // console.log(movieGenre.data)
