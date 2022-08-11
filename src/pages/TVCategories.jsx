@@ -11,8 +11,16 @@ import {
 import TripleCardComponent from "../components/TripleCardComponent";
 
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
+import useFetchOnAir from '../fetch/shows/useFetchOnAir'
+import useFetchPopularShow from '../fetch/shows/useFetchPopularShow'
+import useFetchTopRatedShow from '../fetch/shows/useFetchTopRatedShow'
+import useFetchAiringToday from '../fetch/shows/useFetchAiringToday'
 const TVCategories = () => {
   // queries
+  const onAirQuery = useFetchOnAir()
+  const popularShowQuery = useFetchPopularShow()
+  const topRatedShowQuery = useFetchTopRatedShow()
+  const airingTodayQuery = useFetchAiringToday()
   
   const movieGenre = useFetchMovieGenres();
   const sliceGenre = (endpoint, state) => {
@@ -43,10 +51,10 @@ const TVCategories = () => {
         <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2  pb-72 box-border space-y-2 scroll-smooth	">
       
           {[
-            { title: "popular movies", data: [] },
-            { title: "now playing", data:  []},
-            { title: "top rated movies", data:[]  },
-            { title: "upcoming movies", data:  []},
+            { title: "popular shows", data: popularShowQuery },
+            { title: "airing today", data:  airingTodayQuery},
+            { title: "top rated movies", data:topRatedShowQuery  },
+            { title: "on air", data:  onAirQuery},
           ].map((item, id) => (
             <TripleCardComponent
               key={id}
