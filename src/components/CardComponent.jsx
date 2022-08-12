@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -10,11 +10,15 @@ import {
   Typography,
   Box,
   Chip,
+  Tooltip,
+  Zoom,
 } from "@mui/material";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-
-const CardComponent = ({ title, poster, loading, spanTwo, rate }) => {
-  const [itemRate, setItemRate] = useState(false);
+import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
+const CardComponent = ({ title, poster, loading, spanTwo, rate,genre }) => {
+	const genreQuery = useFetchMovieGenres()
+  
+	const [itemRate, setItemRate] = useState(false);
   const handleRate = (e) => {
     e.stopPropagation();
     setItemRate(!itemRate);
@@ -23,14 +27,23 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate }) => {
     card: false,
     chip: false,
   });
-
+ 
+  const cardHoverEnterHandler = () => {
+	
+	setHoverState({ ...hoverState, card: true });
+  };
+  const cardHoverLeaveHandler = () => {
+    
+    setHoverState({ ...hoverState, card: false });
+  };
+  console.log(genre)
   return (
     <motion.div
-      whileHover={{ scale: 1.05, zIndex: 10 }}
+      //   whileHover={{ scale: 1.05, zIndex: 10 }}
       initial={{ zIndex: 1 }}
       whileTap={{ scale: 1 }}
-      onMouseEnter={() => setHoverState({ ...hoverState, card: true })}
-      onMouseLeave={() => setHoverState({ ...hoverState, card: false })}
+      onMouseEnter={cardHoverEnterHandler}
+      onMouseLeave={cardHoverLeaveHandler}
       onClick={() => alert("clicked card")}
     >
       <Card
@@ -49,28 +62,36 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate }) => {
               image={`https://image.tmdb.org/t/p/w500/${poster}`}
             />
 
-            <div className="h-full w-full absolute top-0 hover:bg-black/60 bg-black/30 transition-all ease-in-out duration-300  rounded-xl ">
-              <Chip
-                variant="contained"
-                className="bg-gray-900/50 absolute top-2.5 left-2.5 px-2 py-0.5 text-[0.675rem]  text-color-400 font-semibold h-fit cursor-pointer"
-                label={`${rate}`}
-                icon={
-                  itemRate ? (
-                    <AiFillStar
-                      className={`text-yellow-400`}
-                    ></AiFillStar>
-                  ) : <AiOutlineStar  className={`font-medium text-color-500`}>
-
-				  </AiOutlineStar>
-                }
-                onClick={handleRate}
-                onMouseEnter={() =>
-                  setHoverState({ ...hoverState, chip: true })
-                }
-                onMouseLeave={() =>
-                  setHoverState({ ...hoverState, chip: false })
-                }
-              ></Chip>
+            <div
+              className={`h-full w-full absolute top-0 ${
+                hoverState.card ? "bg-black/60" : "bg-black/30"
+              }  transition-all ease-in-out duration-300  rounded-xl `}
+            >
+              <Tooltip
+                title="vote average"
+                arrow
+                placement="top-start"
+                followCursor
+                TransitionComponent={Zoom}
+                TransitionProps={{ timeout: 300 }}
+                enterDelay={1000}
+              >
+                <Chip
+                  variant="contained"
+                  className="bg-gray-900/50 absolute top-2.5 left-2.5 px-2 py-0.5 text-[0.675rem]  text-color-400 font-semibold h-fit cursor-pointer"
+                  label={`${rate}`}
+                  icon={
+                    itemRate ? (
+                      <AiFillStar className={`text-yellow-400`}></AiFillStar>
+                    ) : (
+                      <AiOutlineStar
+                        className={`font-medium text-color-500`}
+                      ></AiOutlineStar>
+                    )
+                  }
+                  onClick={handleRate}
+                ></Chip>
+              </Tooltip>
             </div>
           </div>
         ) : (
@@ -84,18 +105,30 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate }) => {
         )}
 
         <CardContent
-          className={`flex flex-col absolute   rounded-b-xl box-border	 bottom-0 py-6 h-fit  ${
-            spanTwo ? "items-start px-6" : "items-center px-4"
+          className={`flex flex-col absolute   rounded-b-xl box-border	 bottom-0  h-fit  ${
+            spanTwo ? "items-start px-6 py-4" : "items-center px-4 py-4"
           } justify-center  w-full    drop-shadow-lg  pointer-events-none`}
         >
           {loading || title ? (
-            <Box className="flex items-center justify-between w-full">
+            <Box className="flex flex-col items-start justify-center w-full space-y-3">
               <Typography
                 variant="p"
-                className="  font-medium text-sm font-outfit tracking-wider text-gray-100 text-center max-w-[90%]"
+                className={`  font-medium ${
+                  spanTwo ? "text-lg" : "text-sm"
+                } font-outfit tracking-wider text-gray-100 text-center max-w-[90%]`}
               >
                 {title}
               </Typography>
+			  {spanTwo&&
+			  (
+				genre.map((item,id)=>(
+
+					<Chip label={genreQuery.genres.id[item]} key={id}  className=" py-1 px-2 capitalize text-xs font-medium text-color-400 bg-color-500/30 h-fit">
+	  
+					</Chip>
+				))
+			  )
+			  }
             </Box>
           ) : (
             <>

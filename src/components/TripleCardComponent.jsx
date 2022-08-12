@@ -39,7 +39,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 					{title}
 				</Typography>
 				<Link
-					className="flex items-center justify-start text-xs tracking-wide font-semibold  font-satoshi text-gray-700  "
+					className="flex items-center justify-start text-xs  font-semibold  font-satoshi text-gray-700  "
 					underline="none"
 					component="button"
 				>
@@ -58,6 +58,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 								title={item?.title}
 								poster={item?.backdrop_path}
 								spanTwo={isSpanTwo}
+							    genre={item?.genre_ids}
 								rate={item?.vote_average}
 							/>
 						</Grid>
@@ -72,6 +73,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 								poster={item?.backdrop_path}
 								spanTwo={isSpanTwo}
 								
+							    genre={item?.genre_ids}
 								rate={item?.vote_average}
 							/>
 						</Grid>
