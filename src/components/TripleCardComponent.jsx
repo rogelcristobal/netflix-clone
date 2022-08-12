@@ -8,10 +8,10 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 			// if loading = true
 			if (spanState) {
 				// if it has a span 
-				return Array.from(new Array(4));
+				return Array.from(new Array(2));
 			} else {
 				// span off
-				return Array.from(new Array(3));
+				return Array.from(new Array(5));
 			}
 		} else {
 			// if it is not loading
@@ -20,7 +20,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 				return endpoint.data?.results.slice(0, 2);
 			} else {
 				// span off
-				return endpoint.data?.results.slice(0, 3);
+				return endpoint.data?.results.slice(0, 5);
 			}
 		}
 	};
@@ -64,9 +64,9 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 					))}
 				</Grid>
 			) : (
-				<Grid container spacing={2.5} columns={6} className="px-2 box-border">
+				<Grid container spacing={2} columns={5} className="px-2 box-border">
 					{selectItems(movie, false).map((item, id) => (
-						<Grid item xs={2} key={id}>
+						<Grid item xs={1} key={id}>
 							<CardComponent
 								title={item?.title}
 								poster={item?.backdrop_path}

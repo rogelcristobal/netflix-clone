@@ -52,7 +52,7 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate }) => {
             <div className="h-full w-full absolute top-0 hover:bg-black/60 bg-black/30 transition-all ease-in-out duration-300  rounded-xl ">
               <Chip
                 variant="contained"
-                className="bg-gray-900/50 absolute top-2 left-2 px-2 py-0.5 text-xs text-color-400 font-medium h-fit cursor-pointer"
+                className="bg-gray-900/50 absolute top-2.5 left-2.5 px-2 py-0.5 text-[0.675rem]  text-color-400 font-semibold h-fit cursor-pointer"
                 label={`${rate}`}
                 icon={
                   itemRate ? (
