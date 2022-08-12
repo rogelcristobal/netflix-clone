@@ -56,44 +56,10 @@ const MovieCategories = () => {
       >
         {/* scrollable content */}
         <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2  pb-72 box-border space-y-2 scroll-smooth	">
-          {/* <Paper
-            variant="outlined"
-            className="bg-color-black  py-4 px-4 h-96 mt-20 w-full  box-border rounded-lg"
-          ></Paper> */}
-          {/* <Paper
-            variant="outlined"
-            className="h-fit bg-inherit  mt-24 box-border w-full rounded-xl space-y-3 py-4 px-6 text-gray-200 "
-          >
-            <Typography
-              variant="p"
-              className="text-3xl font-medium text-color-100 tracking-wide"
-            >
-              Trending now
-            </Typography>
-            <Grid container columns={12} spacing={2} className="px-4">
-              <Grid item xs={6}>
-                <Paper
-                  variant="contained"
-                  className="bg-color-black overflow-hidden h-72 w-full grid place-content-center transition-all ease-in-out duration-500 box-border rounded-xl"
-                ></Paper>
-              </Grid>
-              <Grid item xs={3}>
-                <Paper
-                  variant="contained"
-                  className="bg-color-black  py-4 px-4 h-52 w-full  box-border rounded-lg"
-                ></Paper>
-              </Grid>
-              <Grid item xs={3}>
-                <Paper
-                  variant="contained"
-                  className="bg-color-black   py-4 px-4 h-52 w-full  box-border rounded-lg"
-                ></Paper>
-              </Grid>
-            </Grid>
-          </Paper> */}
+        
 
           {[
-            { title: "popular movies", data: popularMovieQuery },
+            { title: "discover movies", data: popularMovieQuery },
             { title: "now playing", data: nowPlayingMovieQuery },
             { title: "top rated movies", data: topRatedMovieQuery },
             { title: "upcoming movies", data: upcomingMovieQuery },
@@ -103,6 +69,7 @@ const MovieCategories = () => {
               title={item.title}
               movie={item.data}
               isSpanTwo={id === 0 ? true : false}
+              loading={item.isLoading}
             ></TripleCardComponent>
           ))}
         </div>
@@ -141,7 +108,7 @@ const MovieCategories = () => {
                 ))
               : sliceGenre(movieGenre).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl dark:hover:bg-[#191920] hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-semibold hover:font-medium tracking-wide">
+                    <ListItemButton className="rounded-xl dark:hover:bg-[#191920] hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-500 ease-in-out">
                       <Typography
                         variant="p"
                         className="text-xs    "

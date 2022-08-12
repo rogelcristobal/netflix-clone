@@ -9,7 +9,7 @@ import {
 	Typography,
 } from "@mui/material";
 
-const CardComponent = ({ title, poster, subheader }) => {
+const CardComponent = ({ title, poster, loading ,spanTwo}) => {
 	return (
 		<motion.div
 			whileHover={{ scale: 1.05, zIndex: 10 }}
@@ -21,27 +21,27 @@ const CardComponent = ({ title, poster, subheader }) => {
 				className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1  hover:drop-shadow-xl "
 				// onClick={() => alert(`${!data.id}\n${!data.title}`)}
 			>
-				{!poster ? (
+				{loading || poster ? (
 					<div className="relative w-full h-fit  	">
 						<CardMedia
 							component="img"
-							className="h-48 w-full object-cover rounded-xl "
+							className={`${spanTwo?'h-60':'h-48'} w-full object-cover rounded-xl `}
 							title=""
 							image={`https://image.tmdb.org/t/p/w500/${poster}`}
 						/>
 
-						<div className="h-full w-full absolute top-0 hover:bg-black/40 bg-black/30 transition-all ease-in-out duration-300  rounded-xl "></div>
+						<div className="h-full w-full absolute top-0 hover:bg-black/60 bg-black/30 transition-all ease-in-out duration-300  rounded-xl "></div>
 					</div>
 				) : (
 					<Skeleton
 						variant="rectangular"
 						animation="wave"
-						className="h-48 w-full bg-[#191920]   rounded-xl  "
+						className={`${spanTwo?'h-60':'h-48'} w-full bg-[#191920]   rounded-xl  `}
 					></Skeleton>
 				)}
 
-				<CardContent className="flex flex-col absolute   rounded-b-xl 	 bottom-0 py-1 h-14 items-center justify-center p-0 w-full  bg-color-500/30   drop-shadow-lg  pointer-events-none">
-					{!title ? (
+				<CardContent className={`flex flex-col absolute   rounded-b-xl box-border	 bottom-0 py-6 h-fit  ${spanTwo?'items-end px-6':'items-center px-4'} justify-center  w-full    drop-shadow-lg  pointer-events-none`}>
+					{loading || title ? (
 						<>
 							<Typography
 								variant="p"
