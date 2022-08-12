@@ -12,7 +12,7 @@ import MovieCategories from "./pages/MovieCategories";
 import ModalBG from "./components/modal/ModalBG";
 import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/protetedRoute/ProtectedRoute";
-import TVCategories from './pages/TVCategories'
+import TVCategories from "./pages/TVCategories";
 // MUI
 import { Paper, IconButton, Tooltip, Divider, Box } from "@mui/material";
 // react-query
@@ -140,7 +140,7 @@ function NetflixClone() {
                       </ProtectedRoute>
                     }
                   ></Route>
-				   <Route
+                  <Route
                     path="/shows"
                     element={
                       <ProtectedRoute>

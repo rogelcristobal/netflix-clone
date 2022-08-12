@@ -58,6 +58,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 								title={item?.title}
 								poster={item?.backdrop_path}
 								spanTwo={isSpanTwo}
+								rate={item?.vote_average}
 							/>
 						</Grid>
 					))}
@@ -68,8 +69,10 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 						<Grid item xs={2} key={id}>
 							<CardComponent
 								title={item?.title}
-								poster={item?.poster_path}
+								poster={item?.backdrop_path}
 								spanTwo={isSpanTwo}
+								
+								rate={item?.vote_average}
 							/>
 						</Grid>
 					))}
