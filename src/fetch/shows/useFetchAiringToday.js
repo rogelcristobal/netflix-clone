@@ -1,12 +1,13 @@
+
+import {useQuery} from '@tanstack/react-query'
 import axios from "axios";
 import request from "../api";
-import { useQuery } from "@tanstack/react-query";
 const useFetchAiringToday = () => {
-    const fetchAiringTodayQuery = useQuery(['airingTodayShow'],async()=>{
+    const airingTodayQuery=useQuery(["airingToday"],async()=>{
         const response = await axios.get(request.getAiringToday)
         return response.data
-    })     
-    return fetchAiringTodayQuery
+    })
+    return airingTodayQuery
 }
 
 export default useFetchAiringToday;

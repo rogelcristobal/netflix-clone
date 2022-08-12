@@ -29,13 +29,8 @@ const LoginPage = () => {
   };
   // console.log(user);
   return (
-    <div className="h-screen w-full bg-color-300  flex items-center justify-center lg:grid  lg:gap-20 lg:grid-cols-12 font-outfit relative">
-      <img
-        src={img}
-        className="h-full w-full object-cover absolute top-0 left-0 object "
-        alt=""
-        
-      />
+    <div className="h-screen w-full bg-[#191920] flex items-center justify-center lg:grid  lg:gap-20 lg:grid-cols-12 font-outfit relative">
+      
       <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-l from-black to-tranparent  blur-xl"></div>
 	  
 	  <div className="col-start-9 col-span-4 px-8 flex items-center justify-center w-full h-full box-border ">

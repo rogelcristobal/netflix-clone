@@ -17,7 +17,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 			// if it is not loading
 			if (spanState) {
 				// if it has a span 
-				return endpoint.data?.results.slice(0, 4);
+				return endpoint.data?.results.slice(0, 2);
 			} else {
 				// span off
 				return endpoint.data?.results.slice(0, 3);
@@ -51,25 +51,25 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 			{/* map only 5 item */}
 
 			{isSpanTwo ? (
-				<Grid container spacing={1.5} columns={6} className="px-2 box-border">
+				<Grid container spacing={2.5} columns={4} className="px-2 box-border">
 					{selectItems(movie,  true).map((item, id) => (
-						<Grid item xs={id === 0 || id === 1 ? 2 : 1} key={id}>
+						<Grid item xs={id === 0 || id === 1 ? 2 : 2} key={id}>
 							<CardComponent
 								title={item?.title}
 								poster={item?.backdrop_path}
-								subheader={id}
+								spanTwo={isSpanTwo}
 							/>
 						</Grid>
 					))}
 				</Grid>
 			) : (
-				<Grid container spacing={1.5} columns={6} className="px-2 box-border">
+				<Grid container spacing={2.5} columns={6} className="px-2 box-border">
 					{selectItems(movie, false).map((item, id) => (
 						<Grid item xs={2} key={id}>
 							<CardComponent
 								title={item?.title}
 								poster={item?.poster_path}
-								subheader={id}
+								spanTwo={isSpanTwo}
 							/>
 						</Grid>
 					))}
