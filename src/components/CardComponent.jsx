@@ -12,13 +12,14 @@ import {
   Chip,
   Tooltip,
   Zoom,
+  Stack,
 } from "@mui/material";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
-const CardComponent = ({ title, poster, loading, spanTwo, rate,genre }) => {
-	const genreQuery = useFetchMovieGenres()
-  
-	const [itemRate, setItemRate] = useState(false);
+const CardComponent = ({ title, poster, loading, spanTwo, rate, genre }) => {
+  const genreQuery = useFetchMovieGenres();
+
+  const [itemRate, setItemRate] = useState(false);
   const handleRate = (e) => {
     e.stopPropagation();
     setItemRate(!itemRate);
@@ -27,16 +28,26 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate,genre }) => {
     card: false,
     chip: false,
   });
- 
+
   const cardHoverEnterHandler = () => {
-	
-	setHoverState({ ...hoverState, card: true });
+    setHoverState({ ...hoverState, card: true });
   };
   const cardHoverLeaveHandler = () => {
-    
     setHoverState({ ...hoverState, card: false });
   };
-  console.log(genre)
+
+  const filterGenre = () => {
+    // filter genre api list to the props genre 
+    const res = genreQuery.data.genres.filter((item) =>
+      genre.includes(item.id)
+    );
+    // then map it to get the name
+    const mapped = res.map((item) => item.name);
+    // then return the genre names array
+    return mapped;
+
+  };
+ 
   return (
     <motion.div
       //   whileHover={{ scale: 1.05, zIndex: 10 }}
@@ -51,7 +62,7 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate,genre }) => {
         className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1  hover:drop-shadow-xl "
         // onClick={() => alert(`${!data.id}\n${!data.title}`)}
       >
-        {loading || poster ? (
+        {!loading || poster ? (
           <div className="relative w-full h-fit  	">
             <CardMedia
               component="img"
@@ -119,16 +130,16 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate,genre }) => {
               >
                 {title}
               </Typography>
-			  {spanTwo&&
-			  (
-				genre.map((item,id)=>(
-
-					<Chip label={genreQuery.genres.id[item]} key={id}  className=" py-1 px-2 capitalize text-xs font-medium text-color-400 bg-color-500/30 h-fit">
-	  
-					</Chip>
-				))
-			  )
-			  }
+              <Stack spacing={0.5} direction="row" alignItems="center" justifyContent="flex-start">
+              {spanTwo && !loading
+                ? filterGenre().map((itemList) => (
+                  <Chip
+                  label={itemList}
+                  className=" py-1 px-2 capitalize text-[0.70rem] tracking-wide font-medium text-color-400 bg-color-500/30 h-fit"
+                  ></Chip>
+                  ))
+                  : null}
+                </Stack>
             </Box>
           ) : (
             <>

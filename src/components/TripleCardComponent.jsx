@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Typography, Link, Paper, Grid } from "@mui/material";
 import CardComponent from "./CardComponent";
-const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
+const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 	//   gets first 3 items in the returned array
 	const selectItems = (endpoint, spanState) => {
-		if (movie.isLoading) {
+		if (API_data.isLoading) {
 			// if loading = true
 			if (spanState) {
 				// if it has a span 
@@ -50,9 +50,9 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 
 			{/* map only 5 item */}
 
-			{isSpanTwo ? (
+			{isSpanTwo  ? (
 				<Grid container spacing={2.5} columns={4} className="px-2 box-border">
-					{selectItems(movie,  true).map((item, id) => (
+					{selectItems(API_data,  true).map((item, id) => (
 						<Grid item xs={id === 0 || id === 1 ? 2 : 2} key={id}>
 							<CardComponent
 								title={item?.title}
@@ -60,13 +60,14 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 								spanTwo={isSpanTwo}
 							    genre={item?.genre_ids}
 								rate={item?.vote_average}
+								loading={API_data.isLoading}
 							/>
 						</Grid>
 					))}
 				</Grid>
 			) : (
 				<Grid container spacing={2} columns={5} className="px-2 box-border">
-					{selectItems(movie, false).map((item, id) => (
+					{selectItems(API_data, false).map((item, id) => (
 						<Grid item xs={1} key={id}>
 							<CardComponent
 								title={item?.title}
@@ -75,6 +76,7 @@ const TripleCardComponent = ({ movie, title, isSpanTwo }) => {
 								
 							    genre={item?.genre_ids}
 								rate={item?.vote_average}
+								loading={API_data.isLoading}
 							/>
 						</Grid>
 					))}
