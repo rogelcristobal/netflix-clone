@@ -1,18 +1,12 @@
 import {
   Typography,
-  Link,
   Paper,
   ListItem,
   ListItemButton,
-  Box,
   List,
   Skeleton,
-  Avatar,
-  Stack,
-  Grid,
 } from "@mui/material";
 import TripleCardComponent from "../components/TripleCardComponent";
-import { BsArrowRight } from "react-icons/bs";
 import useFetchNowPlayingMovie from "../fetch/movies/useFetchNowPlayingMovie";
 
 import useFetchPopularMovie from "../fetch/movies/useFetchPopularMovie";
@@ -20,7 +14,6 @@ import useFetchTopRatedMovie from "../fetch/movies/useFetchTopRatedMovie";
 import useFetchUpcomingMovie from "../fetch/movies/useFetchUpcomingMovie";
 
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
-import useFetchPopularArtist from "../fetch/people/useFetchPopularArtist";
 
 const MovieCategories = () => {
   // queries
@@ -28,10 +21,9 @@ const MovieCategories = () => {
   const nowPlayingMovieQuery = useFetchNowPlayingMovie();
   const topRatedMovieQuery = useFetchTopRatedMovie();
   const upcomingMovieQuery = useFetchUpcomingMovie();
-  const popularArtist = useFetchPopularArtist();
-  const movieGenre = useFetchMovieGenres();
+  const genreQuery = useFetchMovieGenres();
   const sliceGenre = (endpoint, state) => {
-    // console.log(movieGenre.data)
+    // console.log(genreQuery.data)
     if (endpoint.isLoading) {
       if (!state) {
         return Array.from(new Array(4));
@@ -56,8 +48,6 @@ const MovieCategories = () => {
       >
         {/* scrollable content */}
         <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2  pb-72 box-border space-y-2 scroll-smooth	">
-        
-
           {[
             { title: "discover movies", data: popularMovieQuery },
             { title: "now playing", data: nowPlayingMovieQuery },
@@ -67,9 +57,9 @@ const MovieCategories = () => {
             <TripleCardComponent
               key={id}
               title={item.title}
-              movie={item.data}
+              API_data={item.data}
               isSpanTwo={id === 0 ? true : false}
-              loading={item.isLoading}
+             
             ></TripleCardComponent>
           ))}
         </div>
@@ -91,7 +81,7 @@ const MovieCategories = () => {
             Categories
           </Typography>
           <List>
-            {movieGenre.isLoading
+            {genreQuery.isLoading
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl" variant="contained">
@@ -106,13 +96,10 @@ const MovieCategories = () => {
                     </ListItemButton>
                   </ListItem>
                 ))
-              : sliceGenre(movieGenre).map((item, index) => (
+              : sliceGenre(genreQuery).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl dark:hover:bg-[#191920] hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-500 ease-in-out">
-                      <Typography
-                        variant="p"
-                        className="text-xs    "
-                      >
+                    <ListItemButton className="rounded-xl dark:hover:bg-[#191920] hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
+                      <Typography variant="p" className="text-xs    ">
                         {item.name}
                       </Typography>
                     </ListItemButton>

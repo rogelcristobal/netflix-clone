@@ -24,9 +24,9 @@ const TVCategories = () => {
   
   // console.log(`popular =`)
   
-  const movieGenre = useFetchMovieGenres();
+  const genreQuery = useFetchMovieGenres();
   const sliceGenre = (endpoint, state) => {
-    // console.log(movieGenre.data)
+    // console.log(genreQuery.data)
     if (endpoint.isLoading) {
       if (!state) {
         return Array.from(new Array(4));
@@ -84,7 +84,7 @@ const TVCategories = () => {
             Categories
           </Typography>
           <List>
-            {movieGenre.isLoading
+            {genreQuery.isLoading
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl" variant="contained">
@@ -99,7 +99,7 @@ const TVCategories = () => {
                     </ListItemButton>
                   </ListItem>
                 ))
-              : sliceGenre(movieGenre).map((item, index) => (
+              : sliceGenre(genreQuery).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl dark:hover:bg-[#191920] hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-semibold hover:font-medium tracking-wide">
                       <Typography variant="p" className="text-xs    ">

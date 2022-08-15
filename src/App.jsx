@@ -12,9 +12,9 @@ import MovieCategories from "./pages/MovieCategories";
 import ModalBG from "./components/modal/ModalBG";
 import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/protetedRoute/ProtectedRoute";
-import TVCategories from './pages/TVCategories'
+import TVCategories from "./pages/TVCategories";
 // MUI
-import { Paper, IconButton, Tooltip, Divider, Box } from "@mui/material";
+import { Paper, IconButton, Tooltip, Divider, Box,Zoom } from "@mui/material";
 // react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -50,6 +50,7 @@ function NetflixClone() {
         },
       },
     },
+    
   });
   // generate a random hex color val from stackoverflow
 
@@ -80,7 +81,14 @@ function NetflixClone() {
                     <div className="flex items-center h-full w-full justify-end">
                       <Box className="flex items-center justify-between space-x-4">
                         {/* <AvatarComponent user={user?.uid}></AvatarComponent> */}
-                        <Tooltip title="search" arrow placement="top-end">
+                        <Tooltip
+                          title="search"
+                          arrow
+                          placement="top-end"
+                          TransitionComponent={Zoom}
+                          TransitionProps={{ timeout: 300 }}
+                          enterDelay={1000}
+                        >
                           <IconButton
                             aria-label=""
                             className="hover:bg-color-500/10 text-gray-700 hover:text-color-400  "
@@ -140,14 +148,14 @@ function NetflixClone() {
                       </ProtectedRoute>
                     }
                   ></Route>
-				   <Route
+                  {/* <Route
                     path="/shows"
                     element={
                       <ProtectedRoute>
                         <TVCategories />
                       </ProtectedRoute>
                     }
-                  ></Route>
+                  ></Route> */}
                 </Routes>
               </div>
             </div>
