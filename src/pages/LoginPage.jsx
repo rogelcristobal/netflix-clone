@@ -18,7 +18,7 @@ const LoginPage = () => {
 
     try {
       await login(inputText.email, inputText.password);
-      nav("/homepage/");
+      nav("/homepage/movies");
       setTextInput({
         email: "",
         password: "",
