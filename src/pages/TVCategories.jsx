@@ -22,11 +22,10 @@ const TVCategories = () => {
   const topRatedShowQuery = useFetchTopRatedShow()
   const airingTodayQuery = useFetchAiringToday()
   
-  // console.log(`popular =`)
   
   const genreQuery = useFetchMovieGenres();
   const sliceGenre = (endpoint, state) => {
-    // console.log(genreQuery.data)
+    
     if (endpoint.isLoading) {
       if (!state) {
         return Array.from(new Array(4));
@@ -59,10 +58,10 @@ const TVCategories = () => {
             { title: "on air", data:  onAirQuery},
           ].map((item, id) => (
             <TripleCardComponent
-              key={id}
-              title={item.title}
-              movie={item.data}
-              isSpanTwo={id === 0 ? true : false}
+            key={id}
+            title={item.title}
+            API_data={item.data}
+            isSpanTwo={id === 0 ? true : false}
             ></TripleCardComponent>
           ))}
         </div>

@@ -44,7 +44,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 					component="button"
 				>
 					See More
-					{/* <HiOutlineChevronDown className="text-lg  ml-4 font-bold"></HiOutlineChevronDown> */}
+					
 				</Link>
 			</Box>
 
@@ -62,6 +62,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 							    genre={item?.genre_ids}
 								rate={item?.vote_average}
 								loading={API_data.isLoading}
+								date={item?.date_released}
 							/>
 						</Grid>
 					))}
@@ -76,7 +77,6 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 								poster={item?.poster_path}
 								spanTwo={isSpanTwo}
 								
-							    genre={item?.genre_ids}
 								rate={item?.vote_average}
 								loading={API_data.isLoading}
 							/>

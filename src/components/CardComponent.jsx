@@ -17,7 +17,7 @@ import {
 import { BsPlayCircle } from "react-icons/bs";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
-const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
+const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date}) => {
   const genreQuery = useFetchMovieGenres();
 
   const [itemRate, setItemRate] = useState(false);
@@ -136,6 +136,9 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
               >
                 {title}
               </Typography>
+              {
+                spanTwo && <Typography variant="body1" color="initial">{date}</Typography>
+              }
               <Stack
                 spacing={0.5}
                 direction="row"
@@ -146,8 +149,9 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
                   ? // genre will only show when spanning two fr
                     !loading && genre
                     ? // on loading state or api does not throw genre it will render a 2 skeleton ship
-                      filterGenre().map((itemList) => (
+                      filterGenre().map((itemList,id) => (
                         <Chip
+                          key={id}
                           label={itemList}
                           className=" py-0.5 px-1 capitalize text-[0.70rem] tracking-wide font-medium text-color-400 bg-color-500/20 h-fit"
                         ></Chip>
