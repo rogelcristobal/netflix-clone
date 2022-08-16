@@ -14,12 +14,14 @@ import {
   Zoom,
   Stack,
 } from "@mui/material";
+import {useNavigate,useLocation} from 'react-router-dom'
 import { BsPlayCircle } from "react-icons/bs";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
 const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date}) => {
   const genreQuery = useFetchMovieGenres();
-
+  const nav = useNavigate()
+  const location = useLocation()
   const [itemRate, setItemRate] = useState(false);
   const handleRate = (e) => {
     e.stopPropagation();
@@ -48,6 +50,10 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date})
     return mapped;
   };
 
+  const handleClick=()=>{
+    nav(`${location.pathname}/${id}`)
+  }
+
   return (
     <motion.div
       //   whileHover={{ scale: 1.05, zIndex: 10 }}
@@ -55,7 +61,7 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date})
       whileTap={{ scale: 1 }}
       onMouseEnter={cardHoverEnterHandler}
       onMouseLeave={cardHoverLeaveHandler}
-      onClick={() => alert(id)}
+      onClick={handleClick}
     >
       <Card
         variant="contained"
