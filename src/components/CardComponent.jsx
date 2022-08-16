@@ -14,12 +14,14 @@ import {
   Zoom,
   Stack,
 } from "@mui/material";
+import {useNavigate,useLocation} from 'react-router-dom'
 import { BsPlayCircle } from "react-icons/bs";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
-const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
+const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date}) => {
   const genreQuery = useFetchMovieGenres();
-
+  const nav = useNavigate()
+  const location = useLocation()
   const [itemRate, setItemRate] = useState(false);
   const handleRate = (e) => {
     e.stopPropagation();
@@ -48,6 +50,10 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
     return mapped;
   };
 
+  const handleClick=()=>{
+    nav(`${location.pathname}/${id}`)
+  }
+
   return (
     <motion.div
       //   whileHover={{ scale: 1.05, zIndex: 10 }}
@@ -55,7 +61,7 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
       whileTap={{ scale: 1 }}
       onMouseEnter={cardHoverEnterHandler}
       onMouseLeave={cardHoverLeaveHandler}
-      onClick={() => alert(id)}
+      onClick={handleClick}
     >
       <Card
         variant="contained"
@@ -136,6 +142,9 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
               >
                 {title}
               </Typography>
+              {
+                spanTwo && <Typography variant="body1" color="initial">{date}</Typography>
+              }
               <Stack
                 spacing={0.5}
                 direction="row"
@@ -146,8 +155,9 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
                   ? // genre will only show when spanning two fr
                     !loading && genre
                     ? // on loading state or api does not throw genre it will render a 2 skeleton ship
-                      filterGenre().map((itemList) => (
+                      filterGenre().map((itemList,id) => (
                         <Chip
+                          key={id}
                           label={itemList}
                           className=" py-0.5 px-1 capitalize text-[0.70rem] tracking-wide font-medium text-color-400 bg-color-500/20 h-fit"
                         ></Chip>

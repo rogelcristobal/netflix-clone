@@ -1,11 +1,14 @@
 import {
     Paper,
   } from "@mui/material";
-  
+import { useParams,useLocation } from "react-router-dom";
   
   const ItemPage = () => {
    
-  
+    const {movieId} = useParams()
+    const {pathname} = useLocation()
+    console.log(movieId)
+    console.log("current path",pathname)
     return (
       <>
         <Paper
@@ -15,7 +18,7 @@ import {
         >
           {/* scrollable content */}
           <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2  pb-72 box-border space-y-2 scroll-smooth	">
-            <h5 className="text-white text-4xl">hello world</h5>
+            <h5 className="text-white text-4xl">hello world {movieId}</h5>
           </div>
         </Paper>
         {/*page nav*/}

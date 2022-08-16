@@ -149,7 +149,7 @@ function NetflixClone() {
                     path="/tvshows"
                     element={
                       <ProtectedRoute>
-                        <MovieCategories />
+                        <TVCategories />
                       </ProtectedRoute>
                     }
                   ></Route>
