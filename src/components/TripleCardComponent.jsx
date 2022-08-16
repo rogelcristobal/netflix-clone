@@ -55,6 +55,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 					{selectItems(API_data,  true).map((item, id) => (
 						<Grid item xs={id === 0 || id === 1 ? 2 : 2} key={id}>
 							<CardComponent
+							    id={item?.id}
 								title={item?.title}
 								poster={item?.backdrop_path}
 								spanTwo={isSpanTwo}
@@ -70,8 +71,9 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 					{selectItems(API_data, false).map((item, id) => (
 						<Grid item xs={1} key={id}>
 							<CardComponent
+								id={item?.id}
 								title={item?.title}
-								poster={item?.backdrop_path}
+								poster={item?.poster_path}
 								spanTwo={isSpanTwo}
 								
 							    genre={item?.genre_ids}

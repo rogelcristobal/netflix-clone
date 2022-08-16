@@ -13,13 +13,13 @@ import ModalBG from "./components/modal/ModalBG";
 import LoginPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/protetedRoute/ProtectedRoute";
 import TVCategories from "./pages/TVCategories";
+import ItemPage from "./pages/ItemPage";
 // MUI
-import { Paper, IconButton, Tooltip, Divider, Box,Zoom } from "@mui/material";
+import { Paper, IconButton, Tooltip, Divider, Box,Zoom ,Drawer} from "@mui/material";
 // react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import useFetchNetwork from "./fetch/useFetchNetwork";
 // icons
 import { RiSearchLine } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -125,10 +125,7 @@ function NetflixClone() {
                   className=" w-full px-4  h-full pt-6 box-border bg-inherit   flex flex-col items-center justify-start "
                   square
                 >
-                  <Link
-                    to="/homepage/"
-                    className="no-underline text-color-100 w-full px-6    box-border"
-                  ></Link>
+                  
                 </Paper>
                 <Divider
                   variant="middle"
@@ -141,21 +138,29 @@ function NetflixClone() {
               <div className="flex items-start justify-start w-full  h-full  box-border">
                 <Routes>
                   <Route
-                    path="/"
+                    path="/movies/*"
                     element={
                       <ProtectedRoute>
                         <MovieCategories />
                       </ProtectedRoute>
                     }
                   ></Route>
-                  {/* <Route
-                    path="/shows"
+                   <Route
+                    path="/tvshows"
                     element={
                       <ProtectedRoute>
-                        <TVCategories />
+                        <MovieCategories />
                       </ProtectedRoute>
                     }
-                  ></Route> */}
+                  ></Route>
+                  <Route
+                    path="/movies/:movieId"
+                    element={
+                      <ProtectedRoute>
+                        <ItemPage></ItemPage>
+                      </ProtectedRoute>
+                    }
+                  ></Route>
                 </Routes>
               </div>
             </div>

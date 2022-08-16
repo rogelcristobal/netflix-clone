@@ -106,13 +106,7 @@ const MovieCategories = () => {
                   </ListItem>
                 ))}
           </List>
-          {/* <Link
-            className="flex items-center justify-start text-sm  font-outfit text-gray-700 w-full py-1 rounded-xl"
-            underline="none"
-            component="button"
-          >
-            See More
-          </Link> */}
+         
         </Paper>
       </Paper>
     </>
