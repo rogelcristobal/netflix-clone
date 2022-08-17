@@ -15,7 +15,7 @@ import ProtectedRoute from "./components/protetedRoute/ProtectedRoute";
 import TVCategories from "./pages/TVCategories";
 import ItemPage from "./pages/ItemPage";
 // MUI
-import { Paper, IconButton, Tooltip, Divider, Box,Zoom ,Drawer} from "@mui/material";
+import { Paper, IconButton, Tooltip, Divider, Box,Zoom ,List,ListItem,ListItemButton, Typography} from "@mui/material";
 // react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -80,7 +80,6 @@ function NetflixClone() {
                   >
                     <div className="flex items-center h-full w-full justify-end">
                       <Box className="flex items-center justify-between space-x-4">
-                        {/* <AvatarComponent user={user?.uid}></AvatarComponent> */}
                         <Tooltip
                           title="search"
                           arrow
@@ -122,10 +121,18 @@ function NetflixClone() {
                 {/* sidebar contents here */}
                 <Paper
                   variant="contained"
-                  className=" w-full px-4  h-full pt-6 box-border bg-inherit   flex flex-col items-center justify-start "
+                  className=" w-full px-4  h-full pt-2 box-border bg-inherit   flex flex-col items-center justify-start "
                   square
                 >
-                  
+                  <List className=" w-full h-full">
+                    <Box className="py-8 w-full flex items-center justify-center  rounded-xl  mb-4">
+                      <Typography variant="h5" className="text-color-300 tracking-wide first-letter:text-primary-400 font-medium">netflix</Typography>
+                    </Box>
+                    <Typography variant="p" className="text-gray-800 text-xs tracking-wider capitalize font-semibold ">dashboard</Typography>
+                    <ListItem className="px-3">
+                      <ListItemButton className="text-color-200 py-3 text-sm  rounded-xl bg-[#161b22]">Home</ListItemButton>
+                    </ListItem>
+                  </List>
                 </Paper>
                 <Divider
                   variant="middle"
