@@ -146,7 +146,7 @@ function NetflixClone() {
                     }
                   ></Route>
                    <Route
-                    path="/tvshows"
+                    path="/tvshows/*"
                     element={
                       <ProtectedRoute>
                         <TVCategories />
@@ -154,7 +154,15 @@ function NetflixClone() {
                     }
                   ></Route>
                   <Route
-                    path="/movies/:movieId"
+                    path="/movies/:itemID"
+                    element={
+                      <ProtectedRoute>
+                        <ItemPage></ItemPage>
+                      </ProtectedRoute>
+                    }
+                  ></Route>
+                  <Route
+                    path="/tvshows/:itemID"
                     element={
                       <ProtectedRoute>
                         <ItemPage></ItemPage>
