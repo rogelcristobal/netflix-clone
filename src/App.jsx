@@ -53,7 +53,7 @@ function NetflixClone() {
     
   });
   // generate a random hex color val from stackoverflow
-
+ 
   return (
     <ThemeProvider theme={theme}>
       <Routes>
@@ -61,7 +61,7 @@ function NetflixClone() {
         <Route
           path="/homepage/*"
           element={
-            <div className="font-satoshi relative flex w-full box-border   h-screen  bg-[#111115] ">
+            <div className="font-satoshi relative flex w-full box-border   h-screen  bg-[#0d1117] ">
               {/* nav */}
               {searchModal && (
                 <ModalBG
@@ -71,7 +71,7 @@ function NetflixClone() {
                   <SearchModal></SearchModal>
                 </ModalBG>
               )}
-              <div className="fixed top-0 left-0 w-full h-20  shadow-sm z-20 bg-inherit ">
+              <div className="fixed top-0 left-0 w-full h-20  shadow-sm z-20 bg-transparent ">
                 <div className="container h-full flex   justify-end mx-auto items-center rounded-lg ">
                   {/* nav contents here */}
                   <Paper
@@ -91,7 +91,7 @@ function NetflixClone() {
                         >
                           <IconButton
                             aria-label=""
-                            className="hover:bg-color-500/10 text-gray-700 hover:text-color-400  "
+                            className="hover:bg-[#161b22] text-gray-700 rounded-xl hover:text-color-400  "
                             onClick={() => setSearchModal(!searchModal)}
                           >
                             <RiSearchLine className=" font-medium text-xl"></RiSearchLine>
@@ -101,7 +101,7 @@ function NetflixClone() {
                         <IconButton
                           variant="outlined"
                           color="primary"
-                          className=" rounded-xl hover:bg-color-500/10 text-gray-700 hover:text-color-400"
+                          className=" rounded-xl hover:bg-[#161b22] text-gray-700 hover:text-color-400"
                         >
                           <IoSettingsOutline className=" font-medium text-xl"></IoSettingsOutline>
                         </IconButton>
@@ -109,7 +109,7 @@ function NetflixClone() {
                     </div>
                     <Divider
                       variant="middle"
-                      className="bg-gray-700/30"
+                      className="bg-gray-600/30"
                     ></Divider>
                   </Paper>
                 </div>
@@ -146,7 +146,7 @@ function NetflixClone() {
                     }
                   ></Route>
                    <Route
-                    path="/tvshows"
+                    path="/tvshows/*"
                     element={
                       <ProtectedRoute>
                         <TVCategories />
@@ -154,7 +154,15 @@ function NetflixClone() {
                     }
                   ></Route>
                   <Route
-                    path="/movies/:movieId"
+                    path="/movies/:itemID"
+                    element={
+                      <ProtectedRoute>
+                        <ItemPage></ItemPage>
+                      </ProtectedRoute>
+                    }
+                  ></Route>
+                  <Route
+                    path="/tvshows/:itemID"
                     element={
                       <ProtectedRoute>
                         <ItemPage></ItemPage>

@@ -28,7 +28,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 
 	return (
 		<Paper
-			variant="contained"
+			variant="outlined"
 			className="flex flex-col items-start justify-center w-full  h-fit bg-inherit  rounded-xl overflow-hidden px-4 box-border py-6 "
 		>
 			<Box className="flex items-center justify-between w-full h-auto mb-6">
@@ -62,7 +62,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 							    genre={item?.genre_ids}
 								rate={item?.vote_average}
 								loading={API_data.isLoading}
-								date={item?.date_released}
+								
 							/>
 						</Grid>
 					))}
