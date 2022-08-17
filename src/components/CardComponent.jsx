@@ -18,7 +18,7 @@ import {useNavigate,useLocation} from 'react-router-dom'
 import { BsPlayCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
-const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date}) => {
+const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
   const genreQuery = useFetchMovieGenres();
   const nav = useNavigate()
   const location = useLocation()
@@ -45,8 +45,8 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date})
       genre.includes(item.id)
     );
     // then map it to get the name
-    const mapped = res.map((item) => item.name);
-    // then return the genre names array
+    const mapped = res.map((item) => item.name).slice(0,2);
+    // then return the genre names array then slice it to get only 2
     return mapped;
   };
 
@@ -95,16 +95,16 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date})
                 <Chip
                   variant="contained"
                   className={`bg-gray-900/30 absolute ${
-                    spanTwo ? "top-2.5 left-2.5" : "top-1.5 left-1.5"
+                    spanTwo ? "top-2.5 left-2.5" : "top-1 left-1"
                   } px-2 py-0.5 text-[0.675rem]  text-color-400 font-semibold h-fit cursor-pointer`}
                   label={`${rate}`}
-                  icon={<AiFillStar className={`text-color-400`}></AiFillStar>}
+                  icon={<AiFillStar className={`text-yellow-400`}></AiFillStar>}
                   onClick={handleRate}
                 ></Chip>
               </Tooltip>
 
               {/* play btn */}
-              {spanTwo && hoverState.card && (
+              { hoverState.card && (
                 <Box className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-color-300 font-thin text-5xl tra">
                   <BsPlayCircle></BsPlayCircle>
                 </Box>
@@ -142,14 +142,13 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id,date})
               >
                 {title}
               </Typography>
-              {
-                spanTwo && <Typography variant="body1" color="initial">{date}</Typography>
-              }
+             
               <Stack
                 spacing={0.5}
                 direction="row"
                 alignItems="center"
                 justifyContent="flex-start"
+                
               >
                 {spanTwo
                   ? // genre will only show when spanning two fr
