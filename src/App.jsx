@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink, Link } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 // context
@@ -15,7 +15,18 @@ import ProtectedRoute from "./components/protetedRoute/ProtectedRoute";
 import TVCategories from "./pages/TVCategories";
 import ItemPage from "./pages/ItemPage";
 // MUI
-import { Paper, IconButton, Tooltip, Divider, Box,Zoom ,List,ListItem,ListItemButton, Typography} from "@mui/material";
+import {
+  Paper,
+  IconButton,
+  Tooltip,
+  Divider,
+  Box,
+  Zoom,
+  List,
+  ListItem,
+  ListItemButton,
+  Typography,
+} from "@mui/material";
 // react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -50,10 +61,9 @@ function NetflixClone() {
         },
       },
     },
-    
   });
   // generate a random hex color val from stackoverflow
- 
+
   return (
     <ThemeProvider theme={theme}>
       <Routes>
@@ -124,14 +134,41 @@ function NetflixClone() {
                   className=" w-full px-4  h-full pt-2 box-border bg-inherit   flex flex-col items-center justify-start "
                   square
                 >
-                  <List className=" w-full h-full">
+                  <List className=" w-full h-full space-y-2">
                     <Box className="py-8 w-full flex items-center justify-center  rounded-xl  mb-4">
-                      <Typography variant="h5" className="text-color-300 tracking-wide first-letter:text-primary-400 font-medium">netflix</Typography>
+                      <Typography
+                        variant="h5"
+                        className="text-color-300 tracking-wide first-letter:text-primary-400 font-medium"
+                      >
+                        roglify.
+                      </Typography>
                     </Box>
-                    <Typography variant="p" className="text-gray-800 text-xs tracking-wider capitalize font-semibold ">dashboard</Typography>
-                    <ListItem className="px-3">
-                      <ListItemButton className="text-color-200 py-3 text-sm  rounded-xl bg-[#161b22]">Home</ListItemButton>
+                    <Typography
+                      variant="p"
+                      className="text-gray-800 text-xs tracking-wider capitalize font-medium ml-4 "
+                    >
+                      dashboard
+                    </Typography>
+                      {[
+                        { path: "/homepage/movies", label: "movies" },
+                        { path: "/homepage/tvshows", label: "tv shows" },
+                        {path:"/homepage/peoples", label: 'peoples'}
+                      ].map((link) => (
+                        <ListItem className="px-3 capitalize py-1">
+                        <NavLink
+                          to={link.path}
+                          className={({ isActive }) =>
+                            isActive
+                              ? "bg-[#161b22] w-full no-underline rounded-xl "
+                              : " w-full no-underline rounded-xl "
+                          }
+                        >
+                          <ListItemButton className="text-color-200 py-3 text-sm  rounded-xl">
+                            {link.label}
+                          </ListItemButton>
+                        </NavLink>
                     </ListItem>
+                      ))}
                   </List>
                 </Paper>
                 <Divider
@@ -152,7 +189,7 @@ function NetflixClone() {
                       </ProtectedRoute>
                     }
                   ></Route>
-                   <Route
+                  <Route
                     path="/tvshows/*"
                     element={
                       <ProtectedRoute>
