@@ -3,7 +3,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 const useFetchTopRatedShow = () => {
   
-    const topRatedShowQuery = useQuery([''],async()=>{
+    const topRatedShowQuery = useQuery(['topRatedShow'],async()=>{
         const response =await axios.get(request.getTopRatedShow)
         return response.data    
     })

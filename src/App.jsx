@@ -100,11 +100,11 @@ function NetflixClone() {
                       >
                         <IconButton
                           aria-label=""
-                          className="rounded-xl bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300
+                          className="rounded-full hover:bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300
                           "
                           onClick={() => setSearchModal(!searchModal)}
                         >
-                          <RiSearchLine className=" font-medium text-xl"></RiSearchLine>
+                          <RiSearchLine className=" font-medium text-lg"></RiSearchLine>
                         </IconButton>
                       </Tooltip>
 
@@ -114,9 +114,9 @@ function NetflixClone() {
                         <IconButton
                           variant="outlined"
                           color="primary"
-                          className=" rounded-xl bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300"
+                          className=" rounded-full  bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300"
                         >
-                          <IoPersonOutline className=" font-medium text-xl"></IoPersonOutline>
+                          <IoPersonOutline className=" font-medium text-base"></IoPersonOutline>
                         </IconButton>
                         {/* settings */}
                         <IconButton

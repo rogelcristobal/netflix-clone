@@ -23,7 +23,7 @@ const TVCategories = () => {
   const airingTodayQuery = useFetchAiringToday()
   
   
-  const genreQuery = useFetchMovieGenres();
+  const movieGenreQuery = useFetchMovieGenres();
   const sliceGenre = (endpoint, state) => {
     
     if (endpoint.isLoading) {
@@ -83,22 +83,17 @@ const TVCategories = () => {
             Categories
           </Typography>
           <List>
-            {genreQuery.isLoading
+            {movieGenreQuery.isLoading
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl" variant="contained">
-                      <Skeleton>
-                        <Typography
-                          variant="p"
-                          className="text-sm  w-20 text-neutral-400"
-                        >
-                          item loading
-                        </Typography>
+                      <Skeleton className="w-full h-6 bg-[#161b22]">
+                        
                       </Skeleton>
                     </ListItemButton>
                   </ListItem>
                 ))
-              : sliceGenre(genreQuery).map((item, index) => (
+              : sliceGenre(movieGenreQuery).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl hover:bg-[#161b22] dark:hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
                       <Typography variant="p" className="text-xs    ">
