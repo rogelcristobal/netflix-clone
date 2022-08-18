@@ -34,7 +34,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // icons
 import { RiSearchLine } from "react-icons/ri";
 import { IoSettingsOutline } from "react-icons/io5";
-import { IoPerson } from "react-icons/io5";
+import { IoPersonOutline } from "react-icons/io5";
 const queryClient = new QueryClient();
 
 function App() {
@@ -89,6 +89,7 @@ function NetflixClone() {
                     className={`h-full w-[calc(100%-14rem)]  bg-transparent  flex flex-col items-between justify-center  transition-all ease-in-out duration-500 px-4 box-border`}
                   >
                     <div className="flex items-center h-full w-full justify-between">
+                      {/* search */}
                       <Tooltip
                         title="search"
                         arrow
@@ -99,17 +100,29 @@ function NetflixClone() {
                       >
                         <IconButton
                           aria-label=""
-                          className="hover:bg-[#161b22] text-gray-700 rounded-xl hover:text-color-400  "
+                          className="rounded-xl bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300
+                          "
                           onClick={() => setSearchModal(!searchModal)}
                         >
                           <RiSearchLine className=" font-medium text-xl"></RiSearchLine>
                         </IconButton>
                       </Tooltip>
+
+                      {/* right side container */}
                       <Box className="flex items-center justify-between space-x-4">
+                        {/* user */}
                         <IconButton
                           variant="outlined"
                           color="primary"
-                          className=" rounded-xl hover:bg-[#161b22] text-gray-700 hover:text-color-400"
+                          className=" rounded-xl bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300"
+                        >
+                          <IoPersonOutline className=" font-medium text-xl"></IoPersonOutline>
+                        </IconButton>
+                        {/* settings */}
+                        <IconButton
+                          variant="outlined"
+                          color="primary"
+                          className=" rounded-xl hover:bg-[#161b22] text-gray-700 hover:text-color-400 transition ease-in-out duration-300"
                         >
                           <IoSettingsOutline className=" font-medium text-xl"></IoSettingsOutline>
                         </IconButton>
@@ -153,7 +166,7 @@ function NetflixClone() {
                       { path: "/homepage/tvshows", label: "tv shows" },
                       { path: "/homepage/peoples", label: "peoples" },
                     ].map((link) => (
-                      <ListItem className="px-3 capitalize py-1">
+                      <ListItem className="px-3 capitalize py-0 ">
                         <NavLink
                           to={link.path}
                           className={({ isActive }) =>
@@ -162,7 +175,7 @@ function NetflixClone() {
                               : " w-full no-underline rounded-xl "
                           }
                         >
-                          <ListItemButton className="text-color-200 py-3 text-sm  rounded-xl">
+                          <ListItemButton className=" py-3.5 text-color-300 tracking-wide text-sm  rounded-xl">
                             {link.label}
                           </ListItemButton>
                         </NavLink>
