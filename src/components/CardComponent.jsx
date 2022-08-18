@@ -12,7 +12,7 @@ import {
   Chip,
   Tooltip,
   Zoom,
-  Stack,
+  Stack,ClickAwayListener 
 } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { BsPlayCircle } from "react-icons/bs";
