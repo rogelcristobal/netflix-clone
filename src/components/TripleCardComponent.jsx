@@ -1,7 +1,17 @@
 import React from "react";
 import { Box, Typography, Link, Paper, Grid } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import CardComponent from "./CardComponent";
 const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
+
+	/** 
+	 *  use location to check whether user is in tvshows
+	 *  because in movies it returns a title key 
+	 *  but in tv shows it uses a name key
+	 *  just for purposes only checking only
+	 * */
+
+	const {pathname} = useLocation()
 	//   gets first 3 items in the returned array
 	const selectItems = (endpoint, spanState) => {
 		if (API_data.isLoading) {
@@ -56,8 +66,10 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 						<Grid item xs={id === 0 || id === 1 ? 2 : 2} key={id}>
 							<CardComponent
 							    id={item?.id}
-								title={item?.title}
-								poster={item?.backdrop_path}
+								title={
+									pathname === '/homepage/movies'? item?.title: item?.name
+								}
+								poster={item?.poster_path}
 								spanTwo={isSpanTwo}
 							    genre={item?.genre_ids}
 								rate={item?.vote_average}
@@ -73,7 +85,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 						<Grid item xs={1} key={id}>
 							<CardComponent
 								id={item?.id}
-								title={item?.title}
+								title={pathname === '/homepage/movies'? item?.title: item?.name}
 								poster={item?.poster_path}
 								spanTwo={isSpanTwo}
 								

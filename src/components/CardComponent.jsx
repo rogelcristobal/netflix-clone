@@ -105,11 +105,11 @@ const CardComponent = ({
               >
                 <Chip
                   variant="contained"
-                  className={` absolute ${hoverState.card?'bg-gray-600/30 hover:bg-gray-400/30':'bg-gray-900/30 '} ${
+                  className={` absolute ${hoverState.card?'bg-gray-600/30 ' :'bg-gray-900/30 '} ${
                     spanTwo ? "top-2.5 left-2.5" : "top-1 left-1"
                   } px-2 py-0.5 text-[0.675rem]  text-color-400 font-semibold h-fit cursor-pointer`}
                   label={`${rate}`}
-                  icon={<AiFillStar className={`text-yellow-400`}></AiFillStar>}
+                  icon={<AiFillStar className={`text-color-400`}></AiFillStar>}
                   // onClick={handleRate}
                 ></Chip>
               </Tooltip>

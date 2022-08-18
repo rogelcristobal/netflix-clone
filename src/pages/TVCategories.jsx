@@ -54,7 +54,7 @@ const TVCategories = () => {
           {[
             { title: "popular shows", data: popularShowQuery },
             { title: "airing today", data:  airingTodayQuery},
-            { title: "top rated movies", data:topRatedShowQuery  },
+            { title: "top rated shows", data:topRatedShowQuery  },
             { title: "on air", data:  onAirQuery},
           ].map((item, id) => (
             <TripleCardComponent

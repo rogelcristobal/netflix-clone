@@ -166,7 +166,7 @@ function NetflixClone() {
                       { path: "/homepage/tvshows", label: "tv shows" },
                       { path: "/homepage/peoples", label: "peoples" },
                     ].map((link) => (
-                      <ListItem className="px-3 capitalize py-0 ">
+                      <ListItem className="px-3 capitalize py-0 font-satoshi">
                         <NavLink
                           to={link.path}
                           className={({ isActive }) =>
@@ -175,7 +175,7 @@ function NetflixClone() {
                               : " w-full no-underline rounded-xl "
                           }
                         >
-                          <ListItemButton className=" py-3.5 text-color-300 tracking-wide text-sm  rounded-xl">
+                          <ListItemButton className=" py-3.5 text-color-300 tracking-wide text-[0.800rem]  rounded-xl">
                             {link.label}
                           </ListItemButton>
                         </NavLink>
