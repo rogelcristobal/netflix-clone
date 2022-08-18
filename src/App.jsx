@@ -88,25 +88,24 @@ function NetflixClone() {
                     variant="contained"
                     className={`h-full w-[calc(100%-14rem)]  bg-transparent  flex flex-col items-between justify-center  transition-all ease-in-out duration-500 px-4 box-border`}
                   >
-                    <div className="flex items-center h-full w-full justify-end">
-                      <Box className="flex items-center justify-between space-x-4">
-                        <Tooltip
-                          title="search"
-                          arrow
-                          placement="top-end"
-                          TransitionComponent={Zoom}
-                          TransitionProps={{ timeout: 300 }}
-                          enterDelay={1000}
+                    <div className="flex items-center h-full w-full justify-between">
+                      <Tooltip
+                        title="search"
+                        arrow
+                        placement="top-end"
+                        TransitionComponent={Zoom}
+                        TransitionProps={{ timeout: 300 }}
+                        enterDelay={1000}
+                      >
+                        <IconButton
+                          aria-label=""
+                          className="hover:bg-[#161b22] text-gray-700 rounded-xl hover:text-color-400  "
+                          onClick={() => setSearchModal(!searchModal)}
                         >
-                          <IconButton
-                            aria-label=""
-                            className="hover:bg-[#161b22] text-gray-700 rounded-xl hover:text-color-400  "
-                            onClick={() => setSearchModal(!searchModal)}
-                          >
-                            <RiSearchLine className=" font-medium text-xl"></RiSearchLine>
-                          </IconButton>
-                        </Tooltip>
-
+                          <RiSearchLine className=" font-medium text-xl"></RiSearchLine>
+                        </IconButton>
+                      </Tooltip>
+                      <Box className="flex items-center justify-between space-x-4">
                         <IconButton
                           variant="outlined"
                           color="primary"
@@ -149,12 +148,12 @@ function NetflixClone() {
                     >
                       dashboard
                     </Typography>
-                      {[
-                        { path: "/homepage/movies", label: "movies" },
-                        { path: "/homepage/tvshows", label: "tv shows" },
-                        {path:"/homepage/peoples", label: 'peoples'}
-                      ].map((link) => (
-                        <ListItem className="px-3 capitalize py-1">
+                    {[
+                      { path: "/homepage/movies", label: "movies" },
+                      { path: "/homepage/tvshows", label: "tv shows" },
+                      { path: "/homepage/peoples", label: "peoples" },
+                    ].map((link) => (
+                      <ListItem className="px-3 capitalize py-1">
                         <NavLink
                           to={link.path}
                           className={({ isActive }) =>
@@ -167,8 +166,8 @@ function NetflixClone() {
                             {link.label}
                           </ListItemButton>
                         </NavLink>
-                    </ListItem>
-                      ))}
+                      </ListItem>
+                    ))}
                   </List>
                 </Paper>
                 <Divider
