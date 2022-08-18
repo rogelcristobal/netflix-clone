@@ -28,7 +28,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 
 	return (
 		<Paper
-			variant="outlined"
+			variant="contained"
 			className="flex flex-col items-start justify-center w-full  h-fit bg-inherit  rounded-xl overflow-hidden px-4 box-border py-6 "
 		>
 			<Box className="flex items-center justify-between w-full h-auto mb-6">
