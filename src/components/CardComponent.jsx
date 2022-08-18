@@ -14,14 +14,23 @@ import {
   Zoom,
   Stack,
 } from "@mui/material";
-import {useNavigate,useLocation} from 'react-router-dom'
+import { useNavigate, useLocation } from "react-router-dom";
 import { BsPlayCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
+import { HiDotsCircleHorizontal } from "react-icons/hi";
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
-const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
+const CardComponent = ({
+  title,
+  poster,
+  loading,
+  spanTwo,
+  rate,
+  genre,
+  id,
+}) => {
   const genreQuery = useFetchMovieGenres();
-  const nav = useNavigate()
-  const location = useLocation()
+  const nav = useNavigate();
+  const location = useLocation();
   const [itemRate, setItemRate] = useState(false);
   const handleRate = (e) => {
     e.stopPropagation();
@@ -29,7 +38,7 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
   };
   const [hoverState, setHoverState] = useState({
     card: false,
-    chip: false,
+    
   });
 
   const cardHoverEnterHandler = () => {
@@ -45,14 +54,14 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
       genre.includes(item.id)
     );
     // then map it to get the name
-    const mapped = res.map((item) => item.name).slice(0,2);
+    const mapped = res.map((item) => item.name).slice(0, 2);
     // then return the genre names array then slice it to get only 2
     return mapped;
   };
 
-  const handleClick=()=>{
-    nav(`${location.pathname}/${id}`)
-  }
+  const handleClick = () => {
+    nav(`${location.pathname}/${id}`);
+  };
 
   return (
     <motion.div
@@ -78,11 +87,13 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
               image={`https://image.tmdb.org/t/p/w500/${poster}`}
             />
 
+            {/* absolut chips */}
             <div
               className={`h-full w-full absolute top-0 ${
                 hoverState.card ? "bg-black/70" : "bg-black/30"
               }  transition-all ease-in-out duration-300  rounded-xl `}
             >
+              {/* star chp */}
               <Tooltip
                 title="vote average"
                 arrow
@@ -94,22 +105,34 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
               >
                 <Chip
                   variant="contained"
-                  className={`bg-gray-900/30 absolute ${
+                  className={` absolute ${hoverState.card?'bg-gray-600/30 ' :'bg-gray-900/30 '} ${
                     spanTwo ? "top-2.5 left-2.5" : "top-1 left-1"
                   } px-2 py-0.5 text-[0.675rem]  text-color-400 font-semibold h-fit cursor-pointer`}
                   label={`${rate}`}
-                  icon={<AiFillStar className={`text-yellow-400`}></AiFillStar>}
-                  onClick={handleRate}
+                  icon={<AiFillStar className={`text-color-400`}></AiFillStar>}
+                  // onClick={handleRate}
                 ></Chip>
               </Tooltip>
 
-              {/* play btn */}
-              { hoverState.card && (
-                <Box className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-color-300 font-thin text-5xl tra">
-                  <BsPlayCircle></BsPlayCircle>
-                </Box>
-              )}
+              {/* menu chip */}
+              
+                <HiDotsCircleHorizontal
+                  onClick={(e)=>{
+                    e.stopPropagation()
+
+                  }}
+                  className={` ${hoverState.card?'text-gray-600/30 hover:text-gray-400/30':'text-gray-900/30 '}  absolute text-2xl  ${
+                    spanTwo ? "top-1.5 right-1.5" : "top-0.5 right-0.5 rotate-90"
+                  } `}
+                ></HiDotsCircleHorizontal>
+              
             </div>
+            {/* play btn */}
+            {hoverState.card && (
+              <Box className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-color-300 font-thin text-5xl tra">
+                <BsPlayCircle></BsPlayCircle>
+              </Box>
+            )}
           </div>
         ) : (
           <Skeleton
@@ -120,10 +143,11 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
             } w-full bg-[#191920]   rounded-xl  `}
           ></Skeleton>
         )}
-
+        
+        {/* card details aboslute */}
         <CardContent
-          className={`flex flex-col absolute   rounded-b-xl box-border	 bottom-0  h-fit  ${
-            spanTwo ? "items-start px-8 py-4" : "items-center px-2 py-3"
+          className={`flex flex-col absolute   rounded-b-xl box-border	 bottom-2  h-fit  ${
+            spanTwo ? "items-start px-6 py-4" : "items-center px-2 py-3"
           } justify-center  w-full    drop-shadow-lg  pointer-events-none`}
         >
           {!loading && title ? (
@@ -142,23 +166,23 @@ const CardComponent = ({ title, poster, loading, spanTwo, rate, genre, id}) => {
               >
                 {title}
               </Typography>
-             
+
               <Stack
                 spacing={0.5}
                 direction="row"
                 alignItems="center"
                 justifyContent="flex-start"
-                
               >
+                {/* genre chips */}
                 {spanTwo
                   ? // genre will only show when spanning two fr
                     !loading && genre
                     ? // on loading state or api does not throw genre it will render a 2 skeleton ship
-                      filterGenre().map((itemList,id) => (
+                      filterGenre().map((itemList, id) => (
                         <Chip
                           key={id}
                           label={itemList}
-                          className=" py-0.5 px-1 capitalize text-[0.70rem] tracking-wide font-medium text-color-400 bg-color-500/20 h-fit"
+                          className={` py-0.5 px-1 capitalize text-[0.70rem] tracking-wide font-medium text-color-400 ${hoverState.card?'bg-gray-600/30 hover:bg-gray-400/30':'bg-gray-900/30 '} h-fit`}
                         ></Chip>
                       ))
                     : null
