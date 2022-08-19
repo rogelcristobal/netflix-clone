@@ -33,8 +33,9 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // icons
 import { RiSearchLine } from "react-icons/ri";
-import { IoSettingsOutline } from "react-icons/io5";
-import { IoPersonOutline } from "react-icons/io5";
+import { IoSettingsOutline, IoPersonOutline } from "react-icons/io5";
+import { IoMdArrowDropdown } from "react-icons/io";
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -73,6 +74,7 @@ function NetflixClone() {
           element={
             <div className="font-satoshi relative flex w-full box-border   h-screen  bg-[#0d1117] ">
               {/* nav */}
+              {/* search modal */}
               {searchModal && (
                 <ModalBG
                   contextFunction={setSearchModal}
@@ -110,14 +112,25 @@ function NetflixClone() {
 
                       {/* right side container */}
                       <Box className="flex items-center justify-between space-x-4">
-                        {/* user */}
-                        <IconButton
-                          variant="outlined"
-                          color="primary"
-                          className=" rounded-full  bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300"
-                        >
-                          <IoPersonOutline className=" font-medium text-base"></IoPersonOutline>
-                        </IconButton>
+                        <Box className="flex items-center justify-between space-x-2">
+                          {/* arrow dropdown */}
+                          <IconButton
+                            variant="outlined"
+                            color="primary"
+                            className="    text-color-400 transition ease-in-out duration-300"
+                          >
+                            <IoMdArrowDropdown className=" font-medium text-base"></IoMdArrowDropdown>
+                          </IconButton>
+                          {/* user */}
+                          <IconButton
+                            variant="outlined"
+                            color="primary"
+                            className=" rounded-full  bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300"
+                          >
+                            <IoPersonOutline className=" font-medium text-base"></IoPersonOutline>
+                          </IconButton>
+                        </Box>
+
                         {/* settings */}
                         <IconButton
                           variant="outlined"
@@ -128,6 +141,7 @@ function NetflixClone() {
                         </IconButton>
                       </Box>
                     </div>
+                    {/* divider */}
                     <Divider
                       variant="middle"
                       className="bg-gray-600/30"
@@ -147,6 +161,7 @@ function NetflixClone() {
                   square
                 >
                   <List className=" w-full h-full space-y-2">
+                     {/* roglify */}
                     <Box className="py-8 w-full flex items-center justify-center  rounded-xl  mb-4">
                       <Typography
                         variant="h5"
@@ -155,12 +170,14 @@ function NetflixClone() {
                         roglify.
                       </Typography>
                     </Box>
+                    {/* dashboard */}
                     <Typography
                       variant="p"
                       className="text-gray-800 text-xs tracking-wider capitalize font-medium ml-4 "
                     >
                       dashboard
                     </Typography>
+                    {/* navlinks */}
                     {[
                       { path: "/homepage/movies", label: "movies" },
                       { path: "/homepage/tvshows", label: "tv shows" },
@@ -175,14 +192,17 @@ function NetflixClone() {
                               : " w-full no-underline rounded-xl "
                           }
                         >
-                          <ListItemButton className=" py-3.5 text-color-300 tracking-wide text-[0.800rem]  rounded-xl">
-                            {link.label}
+                          <ListItemButton className=" py-3.5 text-color-300 tracking-wide text-[0.800rem]  rounded-xl px-6">
+                            <Typography variant="p" className="">
+                              {link.label}
+                            </Typography>
                           </ListItemButton>
                         </NavLink>
                       </ListItem>
                     ))}
                   </List>
                 </Paper>
+                {/* divider */}
                 <Divider
                   variant="middle"
                   orientation="vertical"
@@ -193,6 +213,7 @@ function NetflixClone() {
 
               <div className="flex items-start justify-start w-full  h-full  box-border">
                 <Routes>
+               {/* movie route */}
                   <Route
                     path="/movies/*"
                     element={
@@ -201,6 +222,7 @@ function NetflixClone() {
                       </ProtectedRoute>
                     }
                   ></Route>
+                  {/* tvshow route */}
                   <Route
                     path="/tvshows/*"
                     element={
@@ -209,6 +231,7 @@ function NetflixClone() {
                       </ProtectedRoute>
                     }
                   ></Route>
+                  {/* movie item */}
                   <Route
                     path="/movies/:itemID"
                     element={
@@ -217,6 +240,7 @@ function NetflixClone() {
                       </ProtectedRoute>
                     }
                   ></Route>
+                  {/* tv show item */}
                   <Route
                     path="/tvshows/:itemID"
                     element={
