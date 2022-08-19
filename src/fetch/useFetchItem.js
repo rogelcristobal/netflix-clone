@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 const useFetchItem = (path,id) => {
     const fetchItem= async(pathname,id)=>{
-     if(pathname === `/homepage/movies/${id}`){
+     if(pathname === `/movies/${id}`){
         const {data} =  await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_MOVIE_DATABASE_API_KEY}&language=en-US`)
         return data
-     }else if(pathname === `/homepage/tvshows/${id}`){
+     }else if(pathname === `/tvshows/${id}`){
         const {data} = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${process.env.REACT_APP_MOVIE_DATABASE_API_KEY}&language=en-US`)
         return data
      }

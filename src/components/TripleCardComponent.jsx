@@ -67,7 +67,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 							<CardComponent
 							    id={item?.id}
 								title={
-									pathname === '/homepage/movies'? item?.title: item?.name
+									pathname === '/movies'? item?.title: item?.name
 								}
 								poster={item?.poster_path}
 								spanTwo={isSpanTwo}
@@ -85,7 +85,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 						<Grid item xs={1} key={id}>
 							<CardComponent
 								id={item?.id}
-								title={pathname === '/homepage/movies'? item?.title: item?.name}
+								title={pathname === '/movies'? item?.title: item?.name}
 								poster={item?.poster_path}
 								spanTwo={isSpanTwo}
 								

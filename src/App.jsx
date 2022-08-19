@@ -67,9 +67,9 @@ function NetflixClone() {
   return (
     <ThemeProvider theme={theme}>
       <Routes>
-        <Route path="/" element={<LoginPage />}></Route>
+        {/* <Route path="/" element={<LoginPage />}></Route> */}
         <Route
-          path="/homepage/*"
+          path="/*"
           element={
             <div className="font-satoshi relative flex w-full box-border   h-screen  bg-[#0d1117] ">
               {/* nav */}
@@ -192,9 +192,9 @@ function NetflixClone() {
                     </Typography>
                     {/* navlinks */}
                     {[
-                      { path: "/homepage/movies", label: "movies" },
-                      { path: "/homepage/tvshows", label: "tv shows" },
-                      { path: "/homepage/peoples", label: "peoples" },
+                      { path: "/movies", label: "movies" },
+                      { path: "/tvshows", label: "tv shows" },
+                      { path: "/peoples", label: "peoples" },
                     ].map((link, id) => (
                       <ListItem
                         className="px-3 capitalize py-0 font-satoshi"
@@ -233,37 +233,29 @@ function NetflixClone() {
                   <Route
                     path="/movies/*"
                     element={
-                      <ProtectedRoute>
                         <MovieCategories />
-                      </ProtectedRoute>
-                    }
+                     }
                   ></Route>
                   {/* tvshow route */}
                   <Route
                     path="/tvshows/*"
                     element={
-                      <ProtectedRoute>
                         <TVCategories />
-                      </ProtectedRoute>
-                    }
+                     }
                   ></Route>
                   {/* movie item */}
                   <Route
                     path="/movies/:itemID"
                     element={
-                      <ProtectedRoute>
                         <ItemPage></ItemPage>
-                      </ProtectedRoute>
-                    }
+                     }
                   ></Route>
                   {/* tv show item */}
                   <Route
                     path="/tvshows/:itemID"
                     element={
-                      <ProtectedRoute>
                         <ItemPage></ItemPage>
-                      </ProtectedRoute>
-                    }
+                     }
                   ></Route>
                 </Routes>
               </div>
