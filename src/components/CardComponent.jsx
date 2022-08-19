@@ -74,10 +74,11 @@ const CardComponent = ({
     >
       <Card
         variant="contained"
-        className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1  hover:drop-shadow-xl "
+        className="cursor-pointer w-full h-fit p-0 bg-inherit relative rounded-xl space-y-1   "
       >
         {!loading && poster ? (
           <div className="relative w-full h-fit  	">
+            {/* poster || backdop image rendered */}
             <CardMedia
               component="img"
               className={`${
@@ -114,8 +115,7 @@ const CardComponent = ({
                 ></Chip>
               </Tooltip>
 
-              {/* menu chip */}
-              
+              {/* menu chip */}    
                 <HiDotsCircleHorizontal
                   onClick={(e)=>{
                     e.stopPropagation()
@@ -140,7 +140,7 @@ const CardComponent = ({
             animation="wave"
             className={`${
               spanTwo ? "h-60" : "h-48"
-            } w-full bg-[#191920]   rounded-xl  `}
+            } w-full bg-[#161b22]   rounded-xl  `}
           ></Skeleton>
         )}
         
@@ -148,9 +148,11 @@ const CardComponent = ({
         <CardContent
           className={`flex flex-col absolute   rounded-b-xl box-border	 bottom-2  h-fit  ${
             spanTwo ? "items-start px-6 py-4" : "items-center px-2 py-3"
-          } justify-center  w-full    drop-shadow-lg  pointer-events-none`}
+          } justify-center  w-full     pointer-events-none`}
         >
+          {/* title */}
           {!loading && title ? (
+            
             <Box
               className={`flex flex-col ${
                 spanTwo ? "items-start space-y-4" : "items-center space-y-2"
@@ -166,7 +168,7 @@ const CardComponent = ({
               >
                 {title}
               </Typography>
-
+                {/* chips */}
               <Stack
                 spacing={0.5}
                 direction="row"
@@ -190,7 +192,7 @@ const CardComponent = ({
               </Stack>
             </Box>
           ) : (
-            <Skeleton className="h-10">
+            <Skeleton className="h-8 w-[80%] bg-[#21262d]/50">
               <CardHeader
                 className="capitalize tracking-wide "
                 titleTypographyProps={{ fontSize: "0.8rem", fontWeight: 600 }}

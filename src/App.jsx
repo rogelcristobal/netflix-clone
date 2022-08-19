@@ -63,7 +63,6 @@ function NetflixClone() {
       },
     },
   });
-  // generate a random hex color val from stackoverflow
 
   return (
     <ThemeProvider theme={theme}>
@@ -112,12 +111,26 @@ function NetflixClone() {
 
                       {/* right side container */}
                       <Box className="flex items-center justify-between space-x-4">
-                        <Box className="flex items-center justify-between space-x-2">
+                        {/* user interface */}
+
+                        <Box className="flex items-center justify-between ">
+                          <Box className="flex  items-center justify-between space-x-2">
+                           {/* greet */}
+                           <Typography variant="p" className="text-color-400"></Typography>
+                           {/* username */}
+                            <Typography
+                              variant="p"
+                              className="text-color-300 text-xs tracking-wider"
+                            >
+                              {user?.email}
+                            </Typography>
+                          </Box>
                           {/* arrow dropdown */}
                           <IconButton
                             variant="outlined"
                             color="primary"
                             className="    text-color-400 transition ease-in-out duration-300"
+
                           >
                             <IoMdArrowDropdown className=" font-medium text-base"></IoMdArrowDropdown>
                           </IconButton>
@@ -161,7 +174,7 @@ function NetflixClone() {
                   square
                 >
                   <List className=" w-full h-full space-y-2">
-                     {/* roglify */}
+                    {/* roglify */}
                     <Box className="py-8 w-full flex items-center justify-center  rounded-xl  mb-4">
                       <Typography
                         variant="h5"
@@ -182,8 +195,11 @@ function NetflixClone() {
                       { path: "/homepage/movies", label: "movies" },
                       { path: "/homepage/tvshows", label: "tv shows" },
                       { path: "/homepage/peoples", label: "peoples" },
-                    ].map((link) => (
-                      <ListItem className="px-3 capitalize py-0 font-satoshi">
+                    ].map((link, id) => (
+                      <ListItem
+                        className="px-3 capitalize py-0 font-satoshi"
+                        key={id}
+                      >
                         <NavLink
                           to={link.path}
                           className={({ isActive }) =>
@@ -213,7 +229,7 @@ function NetflixClone() {
 
               <div className="flex items-start justify-start w-full  h-full  box-border">
                 <Routes>
-               {/* movie route */}
+                  {/* movie route */}
                   <Route
                     path="/movies/*"
                     element={
