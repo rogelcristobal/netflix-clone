@@ -80,7 +80,7 @@ const TVCategories = () => {
         >
           <Typography
             variant="p"
-            className="text-color-300 font-medium text-sm tracking-wide"
+            className="text-color-300 font-medium text-sm tracking-wide "
           >
             Categories
           </Typography>
@@ -98,7 +98,7 @@ const TVCategories = () => {
               : sliceGenre(genreData).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl hover:bg-[#161b22] dark:hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
-                      <Typography variant="p" className="text-xs    ">
+                      <Typography variant="p" className="text-xs    whitespace-nowrap">
                         {item.name}
                       </Typography>
                     </ListItemButton>
