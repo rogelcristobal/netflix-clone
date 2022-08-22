@@ -10,19 +10,20 @@ import {
 } from "@mui/material";
 import TripleCardComponent from "../components/TripleCardComponent";
 
-import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
 import useFetchOnAir from '../fetch/shows/useFetchOnAir'
 import useFetchPopularShow from '../fetch/shows/useFetchPopularShow'
 import useFetchTopRatedShow from '../fetch/shows/useFetchTopRatedShow'
 import useFetchAiringToday from '../fetch/shows/useFetchAiringToday'
-import useFetchShowGenre from "../fetch/shows/useFetchShowGenre";
+import { useLocation } from "react-router-dom";
+import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
 const TVCategories = () => {
+  const {pathname} = useLocation()
   // queries
   const onAirQuery = useFetchOnAir()
   const popularShowQuery = useFetchPopularShow()
   const topRatedShowQuery = useFetchTopRatedShow()
   const airingTodayQuery = useFetchAiringToday()
- const {data: genreData,isLoading:genreLoading } = useFetchShowGenre()
+ const {data: genreData,isLoading:genreLoading } = useFetchGenreByCategory(pathname)
   
   
   const sliceGenre = (state) => {

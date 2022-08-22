@@ -6,6 +6,7 @@ import {
   List,
   Skeleton,
 } from "@mui/material";
+import { useLocation } from "react-router-dom";
 import TripleCardComponent from "../components/TripleCardComponent";
 import useFetchNowPlayingMovie from "../fetch/movies/useFetchNowPlayingMovie";
 
@@ -13,18 +14,17 @@ import useFetchPopularMovie from "../fetch/movies/useFetchPopularMovie";
 import useFetchTopRatedMovie from "../fetch/movies/useFetchTopRatedMovie";
 import useFetchUpcomingMovie from "../fetch/movies/useFetchUpcomingMovie";
 
-import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
-
+import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
 
 const MovieCategories = () => {
+  const { pathname } = useLocation();
   // queries
   const popularMovieQuery = useFetchPopularMovie();
   const nowPlayingMovieQuery = useFetchNowPlayingMovie();
   const topRatedMovieQuery = useFetchTopRatedMovie();
   const upcomingMovieQuery = useFetchUpcomingMovie();
-  const {data: genreData,isLoading:genreLoading} = useFetchMovieGenres();
-
-
+  const { data: genreData, isLoading: genreLoading } =
+    useFetchGenreByCategory(pathname);
 
   const sliceGenre = (state) => {
     // console.log(movieGenreQuery.data)
@@ -63,7 +63,6 @@ const MovieCategories = () => {
               title={item.title}
               API_data={item.data}
               isSpanTwo={id === 0 ? true : false}
-             
             ></TripleCardComponent>
           ))}
         </div>
@@ -89,9 +88,7 @@ const MovieCategories = () => {
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl" variant="contained">
-                      <Skeleton className="w-full h-6 bg-[#161b22]">
-                        
-                      </Skeleton>
+                      <Skeleton className="w-full h-6 bg-[#161b22]"></Skeleton>
                     </ListItemButton>
                   </ListItem>
                 ))
@@ -105,7 +102,6 @@ const MovieCategories = () => {
                   </ListItem>
                 ))}
           </List>
-         
         </Paper>
       </Paper>
     </>
