@@ -10,8 +10,6 @@ import SearchModalContext from "./context/SearchModalContext";
 import SearchModal from "./components/SearchModal";
 import MovieCategories from "./pages/MovieCategories";
 import ModalBG from "./components/modal/ModalBG";
-import LoginPage from "./pages/LoginPage";
-import ProtectedRoute from "./components/protetedRoute/ProtectedRoute";
 import TVCategories from "./pages/TVCategories";
 import ItemPage from "./pages/ItemPage";
 // MUI
@@ -35,6 +33,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RiSearchLine } from "react-icons/ri";
 import { IoSettingsOutline, IoPersonOutline } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
+import useSampleFetch from "./fetch/movies/useSampleFetch";
 
 const queryClient = new QueryClient();
 
@@ -49,7 +48,10 @@ function App() {
   );
 }
 function NetflixClone() {
+ 
   const { searchModal, setSearchModal } = useContext(SearchModalContext);
+  const {fetchMovie,nextPage,prevPage} = useSampleFetch()
+  console.log(fetchMovie.data)
   const nav = useNavigate();
   const { user, logout } = useContext(AuthContext);
   // mui theme
@@ -88,6 +90,7 @@ function NetflixClone() {
                   <Paper
                     variant="contained"
                     className={`h-full w-[calc(100%-14rem)]  bg-transparent  flex flex-col items-between justify-center  transition-all ease-in-out duration-500 px-4 box-border`}
+                  
                   >
                     <div className="flex items-center h-full w-full justify-between">
                       {/* search */}
@@ -103,8 +106,8 @@ function NetflixClone() {
                           aria-label=""
                           className="rounded-full hover:bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300
                           "
-                          onClick={() => setSearchModal(!searchModal)}
-                        >
+                          onClick={() =>
+                            setSearchModal(!searchModal)}>
                           <RiSearchLine className=" font-medium text-lg"></RiSearchLine>
                         </IconButton>
                       </Tooltip>
@@ -173,7 +176,7 @@ function NetflixClone() {
                   className=" w-full px-4  h-full pt-2 box-border bg-inherit   flex flex-col items-center justify-start "
                   square
                 >
-                  <List className=" w-full h-full space-y-2">
+                  <List className=" w-full h-full space-y-2" >
                     {/* roglify */}
                     <Box className="py-8 w-full flex items-center justify-center  rounded-xl  mb-4">
                       <Typography
