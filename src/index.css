@@ -6,6 +6,10 @@
 	::-webkit-scrollbar {
 		@apply w-1.5 ;
 	}
+    *{
+        /* delete this for later */
+        @apply bg-blue-400/[0.1] 
+    }
 
     
     

@@ -2,13 +2,12 @@ import axios from "axios";
 import request from "../api";
 import { useQuery } from "@tanstack/react-query";
 const useFetchMovieGenres = () => {
-  const movieGenreQuery = useQuery(['movieQuery'],async()=>{
-    const response = await axios.get(request.getMovieGenre)
-    return response.data
-  })
-
-  return movieGenreQuery
-  
+  const fetch=async()=>{
+    const {data} = await axios.get(request.getMovieGenre)
+    return data
+  }
+  const {data,isLoading,isError,error} = useQuery(['movieGenre'],fetch)
+  return {data,isLoading,isError,error}   
 }
 
 export default useFetchMovieGenres;

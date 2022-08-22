@@ -1,6 +1,6 @@
-import { Paper,Box } from "@mui/material";
+import { Paper } from "@mui/material";
 import { useParams, useLocation } from "react-router-dom";
-import useFetchItem from "../fetch/useFetchItem";
+import useFetchItem from "../fetch/general/useFetchItem";
 const ItemPage = () => {
   const { itemID } = useParams();
   const {pathname} = useLocation()
