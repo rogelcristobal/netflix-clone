@@ -12,13 +12,12 @@ import {
   Chip,
   Tooltip,
   Zoom,
-  Stack,ClickAwayListener 
+  Stack, 
 } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { BsPlayCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { HiDotsCircleHorizontal } from "react-icons/hi";
-import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
 import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
 
 const CardComponent = ({
@@ -32,8 +31,8 @@ const CardComponent = ({
 }) => {
   const {pathname} = useLocation()
 
-  const genreSpecificQuery = useFetchGenreByCategory(`${pathname}/${id}`,id)
-  console.log(genreSpecificQuery.data)
+  const genreSpecificQuery = useFetchGenreByCategory(`${pathname}`)
+ 
 
   const nav = useNavigate();
   
