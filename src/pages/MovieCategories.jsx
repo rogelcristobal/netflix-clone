@@ -15,16 +15,20 @@ import useFetchUpcomingMovie from "../fetch/movies/useFetchUpcomingMovie";
 
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
 
+
 const MovieCategories = () => {
   // queries
   const popularMovieQuery = useFetchPopularMovie();
   const nowPlayingMovieQuery = useFetchNowPlayingMovie();
   const topRatedMovieQuery = useFetchTopRatedMovie();
   const upcomingMovieQuery = useFetchUpcomingMovie();
-  const movieGenreQuery = useFetchMovieGenres();
-  const sliceGenre = (endpoint, state) => {
+  const {data: genreData,isLoading:genreLoading} = useFetchMovieGenres();
+
+
+
+  const sliceGenre = (state) => {
     // console.log(movieGenreQuery.data)
-    if (endpoint.isLoading) {
+    if (genreLoading) {
       if (!state) {
         return Array.from(new Array(4));
       } else {
@@ -32,9 +36,9 @@ const MovieCategories = () => {
       }
     } else {
       if (!state) {
-        return endpoint.data?.genres.slice(0, 4);
+        return genreData.genres.slice(0, 4);
       } else {
-        return endpoint.data?.genres.slice(0, 5);
+        return genreData.genres.slice(0, 5);
       }
     }
   };
@@ -81,7 +85,7 @@ const MovieCategories = () => {
             Categories
           </Typography>
           <List>
-            {movieGenreQuery.isLoading
+            {genreLoading
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl" variant="contained">
@@ -91,7 +95,7 @@ const MovieCategories = () => {
                     </ListItemButton>
                   </ListItem>
                 ))
-              : sliceGenre(movieGenreQuery).map((item, index) => (
+              : sliceGenre(genreData).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl hover:bg-[#161b22] dark:hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
                       <Typography variant="p" className="text-xs    ">

@@ -15,18 +15,19 @@ import useFetchOnAir from '../fetch/shows/useFetchOnAir'
 import useFetchPopularShow from '../fetch/shows/useFetchPopularShow'
 import useFetchTopRatedShow from '../fetch/shows/useFetchTopRatedShow'
 import useFetchAiringToday from '../fetch/shows/useFetchAiringToday'
+import useFetchShowGenre from "../fetch/shows/useFetchShowGenre";
 const TVCategories = () => {
   // queries
   const onAirQuery = useFetchOnAir()
   const popularShowQuery = useFetchPopularShow()
   const topRatedShowQuery = useFetchTopRatedShow()
   const airingTodayQuery = useFetchAiringToday()
+ const {data: genreData,isLoading:genreLoading } = useFetchShowGenre()
   
   
-  const movieGenreQuery = useFetchMovieGenres();
-  const sliceGenre = (endpoint, state) => {
+  const sliceGenre = (state) => {
     
-    if (endpoint.isLoading) {
+    if (genreLoading) {
       if (!state) {
         return Array.from(new Array(4));
       } else {
@@ -34,9 +35,9 @@ const TVCategories = () => {
       }
     } else {
       if (!state) {
-        return endpoint.data?.genres.slice(0, 4);
+        return genreData.genres.slice(0, 4);
       } else {
-        return endpoint.data?.genres.slice(0, 5);
+        return genreData.genres.slice(0, 4);
       }
     }
   };
@@ -83,7 +84,7 @@ const TVCategories = () => {
             Categories
           </Typography>
           <List>
-            {movieGenreQuery.isLoading
+            {genreLoading
               ? Array.from(new Array(4)).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl" variant="contained">
@@ -93,7 +94,7 @@ const TVCategories = () => {
                     </ListItemButton>
                   </ListItem>
                 ))
-              : sliceGenre(movieGenreQuery).map((item, index) => (
+              : sliceGenre(genreData).map((item, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton className="rounded-xl hover:bg-[#161b22] dark:hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
                       <Typography variant="p" className="text-xs    ">

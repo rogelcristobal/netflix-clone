@@ -1,4 +1,4 @@
-const key = "754cb358915af129a5a352e456f121ff";
+const key = process.env.REACT_APP_MOVIE_DATABASE_API_KEY;
 
 const request = {
 	getLatestMovie:`https://api.themoviedb.org/3/movie/latest?api_key=${key}&language=en-US&page=1`,
@@ -13,6 +13,8 @@ const request = {
 	getOnAir:`https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`,
 	getPopularShow:`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`,
 	getTopRatedShow:`https://api.themoviedb.org/3/tv/top_rated?api_key=${key}&language=en-US&page=1`,
+	getShowGenre:`
+	https://api.themoviedb.org/3/genre/tv/list?api_key=${key}&language=en-US`,
 
 	// people
 	getPopularPeoples:`https://api.themoviedb.org/3/person/popular?api_key=${key}&language=en-US&page=1`,

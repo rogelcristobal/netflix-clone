@@ -19,6 +19,8 @@ import { BsPlayCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { HiDotsCircleHorizontal } from "react-icons/hi";
 import useFetchMovieGenres from "../fetch/movies/useFetchMovieGenres";
+import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
+
 const CardComponent = ({
   title,
   poster,
@@ -28,14 +30,13 @@ const CardComponent = ({
   genre,
   id,
 }) => {
-  const genreQuery = useFetchMovieGenres();
+  const {pathname} = useLocation()
+
+  const genreSpecificQuery = useFetchGenreByCategory(`${pathname}/${id}`,id)
+  console.log(genreSpecificQuery.data)
+
   const nav = useNavigate();
-  const location = useLocation();
-  const [itemRate, setItemRate] = useState(false);
-  const handleRate = (e) => {
-    e.stopPropagation();
-    setItemRate(!itemRate);
-  };
+  
   const [hoverState, setHoverState] = useState({
     card: false,
     
@@ -50,7 +51,7 @@ const CardComponent = ({
 
   const filterGenre = () => {
     // filter genre api list to the props genre
-    const res = genreQuery.data.genres.filter((item) =>
+    const res = genreSpecificQuery.data?.genres.filter((item) =>
       genre.includes(item.id)
     );
     // then map it to get the name
@@ -60,9 +61,8 @@ const CardComponent = ({
   };
 
   const handleClick = () => {
-    nav(`${location.pathname}/${id}`);
+    nav(`${pathname}/${id}`);
   };
-
   return (
     <motion.div
       //   whileHover={{ scale: 1.05, zIndex: 10 }}
@@ -175,11 +175,11 @@ const CardComponent = ({
                 alignItems="center"
                 justifyContent="flex-start"
               >
-                {/* genre chips */}
+               
                 {spanTwo
-                  ? // genre will only show when spanning two fr
+                  ? 
                     !loading && genre
-                    ? // on loading state or api does not throw genre it will render a 2 skeleton ship
+                    ? 
                       filterGenre().map((itemList, id) => (
                         <Chip
                           key={id}
