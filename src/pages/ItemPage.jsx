@@ -6,21 +6,25 @@ const ItemPage = () => {
   const {pathname} = useLocation()
 
     
-    const {data,isLoading}= useFetchItem(pathname,itemID)
-    if(!isLoading)console.log(data) 
+  const {data,isLoading}= useFetchItem(pathname,itemID)
+    
 
   
   return (
     <>
       <Paper
         variant="contained"
-        className=" bg-inherit  flex flex-col items-center justify-start pt-20 w-full  h-full box-border"
+        className=" bg-inherit  flex flex-col items-center justify-start pt-0 w-full  h-full box-border"
         square
       >
         {/* scrollable content */}
-        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-8 py-2  pb-72 box-border space-y-2 scroll-smooth	">
+        <div className="overflow-y-scroll overflow-x-hidden h-full w-full px-0   pb-72 box-border space-y-2 scroll-smooth	">
+          <div className="h-96  w-full relative box-border rounded-b-xl overflow-hidden">
+            <img className="h-full  w-full object-cover " src={`https://image.tmdb.org/t/p/w1280${data?.backdrop_path}`} alt="" />
+             <div className="h-full w-full absolute top-0 left-0  backdrop-brightness-50	"></div>
+             <h5 className=" absolute -bottom-12 left-16 text-white text-6xl   font-bold box-border">{data?.title}{data?.name}</h5>
+          </div>
          
-          <h5 className="text-white text-5xl mx-6  font-bold">{data?.title}{data?.name}</h5>
         </div>
       </Paper>
       {/*page nav*/}

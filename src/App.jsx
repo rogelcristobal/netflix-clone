@@ -24,6 +24,7 @@ import {
   ListItem,
   ListItemButton,
   Typography,
+  Button,
 } from "@mui/material";
 // react-query
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -47,9 +48,8 @@ function App() {
   );
 }
 function NetflixClone() {
- 
   const { searchModal, setSearchModal } = useContext(SearchModalContext);
-  
+
   const nav = useNavigate();
   const { user, logout } = useContext(AuthContext);
   // mui theme
@@ -82,33 +82,40 @@ function NetflixClone() {
                   <SearchModal></SearchModal>
                 </ModalBG>
               )}
-              <div className="fixed top-0 left-0 w-full h-20  shadow-sm z-20 bg-transparent ">
+              <div className="fixed top-0 left-0 w-full h-20  z-20 bg-transparent ">
                 <div className="container h-full flex   justify-end mx-auto items-center rounded-lg ">
                   {/* nav contents here */}
                   <Paper
                     variant="contained"
                     className={`h-full w-[calc(100%-14rem)]  bg-transparent  flex flex-col items-between justify-center  transition-all ease-in-out duration-500 px-4 box-border`}
-                   
                   >
-                    <div className="flex items-center h-full w-full justify-between">
+                    <div className="flex items-center h-full w-full justify-end">
                       {/* search */}
-                      <Tooltip
-                        title="search"
-                        arrow
-                        placement="top-end"
-                        TransitionComponent={Zoom}
-                        TransitionProps={{ timeout: 300 }}
-                        enterDelay={1000}
-                      >
-                        <IconButton
-                          aria-label=""
-                          className="rounded-full hover:bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300
+                      <Button
+                        variant="contained"
+                        onClick={() => setSearchModal(!searchModal)}
+                        className="bg-[#090b0f]/40 shadow-none capitalize tracking-wide font-base text-color-500 rounded-xl w-60 flex justify-start mr-12 hover:text-color-300 text-sm"
+                        startIcon={
+                          <Tooltip
+                            title="search"
+                            arrow
+                            placement="top-end"
+                            TransitionComponent={Zoom}
+                            TransitionProps={{ timeout: 300 }}
+                            enterDelay={1000}
+                          >
+                            <IconButton
+                              aria-label=""
+                              className="rounded-full  text-color-500 hover:text-color-300 transition ease-in-out duration-300
                           "
-                          onClick={() =>
-                            setSearchModal(!searchModal)}>
-                          <RiSearchLine className=" font-medium text-lg"></RiSearchLine>
-                        </IconButton>
-                      </Tooltip>
+                            >
+                              <RiSearchLine className=" font-medium text-lg"></RiSearchLine>
+                            </IconButton>
+                          </Tooltip>
+                        }
+                      >
+                        search...
+                      </Button>
 
                       {/* right side container */}
                       <Box className="flex items-center justify-between space-x-4">
@@ -116,9 +123,12 @@ function NetflixClone() {
 
                         <Box className="flex items-center justify-between ">
                           <Box className="flex  items-center justify-between space-x-2">
-                           {/* greet */}
-                           <Typography variant="p" className="text-color-400"></Typography>
-                           {/* username */}
+                            {/* greet */}
+                            <Typography
+                              variant="p"
+                              className="text-color-400"
+                            ></Typography>
+                            {/* username */}
                             <Typography
                               variant="p"
                               className="text-color-300 text-xs tracking-wider"
@@ -131,7 +141,6 @@ function NetflixClone() {
                             variant="outlined"
                             color="primary"
                             className="    text-color-400 transition ease-in-out duration-300"
-
                           >
                             <IoMdArrowDropdown className=" font-medium text-base"></IoMdArrowDropdown>
                           </IconButton>
@@ -139,7 +148,7 @@ function NetflixClone() {
                           <IconButton
                             variant="outlined"
                             color="primary"
-                            className=" rounded-full  bg-[#161b22] hover:text-gray-500 text-color-400 transition ease-in-out duration-300"
+                            className=" rounded-full  bg-[#161b22]/20 mix-blend-difference	  text-color-400 transition ease-in-out duration-300"
                           >
                             <IoPersonOutline className=" font-medium text-base"></IoPersonOutline>
                           </IconButton>
@@ -149,17 +158,17 @@ function NetflixClone() {
                         <IconButton
                           variant="outlined"
                           color="primary"
-                          className=" rounded-xl hover:bg-[#161b22] text-gray-700 hover:text-color-400 transition ease-in-out duration-300"
+                          className=" rounded-xl bg-primary-400  text-color-100 transition ease-in-out duration-300"
                         >
-                          <IoSettingsOutline className=" font-medium text-xl"></IoSettingsOutline>
+                          <IoSettingsOutline className=" font-medium text-lg"></IoSettingsOutline>
                         </IconButton>
                       </Box>
                     </div>
                     {/* divider */}
-                    <Divider
+                    {/* <Divider
                       variant="middle"
                       className="bg-gray-600/30"
-                    ></Divider>
+                    ></Divider> */}
                   </Paper>
                 </div>
               </div>
@@ -174,7 +183,7 @@ function NetflixClone() {
                   className=" w-full px-4  h-full pt-2 box-border bg-inherit   flex flex-col items-center justify-start "
                   square
                 >
-                  <List className=" w-full h-full space-y-2" >
+                  <List className=" w-full h-full space-y-2">
                     {/* roglify */}
                     <Box className="py-8 w-full flex items-center justify-center  rounded-xl  mb-4">
                       <Typography
@@ -231,32 +240,18 @@ function NetflixClone() {
               <div className="flex items-start justify-start w-full  h-full  box-border">
                 <Routes>
                   {/* movie route */}
-                  <Route
-                    path="/movies/*"
-                    element={
-                        <MovieCategories />
-                     }
-                  ></Route>
+                  <Route path="/movies/*" element={<MovieCategories />}></Route>
                   {/* tvshow route */}
-                  <Route
-                    path="/tvshows/*"
-                    element={
-                        <TVCategories />
-                     }
-                  ></Route>
+                  <Route path="/tvshows/*" element={<TVCategories />}></Route>
                   {/* movie item */}
                   <Route
                     path="/movies/:itemID"
-                    element={
-                        <ItemPage></ItemPage>
-                     }
+                    element={<ItemPage></ItemPage>}
                   ></Route>
                   {/* tv show item */}
                   <Route
                     path="/tvshows/:itemID"
-                    element={
-                        <ItemPage></ItemPage>
-                     }
+                    element={<ItemPage></ItemPage>}
                   ></Route>
                 </Routes>
               </div>

@@ -128,7 +128,7 @@ const CardComponent = ({
             </div>
             {/* play btn */}
             {hoverState.card && (
-              <Box className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-color-300 font-thin text-5xl tra">
+              <Box className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 text-color-300 font-thin text-5xl ">
                 <BsPlayCircle></BsPlayCircle>
               </Box>
             )}
