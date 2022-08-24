@@ -1,11 +1,32 @@
 import axios from "axios";
-import request from "../api"
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 export default function useFetchUpcomingMovie() {
 	
-	const upcomingMovieQuery = useQuery(['upcomingMovie'],async()=>{
-		const response = await axios.get(request.getUpcomingMovies)
-		return response.data
-	})
-	return upcomingMovieQuery
+	const [state, setState] = useState({ totalPages: 0, page: 1 });
+  const nextPage = () => {
+    setState((prevState) => ({
+      ...prevState,
+      page: state.page + 1,
+    }));
+  };
+  const prevPage = () => {
+    setState((prevState) => ({
+      ...prevState,
+      page: state.page - 1,
+    }));
+  };
+  const fetch = async (page) => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_MOVIE_DATABASE_API_KEY}&language=en-US&page=${page}`
+    );
+
+    setState((prevState) => ({
+      ...prevState,
+      totalPages: response.data.total_pages,
+    }));
+    return response.data;
+  };
+  const data = useQuery(["upcoming_movie", state.page], () => fetch(state.page));
+  return { data, nextPage, prevPage, state };
 }

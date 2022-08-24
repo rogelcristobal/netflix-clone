@@ -33,7 +33,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RiSearchLine } from "react-icons/ri";
 import { IoSettingsOutline, IoPersonOutline } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
-import useSampleFetch from "./fetch/movies/useSampleFetch";
 
 const queryClient = new QueryClient();
 
@@ -50,8 +49,7 @@ function App() {
 function NetflixClone() {
  
   const { searchModal, setSearchModal } = useContext(SearchModalContext);
-  const {fetchMovie,nextPage,prevPage,state} = useSampleFetch()
-  console.log("data",fetchMovie.data)
+  
   const nav = useNavigate();
   const { user, logout } = useContext(AuthContext);
   // mui theme
@@ -90,7 +88,7 @@ function NetflixClone() {
                   <Paper
                     variant="contained"
                     className={`h-full w-[calc(100%-14rem)]  bg-transparent  flex flex-col items-between justify-center  transition-all ease-in-out duration-500 px-4 box-border`}
-                    onClick={nextPage}
+                   
                   >
                     <div className="flex items-center h-full w-full justify-between">
                       {/* search */}

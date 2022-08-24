@@ -19,10 +19,10 @@ import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
 const TVCategories = () => {
   const {pathname} = useLocation()
   // queries
-  const onAirQuery = useFetchOnAir()
-  const popularShowQuery = useFetchPopularShow()
-  const topRatedShowQuery = useFetchTopRatedShow()
-  const airingTodayQuery = useFetchAiringToday()
+  const {data:onAirQuery} = useFetchOnAir()
+  const {data:popularShowQuery} = useFetchPopularShow()
+  const {data:topRatedShowQuery} = useFetchTopRatedShow()
+  const {data:airingTodayQuery} = useFetchAiringToday()
  const {data: genreData,isLoading:genreLoading } = useFetchGenreByCategory(pathname)
   
   
@@ -38,7 +38,7 @@ const TVCategories = () => {
       if (!state) {
         return genreData.genres.slice(0, 4);
       } else {
-        return genreData.genres.slice(0, 4);
+        return genreData.genres.slice(0, 5);
       }
     }
   };
@@ -97,8 +97,8 @@ const TVCategories = () => {
                 ))
               : sliceGenre(genreData).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl hover:bg-[#161b22] dark:hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
-                      <Typography variant="p" className="text-xs    whitespace-nowrap">
+                    <ListItemButton className="w-20 rounded-xl hover:bg-[#161b22] dark:hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
+                      <Typography variant="p" className="text-xs    whitespace-nowrap text-ellipsis overflow-hidden">
                         {item.name}
                       </Typography>
                     </ListItemButton>

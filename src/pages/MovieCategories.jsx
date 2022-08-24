@@ -19,10 +19,10 @@ import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
 const MovieCategories = () => {
   const { pathname } = useLocation();
   // queries
-  const popularMovieQuery = useFetchPopularMovie();
-  const nowPlayingMovieQuery = useFetchNowPlayingMovie();
-  const topRatedMovieQuery = useFetchTopRatedMovie();
-  const upcomingMovieQuery = useFetchUpcomingMovie();
+  const {data:popularMovieQuery} = useFetchPopularMovie();
+  const {data:nowPlayingMovieQuery} = useFetchNowPlayingMovie();
+  const {data:topRatedMovieQuery} = useFetchTopRatedMovie();
+  const {data:upcomingMovieQuery} = useFetchUpcomingMovie();
   const { data: genreData, isLoading: genreLoading } =
     useFetchGenreByCategory(pathname);
 
