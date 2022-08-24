@@ -23,7 +23,7 @@ const MovieCategories = () => {
   const {data:nowPlayingMovieQuery} = useFetchNowPlayingMovie();
   const {data:topRatedMovieQuery} = useFetchTopRatedMovie();
   const {data:upcomingMovieQuery} = useFetchUpcomingMovie();
-  const { data: genreData, isLoading: genreLoading } =
+  const {data: genreData, isLoading: genreLoading } =
     useFetchGenreByCategory(pathname);
 
   const sliceGenre = (state) => {
