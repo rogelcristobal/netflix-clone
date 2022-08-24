@@ -5,9 +5,6 @@ const ItemPage = () => {
   const { itemID } = useParams();
   const {pathname} = useLocation()
 
-    // console.log("tv",tvshowId)
-    // const {data,isLoading,isError} = useFetchItem(movieId)
-    // if(!isLoading)console.log(data)
     
     const {data,isLoading}= useFetchItem(pathname,itemID)
     if(!isLoading)console.log(data) 
