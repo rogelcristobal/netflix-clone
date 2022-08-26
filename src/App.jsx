@@ -32,7 +32,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // icons
-import { RiSearchLine } from "react-icons/ri";
+import { MdPlayArrow } from "react-icons/md";
 import { IoSettingsOutline, IoPersonOutline } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 
@@ -139,18 +139,14 @@ function NetflixClone() {
                         {/* settings */}
                         <IconButton
                           variant="outlined"
-                          className=" rounded-xl bg-[#090b0f]/40  hover:text-color-100 text-color-400 transition ease-in-out duration-300"
+                          className=" rounded-xl bg-[#090b0f]/40  hover:text-color-100 text-color-400 transition ease-in-out duration-300 hover:bg-gray-600/30"
                           onClick={() => dispatch(logOut())}
                         >
                           <IoSettingsOutline className=" font-medium text-lg"></IoSettingsOutline>
                         </IconButton>
                       </Box>
                     </div>
-                    {/* divider */}
-                    {/* <Divider
-                      variant="middle"
-                      className="bg-gray-600/30"
-                    ></Divider> */}
+                   
                   </Paper>
                 </div>
               </div>
@@ -174,7 +170,7 @@ function NetflixClone() {
                       >
                         roglify.
                       </Typography>
-                    </Box>
+                     </Box>
                     {/* dashboard */}
                     <Typography
                       variant="p"
@@ -210,12 +206,8 @@ function NetflixClone() {
                     ))}
                   </List>
                 </Paper>
-                {/* divider */}
-                {/* <Divider
-                  variant="middle"
-                  orientation="vertical"
-                  className="bg-gray-700/30"
-                ></Divider> */}
+              
+              
               </div>
               {/* body */}
 
