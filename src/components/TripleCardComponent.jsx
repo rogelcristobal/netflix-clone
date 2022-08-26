@@ -88,7 +88,7 @@ const TripleCardComponent = ({ API_data, title, isSpanTwo }) => {
 								title={pathname === '/movies'? item?.title: item?.name}
 								poster={item?.poster_path}
 								spanTwo={isSpanTwo}
-								
+								 genre={item?.genre_ids}
 								rate={item?.vote_average}
 								loading={API_data.isLoading}
 							/>

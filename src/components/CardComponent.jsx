@@ -20,6 +20,7 @@ import { AiFillStar } from "react-icons/ai";
 import { HiDotsCircleHorizontal } from "react-icons/hi";
 import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
 import GenreChip from "./GenreChip";
+import useGenre from '../hooks/useGenre'
 const CardComponent = ({
   title,
   poster,
@@ -33,33 +34,24 @@ const CardComponent = ({
 
 
   const nav = useNavigate();
-  const {data:genreCategory} = useFetchGenreByCategory(pathname,id)
+  const {data:genreCategory,isLoading} = useFetchGenreByCategory(pathname,id)
   const [hoverState, setHoverState] = useState({
     card: false,
     
   });
-
+  // events
   const cardHoverEnterHandler = () => {
     setHoverState({ ...hoverState, card: true });
   };
   const cardHoverLeaveHandler = () => {
     setHoverState({ ...hoverState, card: false });
   };
-
-  const filterGenre = () => {
-    // filter genre api list to the props genre
-    const res = genreCategory.genres.filter((item) =>
-      genre.includes(item.id)
-    );
-    // then map it to get the name
-    const mapped = res.map((item) => item.name).slice(0, 2);
-    // then return the genre names array then slice it to get only 2
-    return mapped;
-  };
-
   const handleClick = () => {
     nav(`${pathname}/${id}`);
   };
+
+
+
   return (
     <motion.div
       //   whileHover={{ scale: 1.05, zIndex: 10 }}
@@ -144,7 +136,7 @@ const CardComponent = ({
         {/* card details aboslute */}
         <CardContent
           className={`flex flex-col absolute   rounded-b-xl box-border	 bottom-2  h-fit  ${
-            spanTwo ? "items-start px-6 py-4" : "items-center px-2 py-3"
+            spanTwo ? "items-start px-6 py-4" : "items-center px-2 py-2"
           } justify-center  w-full     pointer-events-none`}
         >
           {/* title */}
@@ -177,8 +169,8 @@ const CardComponent = ({
                   ? 
                     !loading && genre
                     ? 
-                      filterGenre().map((itemList, id) => (
-                        <GenreChip key={id}  itemList={itemList} hoverState={hoverState.card}></GenreChip>
+                      genre.slice(0,2).map((itemList, id) => (
+                        <GenreChip key={id}  itemList={itemList} path={pathname} hoverState={hoverState.card}></GenreChip>
                       ))
                     : null
                   : null}

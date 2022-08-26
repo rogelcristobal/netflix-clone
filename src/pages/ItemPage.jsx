@@ -1,7 +1,8 @@
-import { Paper, IconButton } from "@mui/material";
+import { Paper,Stack } from "@mui/material";
 import { useParams, useLocation } from "react-router-dom";
 import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
 import useFetchItem from "../fetch/general/useFetchItem";
+import GenreChip from "../components/GenreChip";
 const ItemPage = () => {
   const { itemID } = useParams();
   const {pathname} = useLocation()
@@ -23,6 +24,11 @@ const ItemPage = () => {
              <div className="h-full w-full absolute  top-0 left-0  backdrop-brightness-40	bg-gradient-to-r from-[#0d1117]"></div>
              <div className="h-full w-full absolute  top-0 left-0  backdrop-brightness-40	bg-gradient-to-t from-[#0d1117]"></div>
              <h5 className=" absolute top-20 left-16 text-white text-5xl   font-bold box-border">{data?.title}{data?.name}</h5>
+             <Stack direction="column" columnGap={2}>
+             
+
+             </Stack>
+             
             
           </div>
          
