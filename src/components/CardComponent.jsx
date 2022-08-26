@@ -19,6 +19,7 @@ import { BsPlayCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { HiDotsCircleHorizontal } from "react-icons/hi";
 import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
+import GenreChip from "./GenreChip";
 const CardComponent = ({
   title,
   poster,
@@ -177,11 +178,7 @@ const CardComponent = ({
                     !loading && genre
                     ? 
                       filterGenre().map((itemList, id) => (
-                        <Chip
-                          key={id}
-                          label={itemList}
-                          className={` py-0.5 px-1 capitalize text-[0.70rem] tracking-wide font-medium text-color-400 ${hoverState.card?'bg-gray-600/30 hover:bg-gray-400/30':'bg-gray-900/30 '} h-fit`}
-                        ></Chip>
+                        <GenreChip key={id}  itemList={itemList} hoverState={hoverState.card}></GenreChip>
                       ))
                     : null
                   : null}
