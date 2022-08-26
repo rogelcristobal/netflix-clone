@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const useFetchGenreByCategory = (path,id) => {
-    const fetch=async(path,id)=>{
+const useFetchGenreByCategory = (path,) => {
+    const fetch=async(path)=>{
        
         if(path.includes('/movies')){
             const {data} = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_MOVIE_DATABASE_API_KEY}&language=en-US`)
@@ -13,7 +13,7 @@ const useFetchGenreByCategory = (path,id) => {
         }
 
     }
-    const genreQuery = useQuery(['genre',path],()=>fetch(path,id))
+    const genreQuery = useQuery(['genre'],()=>fetch(path))
     return genreQuery
 
 
