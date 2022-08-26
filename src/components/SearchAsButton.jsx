@@ -6,7 +6,7 @@ const SearchAsButton = ({setSearchModal,searchModal,placeholder}) => {
     <Button
       variant="contained"
       onClick={() => setSearchModal(!searchModal)}
-      className="bg-[#090b0f]/40 shadow-none capitalize tracking-wider py-1 font-base text-gray-600 rounded-lg w-60 flex justify-start mr-12 hover:text-color-300 text-xs transition ease-in-out duration-300 "
+      className="bg-[#090b0f]/40 shadow-none capitalize tracking-wider py-1 font-base  rounded-lg w-60 flex justify-start mr-12 hover:text-color-100 text-color-400 text-xs transition ease-in-out duration-300 "
       startIcon={
         <Tooltip
           title="search"

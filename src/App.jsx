@@ -211,11 +211,11 @@ function NetflixClone() {
                   </List>
                 </Paper>
                 {/* divider */}
-                <Divider
+                {/* <Divider
                   variant="middle"
                   orientation="vertical"
                   className="bg-gray-700/30"
-                ></Divider>
+                ></Divider> */}
               </div>
               {/* body */}
 

@@ -19,7 +19,6 @@ import { BsPlayCircle } from "react-icons/bs";
 import { AiFillStar } from "react-icons/ai";
 import { HiDotsCircleHorizontal } from "react-icons/hi";
 import useFetchGenreByCategory from "../fetch/general/useFetchGenreByCategory";
-
 const CardComponent = ({
   title,
   poster,
@@ -31,11 +30,9 @@ const CardComponent = ({
 }) => {
   const {pathname} = useLocation()
 
-  const genreSpecificQuery = useFetchGenreByCategory(`${pathname}`)
- 
 
   const nav = useNavigate();
-  
+  const {data:genreCategory} = useFetchGenreByCategory(pathname,id)
   const [hoverState, setHoverState] = useState({
     card: false,
     
@@ -50,7 +47,7 @@ const CardComponent = ({
 
   const filterGenre = () => {
     // filter genre api list to the props genre
-    const res = genreSpecificQuery.data?.genres.filter((item) =>
+    const res = genreCategory.genres.filter((item) =>
       genre.includes(item.id)
     );
     // then map it to get the name
