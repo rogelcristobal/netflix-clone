@@ -1,5 +1,5 @@
 import { Routes, Route, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 import { useContext } from "react";
 // context
 import AuthContext from "./context/AuthContext";
@@ -12,6 +12,7 @@ import MovieCategories from "./pages/MovieCategories";
 import ModalBG from "./components/modal/ModalBG";
 import TVCategories from "./pages/TVCategories";
 import ItemPage from "./pages/ItemPage";
+import SearchAsButton from "./components/SearchAsButton";
 // MUI
 import {
   Paper,
@@ -35,6 +36,8 @@ import { RiSearchLine } from "react-icons/ri";
 import { IoSettingsOutline, IoPersonOutline } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "./features/authSlice";
 const queryClient = new QueryClient();
 
 function App() {
@@ -49,9 +52,10 @@ function App() {
 }
 function NetflixClone() {
   const { searchModal, setSearchModal } = useContext(SearchModalContext);
+  const dispatch = useDispatch();
 
-  const nav = useNavigate();
   const { user, logout } = useContext(AuthContext);
+
   // mui theme
   const theme = createTheme({
     typography: {
@@ -91,31 +95,11 @@ function NetflixClone() {
                   >
                     <div className="flex items-center h-full w-full justify-end">
                       {/* search */}
-                      <Button
-                        variant="contained"
-                        onClick={() => setSearchModal(!searchModal)}
-                        className="bg-[#090b0f]/40 shadow-none capitalize tracking-wide font-base text-color-500 rounded-xl w-60 flex justify-start mr-12 hover:text-color-300 text-sm"
-                        startIcon={
-                          <Tooltip
-                            title="search"
-                            arrow
-                            placement="top-end"
-                            TransitionComponent={Zoom}
-                            TransitionProps={{ timeout: 300 }}
-                            enterDelay={1000}
-                          >
-                            <IconButton
-                              aria-label=""
-                              className="rounded-full  text-color-500 hover:text-color-300 transition ease-in-out duration-300
-                          "
-                            >
-                              <RiSearchLine className=" font-medium text-lg"></RiSearchLine>
-                            </IconButton>
-                          </Tooltip>
-                        }
-                      >
-                        search...
-                      </Button>
+                      <SearchAsButton
+                        searchModal={searchModal}
+                        setSearchModal={setSearchModal}
+                        placeholder="search..."
+                      ></SearchAsButton>
 
                       {/* right side container */}
                       <Box className="flex items-center justify-between space-x-4">
@@ -136,29 +120,27 @@ function NetflixClone() {
                               {user?.email}
                             </Typography>
                           </Box>
-                          {/* arrow dropdown */}
-                          <IconButton
-                            variant="outlined"
-                            color="primary"
-                            className="    text-color-400 transition ease-in-out duration-300"
-                          >
-                            <IoMdArrowDropdown className=" font-medium text-base"></IoMdArrowDropdown>
-                          </IconButton>
                           {/* user */}
                           <IconButton
                             variant="outlined"
-                            color="primary"
                             className=" rounded-full  bg-[#161b22]/20 mix-blend-difference	  text-color-400 transition ease-in-out duration-300"
                           >
                             <IoPersonOutline className=" font-medium text-base"></IoPersonOutline>
+                          </IconButton>
+                          {/* arrow dropdown */}
+                          <IconButton
+                            variant="outlined"
+                            className="    text-color-400 transition ease-in-out duration-300"
+                          >
+                            <IoMdArrowDropdown className=" font-medium text-base"></IoMdArrowDropdown>
                           </IconButton>
                         </Box>
 
                         {/* settings */}
                         <IconButton
                           variant="outlined"
-                          color="primary"
-                          className=" rounded-xl bg-primary-400  text-color-100 transition ease-in-out duration-300"
+                          className=" rounded-xl bg-[#090b0f]/40  hover:text-color-100 text-color-400 transition ease-in-out duration-300"
+                          onClick={() => dispatch(logOut())}
                         >
                           <IoSettingsOutline className=" font-medium text-lg"></IoSettingsOutline>
                         </IconButton>
@@ -215,7 +197,7 @@ function NetflixClone() {
                           className={({ isActive }) =>
                             isActive
                               ? "bg-[#161b22] w-full no-underline rounded-xl "
-                              : " w-full no-underline rounded-xl "
+                              : " w-full no-underline rounded-xl hover:bg-[#090b0f]/40"
                           }
                         >
                           <ListItemButton className=" py-3.5 text-color-300 tracking-wide text-[0.800rem]  rounded-xl px-6">
@@ -229,11 +211,11 @@ function NetflixClone() {
                   </List>
                 </Paper>
                 {/* divider */}
-                <Divider
+                {/* <Divider
                   variant="middle"
                   orientation="vertical"
                   className="bg-gray-700/30"
-                ></Divider>
+                ></Divider> */}
               </div>
               {/* body */}
 

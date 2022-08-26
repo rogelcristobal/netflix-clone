@@ -94,7 +94,7 @@ const MovieCategories = () => {
                 ))
               : sliceGenre(genreData).map((item, index) => (
                   <ListItem key={index} disablePadding>
-                    <ListItemButton className="rounded-xl hover:bg-[#161b22] dark:hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
+                    <ListItemButton className="rounded-xl hover:bg-[#090b0f]/40 dark:hover:bg-primary-400 hover:text-color-300 py-3 text-gray-700 font-medium  tracking-wide transition-all duration-200 ease-in-out">
                       <Typography variant="p" className="text-xs    whitespace-nowrap">
                         {item.name}
                       </Typography>

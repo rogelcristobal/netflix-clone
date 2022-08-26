@@ -8,7 +8,12 @@
 	}
     *{
         /* delete this for later */
-        /* @apply bg-blue-300/[0.1]  */
+        /* @apply bg-blue-400/[0.1]  */
+    }
+    .text-stroke{
+        -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: white;
     }
 
     
