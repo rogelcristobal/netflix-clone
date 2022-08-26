@@ -169,8 +169,8 @@ const CardComponent = ({
                   ? 
                     !loading && genre
                     ? 
-                      genre.slice(0,2).map((itemList, id) => (
-                        <GenreChip key={id}  itemList={itemList} path={pathname} hoverState={hoverState.card}></GenreChip>
+                      genre.slice(0,2).map((itemID, id) => (
+                        <GenreChip key={id}  itemID={itemID} path={pathname} sx={`${hoverState.card?'bg-gray-600/30 hover:bg-gray-400/30':'bg-gray-900/30 '}`}></GenreChip>
                       ))
                     : null
                   : null}
